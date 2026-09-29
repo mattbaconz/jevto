@@ -44,18 +44,15 @@ impl BufferedStreams {
         {
             self.bypassed = true;
             if matches!(self.overflow_behavior, OverflowBehavior::StreamOriginal) {
-                io::stdout().write_all(&self.stdout)?;
-                io::stderr().write_all(&self.stderr)?;
+                forward(ChildStream::Stdout, &self.stdout)?;
+                forward(ChildStream::Stderr, &self.stderr)?;
             }
             self.stdout.clear();
             self.stderr.clear();
         }
         if self.bypassed {
             match self.overflow_behavior {
-                OverflowBehavior::StreamOriginal => match stream {
-                    ChildStream::Stdout => io::stdout().write_all(bytes),
-                    ChildStream::Stderr => io::stderr().write_all(bytes),
-                },
+                OverflowBehavior::StreamOriginal => forward(stream, bytes),
                 OverflowBehavior::Discard => Ok(()),
             }
         } else {
@@ -65,6 +62,20 @@ impl BufferedStreams {
             }
             Ok(())
         }
+    }
+}
+
+/// Pass bypassed bytes straight through. Rust's stdout is line-buffered, so
+/// a partial line would sit in the buffer (and be lost if the process exits
+/// through `std::process::exit`) without an explicit flush.
+fn forward(stream: ChildStream, bytes: &[u8]) -> io::Result<()> {
+    match stream {
+        ChildStream::Stdout => {
+            let mut out = io::stdout().lock();
+            out.write_all(bytes)?;
+            out.flush()
+        }
+        ChildStream::Stderr => io::stderr().write_all(bytes),
     }
 }
 

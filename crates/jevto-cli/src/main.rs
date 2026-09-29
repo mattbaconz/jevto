@@ -341,6 +341,8 @@ fn main() {
             2
         }
     };
+    // `process::exit` skips stdout's buffered tail; flush it first.
+    let _ = io::stdout().flush();
     std::process::exit(code);
 }
 
