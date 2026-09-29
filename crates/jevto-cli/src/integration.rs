@@ -1366,6 +1366,8 @@ mod tests {
         assert_eq!(fs::read(&config).unwrap(), original);
     }
 
+    // The Codex pre-hook targets Windows PowerShell only.
+    #[cfg(windows)]
     #[test]
     fn codex_pre_hook_preview_round_trip_and_changed_entry() {
         let (_temp, store, workspace) = setup();

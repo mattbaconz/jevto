@@ -85,6 +85,9 @@ fn simple_rg(command: &str) -> Option<Vec<String>> {
                 || token == ".."
                 || token.starts_with("../")
                 || token.starts_with("..\\")
+                // Windows roots and drives are outside paths on every platform.
+                || token.starts_with('\\')
+                || token.as_bytes().get(1) == Some(&b':')
                 || Path::new(token).is_absolute()
         })
     {

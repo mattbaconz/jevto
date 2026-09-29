@@ -15,7 +15,9 @@ pub fn command_label(program: &[String]) -> String {
     let Some(executable) = program.first() else {
         return "unknown".into();
     };
-    let name = Path::new(executable)
+    // Split on both separators so a Windows path labels the same everywhere.
+    let base = executable.rsplit(['/', '\\']).next().unwrap_or(executable);
+    let name = Path::new(base)
         .file_stem()
         .map(|name| name.to_string_lossy().to_ascii_lowercase())
         .unwrap_or_else(|| "unknown".into());

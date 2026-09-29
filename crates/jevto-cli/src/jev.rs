@@ -203,7 +203,12 @@ impl OutboundPolicy {
                 continue;
             }
             let path = Path::new(raw);
+            // Windows roots, drives, and `..\` escapes are refused on every
+            // platform, not only where `Path` parses them.
             if raw.starts_with('-')
+                || raw.starts_with('\\')
+                || raw.as_bytes().get(1) == Some(&b':')
+                || raw.split(['/', '\\']).any(|part| part == "..")
                 || path.is_absolute()
                 || path.components().any(|component| {
                     matches!(
