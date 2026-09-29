@@ -32,6 +32,8 @@ All notable changes to this project are recorded here. The project is unreleased
 - Detailed host observations moved from the README to `docs/EVIDENCE.md`.
 
 ### Fixed
+- Jev request timeout raised from 4 s to 8 s; requests near the 64 KiB cap timed out in live runs.
+- Workspace is clippy-clean with `-D warnings`; CI clippy is now blocking.
 - Whitespace-only lines no longer count as goal-relevant, which had fragmented long outputs.
 - `jevto run` resolves bare program names through PATH and PATHEXT on Windows, so `.cmd` shims such as `tsc`, `npm`, `npx`, and `eslint` start instead of failing with "program not found" (found by the holdout benchmark).
 - Goal words that match many lines of a long output (a service name, a timestamp) no longer overflow the view budget and force full passthrough (found by the holdout benchmark).
