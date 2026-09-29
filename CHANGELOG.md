@@ -2,7 +2,7 @@
 
 All notable changes to this project are recorded here. The project is unreleased; entries describe the source tree.
 
-## Unreleased
+## 0.1.0 - 2026-09-30
 
 ### Added
 - Reduction plan with per-line reasons (`reduce.rs`): passing-test recognition for Rust libtest, Go `-v`, Python unittest and pytest, node:test, Jest/Vitest, and TAP; runner boilerplate; terminal progress redraws; identical and near-identical line runs; lockfile and minified-file diffs; long-output windows that keep head, tail, protected facts with context, goal identifiers, and rare "anomaly" lines.
@@ -32,6 +32,8 @@ All notable changes to this project are recorded here. The project is unreleased
 - Detailed host observations moved from the README to `docs/EVIDENCE.md`.
 
 ### Fixed
+- On Linux and macOS, output streamed through after the capture limit could lose a trailing partial line; bypassed output is now flushed as it passes and before exit.
+- Path checks for search targets refuse Windows drives, roots, and `..\` escapes on every platform.
 - Jev request timeout raised from 4 s to 8 s; requests near the 64 KiB cap timed out in live runs.
 - Workspace is clippy-clean with `-D warnings`; CI clippy is now blocking.
 - Whitespace-only lines no longer count as goal-relevant, which had fragmented long outputs.
