@@ -200,12 +200,11 @@ fn rg_search_command(command: &str) -> Option<String> {
     Some(tokens.join(" "))
 }
 
-#[cfg(test)]
+// The Codex pre-hook targets Windows PowerShell only.
+#[cfg(all(test, windows))]
 mod tests {
     use super::*;
 
-    // The Codex pre-hook targets Windows PowerShell only.
-    #[cfg(windows)]
     #[test]
     fn rewrites_only_plain_local_powershell_cargo_commands_and_rg_searches() {
         let workspace = tempfile::tempdir().unwrap();
