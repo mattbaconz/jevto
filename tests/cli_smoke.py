@@ -435,7 +435,7 @@ def main():
             assert streaming.poll() is None, "oversized output was held until the child exited"
             tail, error = streaming.communicate(timeout=5)
             assert streaming.returncode == 0
-            assert tail == b"Y" * 16 and error == b""
+            assert tail == b"Y" * 16 and error == b"", (tail, error)
 
         requests = [
             {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {"name": "smoke", "version": "1"}}},
