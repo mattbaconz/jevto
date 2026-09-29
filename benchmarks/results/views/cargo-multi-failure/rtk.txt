@@ -1,0 +1,21 @@
+---- index_tests::nth_out_of_range stdout ----
+
+thread 'index_tests::nth_out_of_range' (32392) panicked at src\lib.rs:2:42:
+index out of bounds: the len is 3 but the index is 5
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- lookup_tests::lookup_missing_region stdout ----
+
+thread 'lookup_tests::lookup_missing_region' (36628) panicked at src\lib.rs:3:99:
+called `Option::unwrap()` on a `None` value
+
+---- parse_tests::port_rejects_zero stdout ----
+
+thread 'parse_tests::port_rejects_zero' (15976) panicked at src\lib.rs:108:38:
+assertion `left == right` failed: port 0 is reserved
+  left: Some(0)
+ right: None
+
+
+test result: FAILED. 400 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+[full output: "$HOME/AppData/Local/rtk/tee/1790722756_cargo_test.log"]

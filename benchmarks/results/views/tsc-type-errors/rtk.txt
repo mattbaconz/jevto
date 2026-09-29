@@ -1,0 +1,5 @@
+src/client.ts(2,30): error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
+src/config.ts(1,14): error TS2322: Type 'string' is not assignable to type 'number'.
+src/user.ts(3,12): error TS2339: Property 'nickname' does not exist on type 'User'.
+TypeScript: 3 errors in 3 files
+Top codes: TS2339 (1x), TS2322 (1x), TS2345 (1x)

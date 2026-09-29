@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "session_id": "example-session",
+  "workspace_id": "example-workspace",
+  "revision": 0,
+  "goal": "Investigate storage reconnect behavior",
+  "trusted_constraints": []
+}

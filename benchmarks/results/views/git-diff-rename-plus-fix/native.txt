@@ -1,0 +1,311 @@
+diff --git a/src/auth/session.rs b/src/auth/session.rs
+index c396c02..cfdc1ba 100644
+--- a/src/auth/session.rs
++++ b/src/auth/session.rs
+@@ -1,5 +1,5 @@
+ pub fn expired(age: u64, max_age: u64) -> bool {
+-    if age > max_age {
++    if age >= max_age {
+         return true;
+     }
+     false
+diff --git a/src/handlers/h00.rs b/src/handlers/h00.rs
+index b3090fb..3cff7c7 100644
+--- a/src/handlers/h00.rs
++++ b/src/handlers/h00.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_00() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h01.rs b/src/handlers/h01.rs
+index 214c22c..97c981c 100644
+--- a/src/handlers/h01.rs
++++ b/src/handlers/h01.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_01() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h02.rs b/src/handlers/h02.rs
+index b6c11b8..4b893ff 100644
+--- a/src/handlers/h02.rs
++++ b/src/handlers/h02.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_02() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h03.rs b/src/handlers/h03.rs
+index 70ecbe5..5d3ce14 100644
+--- a/src/handlers/h03.rs
++++ b/src/handlers/h03.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_03() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h04.rs b/src/handlers/h04.rs
+index 9a39ab6..dd89df2 100644
+--- a/src/handlers/h04.rs
++++ b/src/handlers/h04.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_04() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h05.rs b/src/handlers/h05.rs
+index 3412110..7df2916 100644
+--- a/src/handlers/h05.rs
++++ b/src/handlers/h05.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_05() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h06.rs b/src/handlers/h06.rs
+index 31ae72b..a4b1fe2 100644
+--- a/src/handlers/h06.rs
++++ b/src/handlers/h06.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_06() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h07.rs b/src/handlers/h07.rs
+index 0375266..fb10611 100644
+--- a/src/handlers/h07.rs
++++ b/src/handlers/h07.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_07() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h08.rs b/src/handlers/h08.rs
+index 87bc4fb..b676a4f 100644
+--- a/src/handlers/h08.rs
++++ b/src/handlers/h08.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_08() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h09.rs b/src/handlers/h09.rs
+index 2e080e0..e3fdb2f 100644
+--- a/src/handlers/h09.rs
++++ b/src/handlers/h09.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_09() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h10.rs b/src/handlers/h10.rs
+index 576e2ce..1387443 100644
+--- a/src/handlers/h10.rs
++++ b/src/handlers/h10.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_10() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h11.rs b/src/handlers/h11.rs
+index 7752adf..8fb1b89 100644
+--- a/src/handlers/h11.rs
++++ b/src/handlers/h11.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_11() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h12.rs b/src/handlers/h12.rs
+index 35f9c0e..d2c7e9d 100644
+--- a/src/handlers/h12.rs
++++ b/src/handlers/h12.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_12() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h13.rs b/src/handlers/h13.rs
+index 10d538f..3ab5bd1 100644
+--- a/src/handlers/h13.rs
++++ b/src/handlers/h13.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_13() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h14.rs b/src/handlers/h14.rs
+index 297e783..153b766 100644
+--- a/src/handlers/h14.rs
++++ b/src/handlers/h14.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_14() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h15.rs b/src/handlers/h15.rs
+index bb065bf..1889d68 100644
+--- a/src/handlers/h15.rs
++++ b/src/handlers/h15.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_15() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h16.rs b/src/handlers/h16.rs
+index 9047381..953c490 100644
+--- a/src/handlers/h16.rs
++++ b/src/handlers/h16.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_16() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h17.rs b/src/handlers/h17.rs
+index 7324c0e..43626e4 100644
+--- a/src/handlers/h17.rs
++++ b/src/handlers/h17.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_17() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h18.rs b/src/handlers/h18.rs
+index 674e32f..d83d029 100644
+--- a/src/handlers/h18.rs
++++ b/src/handlers/h18.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_18() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h19.rs b/src/handlers/h19.rs
+index 497beb7..007d50c 100644
+--- a/src/handlers/h19.rs
++++ b/src/handlers/h19.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_19() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }

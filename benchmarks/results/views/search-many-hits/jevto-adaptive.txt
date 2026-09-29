@@ -1,0 +1,12 @@
+jevto exit=0 omitted=150
+src\api\alpha_00.rs:2:    let remaining_alpha = settings.retry_budget.saturating_sub(attempts_0);
+src\api\alpha_00.rs:3:    if attempts_0 >= cfg.retry_budget { return Err(Error::AlphaExhausted); }
+src\api\alpha_00.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "alpha");
+src\api\alpha_00.rs:5:    self.retry_budget = other.retry_budget.min(2);
+src\api\alpha_00.rs:6:    assert!(opts.retry_budget > 0, "alpha_00 requires retries");
+src\api\alpha_00.rs:7:    metrics.gauge("alpha.retry_budget", state.retry_budget as f64);
+... 72 search lines ranked less relevant by Jev hidden [stdout-545-7180]
+src\net\limits.rs:2:pub fn default_retry_budget() -> u32 {
+src\net\limits.rs:5:pub const RETRY_BUDGET_FIELD: &str = "retry_budget";
+... 78 search lines ranked less relevant by Jev hidden [stdout-7312-14750]
+recall: `'<jevto>' recall fd284bf0` [--section ID]

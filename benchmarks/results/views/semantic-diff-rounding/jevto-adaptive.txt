@@ -1,0 +1,35 @@
+jevto exit=0 omitted=287
+diff --git a/src/area00.rs b/src/area00.rs
+... 22 lines ranked less relevant by Jev hidden [stdout-43-861]
+diff --git a/src/area01.rs b/src/area01.rs
+... 37 lines ranked less relevant by Jev hidden [stdout-904-2445]
+diff --git a/src/area02.rs b/src/area02.rs
+... 24 lines ranked less relevant by Jev hidden [stdout-2488-3386]
+diff --git a/src/area03.rs b/src/area03.rs
+... 25 lines ranked less relevant by Jev hidden [stdout-3429-4369]
+diff --git a/src/area04.rs b/src/area04.rs
+... 25 lines ranked less relevant by Jev hidden [stdout-4412-5391]
+diff --git a/src/area05.rs b/src/area05.rs
+... 25 lines ranked less relevant by Jev hidden [stdout-5434-6415]
+diff --git a/src/area06.rs b/src/area06.rs
+... 24 lines ranked less relevant by Jev hidden [stdout-6458-7384]
+diff --git a/src/area07.rs b/src/area07.rs
+... 23 lines ranked less relevant by Jev hidden [stdout-7427-8315]
+diff --git a/src/area08.rs b/src/area08.rs
+... 22 lines ranked less relevant by Jev hidden [stdout-8358-9208]
+diff --git a/src/area09.rs b/src/area09.rs
+... 21 lines ranked less relevant by Jev hidden [stdout-9251-10063]
+diff --git a/src/area10.rs b/src/area10.rs
+... 20 lines ranked less relevant by Jev hidden [stdout-10106-10900]
+diff --git a/src/area11.rs b/src/area11.rs
+... 19 lines ranked less relevant by Jev hidden [stdout-10943-11698]
+diff --git a/src/money.rs b/src/money.rs
+index e077465..93d0f25 100644
+--- a/src/money.rs
++++ b/src/money.rs
+@@ -1,3 +1,3 @@
+ pub fn to_units(cents: i64) -> f64 {
+-    (cents as f64 / 100.0).round()
++    (cents as f64 / 100.0).floor()
+ }
+recall: `'<jevto>' recall 293d9c5e` [--section ID]

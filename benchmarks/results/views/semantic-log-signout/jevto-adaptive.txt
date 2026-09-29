@@ -1,0 +1,85 @@
+jevto exit=0 omitted=2379
+boot: loaded module 00 (scheduler) config hash bde5c099 in 23ms
+boot: loaded module 01 (http) config hash d7210dff in 30ms
+boot: loaded module 02 (queue) config hash a6233255 in 4ms
+boot: loaded module 03 (cache) config hash 1cfb10f6 in 24ms
+boot: loaded module 04 (storage) config hash de527100 in 16ms
+boot: loaded module 05 (grpc) config hash 8b33e968 in 7ms
+boot: loaded module 06 (queue) config hash 035b7399 in 14ms
+boot: loaded module 07 (grpc) config hash 478c281d in 12ms
+boot: loaded module 08 (grpc) config hash 28dbd25e in 5ms
+boot: loaded module 09 (cache) config hash 9e30691c in 40ms
+boot: loaded module 10 (storage) config hash 206f5c66 in 9ms
+boot: loaded module 11 (http) config hash f8eb18b9 in 1ms
+boot: loaded module 12 (queue) config hash c60a3cab in 14ms
+boot: loaded module 13 (cache) config hash df561d80 in 11ms
+boot: loaded module 14 (scheduler) config hash 504b74ba in 13ms
+boot: loaded module 15 (queue) config hash 2e81d66d in 13ms
+boot: loaded module 16 (grpc) config hash 4c7d6df0 in 2ms
+boot: loaded module 17 (metrics) config hash 6a375391 in 11ms
+boot: loaded module 18 (cache) config hash 43892dfc in 5ms
+boot: loaded module 19 (metrics) config hash 4d25deb3 in 39ms
+boot: loaded module 20 (http) config hash 98921396 in 22ms
+boot: loaded module 21 (db) config hash 4f596727 in 23ms
+boot: loaded module 22 (scheduler) config hash 7b121dc5 in 21ms
+boot: loaded module 23 (cache) config hash 7b3120df in 31ms
+boot: loaded module 24 (cache) config hash 0e979cf3 in 17ms
+boot: loaded module 25 (http) config hash f3001cee in 23ms
+boot: loaded module 26 (grpc) config hash 04a012e8 in 36ms
+boot: loaded module 27 (grpc) config hash 5dbe4409 in 25ms
+boot: loaded module 28 (http) config hash 73ec28d0 in 3ms
+boot: loaded module 29 (cache) config hash 9faba827 in 13ms
+... 1730 lower-relevance lines hidden [stdout-1828-122299]
+2026-09-29T11:28:20Z WARN auth: refresh rejected for 1204 sessions, clock skew 340s exceeds 300s tolerance
+... 649 lower-relevance lines hidden [stdout-122407-167649]
+2026-09-29T11:39:10Z INFO http: compacted 226 items shard=63 lag=28ms
+2026-09-29T11:39:11Z INFO cache: synced 219 items shard=43 lag=18ms
+2026-09-29T11:39:12Z INFO storage: compacted 179 items shard=58 lag=22ms
+2026-09-29T11:39:13Z INFO metrics: rotated 115 items shard=38 lag=32ms
+2026-09-29T11:39:14Z INFO metrics: synced 299 items shard=23 lag=0ms
+2026-09-29T11:39:15Z INFO queue: polled 119 items shard=19 lag=35ms
+2026-09-29T11:39:16Z INFO storage: flushed 72 items shard=62 lag=13ms
+2026-09-29T11:39:17Z INFO queue: compacted 797 items shard=19 lag=14ms
+2026-09-29T11:39:18Z INFO http: polled 829 items shard=23 lag=0ms
+2026-09-29T11:39:19Z INFO storage: flushed 612 items shard=46 lag=25ms
+2026-09-29T11:39:20Z INFO queue: leased 405 items shard=10 lag=38ms
+2026-09-29T11:39:21Z INFO db: rotated 617 items shard=2 lag=39ms
+2026-09-29T11:39:22Z INFO db: leased 478 items shard=34 lag=37ms
+2026-09-29T11:39:23Z INFO http: renewed 786 items shard=6 lag=11ms
+2026-09-29T11:39:24Z INFO grpc: flushed 517 items shard=47 lag=3ms
+2026-09-29T11:39:25Z INFO storage: polled 819 items shard=4 lag=10ms
+2026-09-29T11:39:26Z INFO db: renewed 418 items shard=10 lag=37ms
+2026-09-29T11:39:27Z INFO db: rotated 684 items shard=36 lag=1ms
+2026-09-29T11:39:28Z INFO storage: leased 566 items shard=13 lag=18ms
+2026-09-29T11:39:29Z INFO http: flushed 665 items shard=62 lag=38ms
+2026-09-29T11:39:30Z INFO http: flushed 298 items shard=52 lag=30ms
+2026-09-29T11:39:31Z INFO http: synced 205 items shard=62 lag=29ms
+2026-09-29T11:39:32Z INFO queue: polled 187 items shard=42 lag=10ms
+2026-09-29T11:39:33Z INFO db: flushed 76 items shard=45 lag=15ms
+2026-09-29T11:39:34Z INFO metrics: renewed 335 items shard=47 lag=9ms
+2026-09-29T11:39:35Z INFO http: polled 560 items shard=59 lag=23ms
+2026-09-29T11:39:36Z INFO cache: flushed 589 items shard=43 lag=32ms
+2026-09-29T11:39:37Z INFO http: compacted 99 items shard=38 lag=13ms
+2026-09-29T11:39:38Z INFO storage: renewed 746 items shard=52 lag=2ms
+2026-09-29T11:39:39Z INFO storage: flushed 266 items shard=42 lag=14ms
+2026-09-29T11:39:40Z INFO grpc: renewed 444 items shard=60 lag=30ms
+2026-09-29T11:39:41Z INFO scheduler: flushed 351 items shard=63 lag=16ms
+2026-09-29T11:39:42Z INFO storage: polled 539 items shard=46 lag=39ms
+2026-09-29T11:39:43Z INFO queue: renewed 598 items shard=14 lag=25ms
+2026-09-29T11:39:44Z INFO metrics: flushed 32 items shard=2 lag=22ms
+2026-09-29T11:39:45Z INFO http: synced 665 items shard=48 lag=34ms
+2026-09-29T11:39:46Z INFO db: renewed 629 items shard=32 lag=15ms
+2026-09-29T11:39:47Z INFO db: flushed 65 items shard=46 lag=35ms
+2026-09-29T11:39:48Z INFO scheduler: handled 427 items shard=2 lag=11ms
+2026-09-29T11:39:49Z INFO scheduler: synced 441 items shard=48 lag=32ms
+2026-09-29T11:39:50Z INFO http: renewed 593 items shard=40 lag=27ms
+2026-09-29T11:39:51Z INFO queue: synced 143 items shard=56 lag=5ms
+2026-09-29T11:39:52Z INFO cache: leased 774 items shard=28 lag=4ms
+2026-09-29T11:39:53Z INFO grpc: leased 181 items shard=53 lag=9ms
+2026-09-29T11:39:54Z INFO scheduler: flushed 749 items shard=8 lag=5ms
+2026-09-29T11:39:55Z INFO grpc: rotated 411 items shard=28 lag=25ms
+2026-09-29T11:39:56Z INFO http: handled 797 items shard=55 lag=14ms
+2026-09-29T11:39:57Z INFO metrics: rotated 387 items shard=23 lag=38ms
+2026-09-29T11:39:58Z INFO scheduler: compacted 375 items shard=5 lag=14ms
+2026-09-29T11:39:59Z INFO queue: flushed 369 items shard=23 lag=28ms
+recall: `'<jevto>' recall ee3eba1f` [--section ID]

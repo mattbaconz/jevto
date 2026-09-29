@@ -1,0 +1,8 @@
+jevto exit=1 omitted=200
+... 200 passing tests hidden [stdout-0-10445]
+    headers_test.go:205: parse_header: expected 4 fields, got 3
+--- FAIL: TestParseHeaderRejectsLeadingSpace (0.00s)
+FAIL
+FAIL	example.com/headers	0.491s
+FAIL
+recall: `'<jevto>' recall 4d15a7a7` [--section ID]

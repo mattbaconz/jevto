@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "data_classification": "public",
+  "allow_search_snippets": true,
+  "allow_output_snippets": true,
+  "allow_diff_snippets": false,
+  "allowed_roots": [
+    "C:\\path\\to\\trusted\\workspace"
+  ]
+}

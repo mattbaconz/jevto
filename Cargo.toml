@@ -1,0 +1,24 @@
+[workspace]
+members = ["crates/jevto-core", "crates/jevto-cli"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+rust-version = "1.82"
+repository = "https://github.com/mattbaconz/jevto"
+homepage = "https://github.com/mattbaconz/jevto"
+version = "0.1.0"
+
+[workspace.dependencies]
+base64 = "0.22"
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4", features = ["derive", "env"] }
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+sha2 = "0.10"
+thiserror = "2"
+uuid = { version = "1", features = ["v4"] }
+ureq = { version = "2.12", default-features = false, features = ["tls", "json"] }
+toml_edit = "=0.25.15"

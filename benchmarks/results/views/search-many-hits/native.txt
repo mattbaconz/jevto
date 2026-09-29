@@ -1,0 +1,158 @@
+src\api\alpha_00.rs:2:    let remaining_alpha = settings.retry_budget.saturating_sub(attempts_0);
+src\api\alpha_00.rs:3:    if attempts_0 >= cfg.retry_budget { return Err(Error::AlphaExhausted); }
+src\api\alpha_00.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "alpha");
+src\api\alpha_00.rs:5:    self.retry_budget = other.retry_budget.min(2);
+src\api\alpha_00.rs:6:    assert!(opts.retry_budget > 0, "alpha_00 requires retries");
+src\api\alpha_00.rs:7:    metrics.gauge("alpha.retry_budget", state.retry_budget as f64);
+src\api\alpha_10.rs:2:    let remaining_alpha = settings.retry_budget.saturating_sub(attempts_10);
+src\api\alpha_10.rs:3:    if attempts_10 >= cfg.retry_budget { return Err(Error::AlphaExhausted); }
+src\api\alpha_10.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "alpha");
+src\api\alpha_10.rs:5:    self.retry_budget = other.retry_budget.min(3);
+src\api\alpha_10.rs:6:    assert!(opts.retry_budget > 0, "alpha_10 requires retries");
+src\api\alpha_10.rs:7:    metrics.gauge("alpha.retry_budget", state.retry_budget as f64);
+src\api\bravo_01.rs:2:    let remaining_harbor = settings.retry_budget.saturating_sub(attempts_1);
+src\api\bravo_01.rs:3:    if attempts_1 >= cfg.retry_budget { return Err(Error::HarborExhausted); }
+src\api\bravo_01.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "harbor");
+src\api\bravo_01.rs:5:    self.retry_budget = other.retry_budget.min(3);
+src\api\bravo_01.rs:6:    assert!(opts.retry_budget > 0, "bravo_01 requires retries");
+src\api\bravo_01.rs:7:    metrics.gauge("harbor.retry_budget", state.retry_budget as f64);
+src\api\bravo_11.rs:2:    let remaining_harbor = settings.retry_budget.saturating_sub(attempts_11);
+src\api\bravo_11.rs:3:    if attempts_11 >= cfg.retry_budget { return Err(Error::HarborExhausted); }
+src\api\bravo_11.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "harbor");
+src\api\bravo_11.rs:5:    self.retry_budget = other.retry_budget.min(4);
+src\api\bravo_11.rs:6:    assert!(opts.retry_budget > 0, "bravo_11 requires retries");
+src\api\bravo_11.rs:7:    metrics.gauge("harbor.retry_budget", state.retry_budget as f64);
+src\api\cobalt_02.rs:2:    let remaining_ember = settings.retry_budget.saturating_sub(attempts_2);
+src\api\cobalt_02.rs:3:    if attempts_2 >= cfg.retry_budget { return Err(Error::EmberExhausted); }
+src\api\cobalt_02.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "ember");
+src\api\cobalt_02.rs:5:    self.retry_budget = other.retry_budget.min(4);
+src\api\cobalt_02.rs:6:    assert!(opts.retry_budget > 0, "cobalt_02 requires retries");
+src\api\cobalt_02.rs:7:    metrics.gauge("ember.retry_budget", state.retry_budget as f64);
+src\api\cobalt_12.rs:2:    let remaining_ember = settings.retry_budget.saturating_sub(attempts_12);
+src\api\cobalt_12.rs:3:    if attempts_12 >= cfg.retry_budget { return Err(Error::EmberExhausted); }
+src\api\cobalt_12.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "ember");
+src\api\cobalt_12.rs:5:    self.retry_budget = other.retry_budget.min(5);
+src\api\cobalt_12.rs:6:    assert!(opts.retry_budget > 0, "cobalt_12 requires retries");
+src\api\cobalt_12.rs:7:    metrics.gauge("ember.retry_budget", state.retry_budget as f64);
+src\api\delta_03.rs:2:    let remaining_bravo = settings.retry_budget.saturating_sub(attempts_3);
+src\api\delta_03.rs:3:    if attempts_3 >= cfg.retry_budget { return Err(Error::BravoExhausted); }
+src\api\delta_03.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "bravo");
+src\api\delta_03.rs:5:    self.retry_budget = other.retry_budget.min(5);
+src\api\delta_03.rs:6:    assert!(opts.retry_budget > 0, "delta_03 requires retries");
+src\api\delta_03.rs:7:    metrics.gauge("bravo.retry_budget", state.retry_budget as f64);
+src\api\ember_04.rs:2:    let remaining_indigo = settings.retry_budget.saturating_sub(attempts_4);
+src\api\ember_04.rs:3:    if attempts_4 >= cfg.retry_budget { return Err(Error::IndigoExhausted); }
+src\api\ember_04.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "indigo");
+src\api\ember_04.rs:5:    self.retry_budget = other.retry_budget.min(6);
+src\api\ember_04.rs:6:    assert!(opts.retry_budget > 0, "ember_04 requires retries");
+src\api\ember_04.rs:7:    metrics.gauge("indigo.retry_budget", state.retry_budget as f64);
+src\api\falcon_05.rs:2:    let remaining_falcon = settings.retry_budget.saturating_sub(attempts_5);
+src\api\falcon_05.rs:3:    if attempts_5 >= cfg.retry_budget { return Err(Error::FalconExhausted); }
+src\api\falcon_05.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "falcon");
+src\api\falcon_05.rs:5:    self.retry_budget = other.retry_budget.min(7);
+src\api\falcon_05.rs:6:    assert!(opts.retry_budget > 0, "falcon_05 requires retries");
+src\api\falcon_05.rs:7:    metrics.gauge("falcon.retry_budget", state.retry_budget as f64);
+src\api\garnet_06.rs:2:    let remaining_cobalt = settings.retry_budget.saturating_sub(attempts_6);
+src\api\garnet_06.rs:3:    if attempts_6 >= cfg.retry_budget { return Err(Error::CobaltExhausted); }
+src\api\garnet_06.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "cobalt");
+src\api\garnet_06.rs:5:    self.retry_budget = other.retry_budget.min(8);
+src\api\garnet_06.rs:6:    assert!(opts.retry_budget > 0, "garnet_06 requires retries");
+src\api\garnet_06.rs:7:    metrics.gauge("cobalt.retry_budget", state.retry_budget as f64);
+src\api\harbor_07.rs:2:    let remaining_juniper = settings.retry_budget.saturating_sub(attempts_7);
+src\api\harbor_07.rs:3:    if attempts_7 >= cfg.retry_budget { return Err(Error::JuniperExhausted); }
+src\api\harbor_07.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "juniper");
+src\api\harbor_07.rs:5:    self.retry_budget = other.retry_budget.min(9);
+src\api\harbor_07.rs:6:    assert!(opts.retry_budget > 0, "harbor_07 requires retries");
+src\api\harbor_07.rs:7:    metrics.gauge("juniper.retry_budget", state.retry_budget as f64);
+src\api\indigo_08.rs:2:    let remaining_garnet = settings.retry_budget.saturating_sub(attempts_8);
+src\api\indigo_08.rs:3:    if attempts_8 >= cfg.retry_budget { return Err(Error::GarnetExhausted); }
+src\api\indigo_08.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "garnet");
+src\api\indigo_08.rs:5:    self.retry_budget = other.retry_budget.min(10);
+src\api\indigo_08.rs:6:    assert!(opts.retry_budget > 0, "indigo_08 requires retries");
+src\api\indigo_08.rs:7:    metrics.gauge("garnet.retry_budget", state.retry_budget as f64);
+src\api\juniper_09.rs:2:    let remaining_delta = settings.retry_budget.saturating_sub(attempts_9);
+src\api\juniper_09.rs:3:    if attempts_9 >= cfg.retry_budget { return Err(Error::DeltaExhausted); }
+src\api\juniper_09.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "delta");
+src\api\juniper_09.rs:5:    self.retry_budget = other.retry_budget.min(2);
+src\api\juniper_09.rs:6:    assert!(opts.retry_budget > 0, "juniper_09 requires retries");
+src\api\juniper_09.rs:7:    metrics.gauge("delta.retry_budget", state.retry_budget as f64);
+src\net\limits.rs:2:pub fn default_retry_budget() -> u32 {
+src\net\limits.rs:5:pub const RETRY_BUDGET_FIELD: &str = "retry_budget";
+src\worker\alpha_20.rs:2:    let remaining_alpha = settings.retry_budget.saturating_sub(attempts_20);
+src\worker\alpha_20.rs:3:    if attempts_20 >= cfg.retry_budget { return Err(Error::AlphaExhausted); }
+src\worker\alpha_20.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "alpha");
+src\worker\alpha_20.rs:5:    self.retry_budget = other.retry_budget.min(4);
+src\worker\alpha_20.rs:6:    assert!(opts.retry_budget > 0, "alpha_20 requires retries");
+src\worker\alpha_20.rs:7:    metrics.gauge("alpha.retry_budget", state.retry_budget as f64);
+src\worker\bravo_21.rs:2:    let remaining_harbor = settings.retry_budget.saturating_sub(attempts_21);
+src\worker\bravo_21.rs:3:    if attempts_21 >= cfg.retry_budget { return Err(Error::HarborExhausted); }
+src\worker\bravo_21.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "harbor");
+src\worker\bravo_21.rs:5:    self.retry_budget = other.retry_budget.min(5);
+src\worker\bravo_21.rs:6:    assert!(opts.retry_budget > 0, "bravo_21 requires retries");
+src\worker\bravo_21.rs:7:    metrics.gauge("harbor.retry_budget", state.retry_budget as f64);
+src\worker\cobalt_22.rs:2:    let remaining_ember = settings.retry_budget.saturating_sub(attempts_22);
+src\worker\cobalt_22.rs:3:    if attempts_22 >= cfg.retry_budget { return Err(Error::EmberExhausted); }
+src\worker\cobalt_22.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "ember");
+src\worker\cobalt_22.rs:5:    self.retry_budget = other.retry_budget.min(6);
+src\worker\cobalt_22.rs:6:    assert!(opts.retry_budget > 0, "cobalt_22 requires retries");
+src\worker\cobalt_22.rs:7:    metrics.gauge("ember.retry_budget", state.retry_budget as f64);
+src\worker\delta_13.rs:2:    let remaining_bravo = settings.retry_budget.saturating_sub(attempts_13);
+src\worker\delta_13.rs:3:    if attempts_13 >= cfg.retry_budget { return Err(Error::BravoExhausted); }
+src\worker\delta_13.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "bravo");
+src\worker\delta_13.rs:5:    self.retry_budget = other.retry_budget.min(6);
+src\worker\delta_13.rs:6:    assert!(opts.retry_budget > 0, "delta_13 requires retries");
+src\worker\delta_13.rs:7:    metrics.gauge("bravo.retry_budget", state.retry_budget as f64);
+src\worker\delta_23.rs:2:    let remaining_bravo = settings.retry_budget.saturating_sub(attempts_23);
+src\worker\delta_23.rs:3:    if attempts_23 >= cfg.retry_budget { return Err(Error::BravoExhausted); }
+src\worker\delta_23.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "bravo");
+src\worker\delta_23.rs:5:    self.retry_budget = other.retry_budget.min(7);
+src\worker\delta_23.rs:6:    assert!(opts.retry_budget > 0, "delta_23 requires retries");
+src\worker\delta_23.rs:7:    metrics.gauge("bravo.retry_budget", state.retry_budget as f64);
+src\worker\ember_14.rs:2:    let remaining_indigo = settings.retry_budget.saturating_sub(attempts_14);
+src\worker\ember_14.rs:3:    if attempts_14 >= cfg.retry_budget { return Err(Error::IndigoExhausted); }
+src\worker\ember_14.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "indigo");
+src\worker\ember_14.rs:5:    self.retry_budget = other.retry_budget.min(7);
+src\worker\ember_14.rs:6:    assert!(opts.retry_budget > 0, "ember_14 requires retries");
+src\worker\ember_14.rs:7:    metrics.gauge("indigo.retry_budget", state.retry_budget as f64);
+src\worker\ember_24.rs:2:    let remaining_indigo = settings.retry_budget.saturating_sub(attempts_24);
+src\worker\ember_24.rs:3:    if attempts_24 >= cfg.retry_budget { return Err(Error::IndigoExhausted); }
+src\worker\ember_24.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "indigo");
+src\worker\ember_24.rs:5:    self.retry_budget = other.retry_budget.min(8);
+src\worker\ember_24.rs:6:    assert!(opts.retry_budget > 0, "ember_24 requires retries");
+src\worker\ember_24.rs:7:    metrics.gauge("indigo.retry_budget", state.retry_budget as f64);
+src\worker\falcon_15.rs:2:    let remaining_falcon = settings.retry_budget.saturating_sub(attempts_15);
+src\worker\falcon_15.rs:3:    if attempts_15 >= cfg.retry_budget { return Err(Error::FalconExhausted); }
+src\worker\falcon_15.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "falcon");
+src\worker\falcon_15.rs:5:    self.retry_budget = other.retry_budget.min(8);
+src\worker\falcon_15.rs:6:    assert!(opts.retry_budget > 0, "falcon_15 requires retries");
+src\worker\falcon_15.rs:7:    metrics.gauge("falcon.retry_budget", state.retry_budget as f64);
+src\worker\falcon_25.rs:2:    let remaining_falcon = settings.retry_budget.saturating_sub(attempts_25);
+src\worker\falcon_25.rs:3:    if attempts_25 >= cfg.retry_budget { return Err(Error::FalconExhausted); }
+src\worker\falcon_25.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "falcon");
+src\worker\falcon_25.rs:5:    self.retry_budget = other.retry_budget.min(9);
+src\worker\falcon_25.rs:6:    assert!(opts.retry_budget > 0, "falcon_25 requires retries");
+src\worker\falcon_25.rs:7:    metrics.gauge("falcon.retry_budget", state.retry_budget as f64);
+src\worker\garnet_16.rs:2:    let remaining_cobalt = settings.retry_budget.saturating_sub(attempts_16);
+src\worker\garnet_16.rs:3:    if attempts_16 >= cfg.retry_budget { return Err(Error::CobaltExhausted); }
+src\worker\garnet_16.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "cobalt");
+src\worker\garnet_16.rs:5:    self.retry_budget = other.retry_budget.min(9);
+src\worker\garnet_16.rs:6:    assert!(opts.retry_budget > 0, "garnet_16 requires retries");
+src\worker\garnet_16.rs:7:    metrics.gauge("cobalt.retry_budget", state.retry_budget as f64);
+src\worker\harbor_17.rs:2:    let remaining_juniper = settings.retry_budget.saturating_sub(attempts_17);
+src\worker\harbor_17.rs:3:    if attempts_17 >= cfg.retry_budget { return Err(Error::JuniperExhausted); }
+src\worker\harbor_17.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "juniper");
+src\worker\harbor_17.rs:5:    self.retry_budget = other.retry_budget.min(10);
+src\worker\harbor_17.rs:6:    assert!(opts.retry_budget > 0, "harbor_17 requires retries");
+src\worker\harbor_17.rs:7:    metrics.gauge("juniper.retry_budget", state.retry_budget as f64);
+src\worker\indigo_18.rs:2:    let remaining_garnet = settings.retry_budget.saturating_sub(attempts_18);
+src\worker\indigo_18.rs:3:    if attempts_18 >= cfg.retry_budget { return Err(Error::GarnetExhausted); }
+src\worker\indigo_18.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "garnet");
+src\worker\indigo_18.rs:5:    self.retry_budget = other.retry_budget.min(2);
+src\worker\indigo_18.rs:6:    assert!(opts.retry_budget > 0, "indigo_18 requires retries");
+src\worker\indigo_18.rs:7:    metrics.gauge("garnet.retry_budget", state.retry_budget as f64);
+src\worker\juniper_19.rs:2:    let remaining_delta = settings.retry_budget.saturating_sub(attempts_19);
+src\worker\juniper_19.rs:3:    if attempts_19 >= cfg.retry_budget { return Err(Error::DeltaExhausted); }
+src\worker\juniper_19.rs:4:    tracing::debug!(retry_budget = settings.retry_budget, stage = "delta");
+src\worker\juniper_19.rs:5:    self.retry_budget = other.retry_budget.min(3);
+src\worker\juniper_19.rs:6:    assert!(opts.retry_budget > 0, "juniper_19 requires retries");
+src\worker\juniper_19.rs:7:    metrics.gauge("delta.retry_budget", state.retry_budget as f64);

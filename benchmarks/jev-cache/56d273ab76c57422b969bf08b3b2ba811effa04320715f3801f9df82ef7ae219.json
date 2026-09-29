@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "model": "typesafe/jev-1.13-20260917",
+  "exists": 0.92,
+  "need": 3.42,
+  "kept_ids": [
+    "s00",
+    "s01",
+    "s02",
+    "s03"
+  ]
+}

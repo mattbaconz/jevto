@@ -1,0 +1,15 @@
+jevto exit=0 omitted=61
+src\api\m00.rs:2:    let t = Duration::from_millis(cfg.timeout_ms + 0);
+src\api\m00.rs:3:    conn.set_timeout(Some(t));
+src\api\m00.rs:4:    tracing::trace!(timeout = ?t, "api call");
+src\api\m04.rs:2:    let t = Duration::from_millis(cfg.timeout_ms + 4);
+src\api\m04.rs:3:    conn.set_timeout(Some(t));
+src\api\m04.rs:4:    tracing::trace!(timeout = ?t, "api call");
+src\api\m08.rs:2:    let t = Duration::from_millis(cfg.timeout_ms + 8);
+src\api\m08.rs:3:    conn.set_timeout(Some(t));
+src\api\m08.rs:4:    tracing::trace!(timeout = ?t, "api call");
+src\api\m12.rs:2:    let t = Duration::from_millis(cfg.timeout_ms + 12);
+src\api\m12.rs:3:    conn.set_timeout(Some(t));
+src\api\m12.rs:4:    tracing::trace!(timeout = ?t, "api call");
+... 61 more matches hidden [stdout-737-4525]
+recall: `'<jevto>' recall 765027d1` [--section ID]

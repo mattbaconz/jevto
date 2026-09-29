@@ -1,0 +1,543 @@
+src/handlers/alpha_00.rs   | 28 ++++++++++++++--------------
+ src/handlers/alpha_10.rs   | 28 ++++++++++++++--------------
+ src/handlers/bravo_01.rs   | 28 ++++++++++++++--------------
+ src/handlers/bravo_11.rs   | 28 ++++++++++++++--------------
+ src/handlers/cobalt_02.rs  | 28 ++++++++++++++--------------
+ src/handlers/cobalt_12.rs  | 28 ++++++++++++++--------------
+ src/handlers/delta_03.rs   | 28 ++++++++++++++--------------
+ src/handlers/ember_04.rs   | 28 ++++++++++++++--------------
+ src/handlers/falcon_05.rs  | 28 ++++++++++++++--------------
+ src/handlers/garnet_06.rs  | 28 ++++++++++++++--------------
+ src/handlers/harbor_07.rs  | 28 ++++++++++++++--------------
+ src/handlers/indigo_08.rs  | 28 ++++++++++++++--------------
+ src/handlers/juniper_09.rs | 28 ++++++++++++++--------------
+ src/limiter/bucket.rs      |  2 +-
+ 14 files changed, 183 insertions(+), 183 deletions(-)
+
+Changes:
+
+src/handlers/alpha_00.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_alpha_00(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "alpha_00 step 0");
++    tracing::info!(target: "app", "alpha_00 step 0");
+     ctx.metrics.incr("alpha_00.step_0");
+-    log_info(ctx, "alpha_00 step 1");
++    tracing::info!(target: "app", "alpha_00 step 1");
+     ctx.metrics.incr("alpha_00.step_1");
+-    log_info(ctx, "alpha_00 step 2");
++    tracing::info!(target: "app", "alpha_00 step 2");
+     ctx.metrics.incr("alpha_00.step_2");
+-    log_info(ctx, "alpha_00 step 3");
++    tracing::info!(target: "app", "alpha_00 step 3");
+     ctx.metrics.incr("alpha_00.step_3");
+-    log_info(ctx, "alpha_00 step 4");
++    tracing::info!(target: "app", "alpha_00 step 4");
+     ctx.metrics.incr("alpha_00.step_4");
+-    log_info(ctx, "alpha_00 step 5");
++    tracing::info!(target: "app", "alpha_00 step 5");
+     ctx.metrics.incr("alpha_00.step_5");
+-    log_info(ctx, "alpha_00 step 6");
++    tracing::info!(target: "app", "alpha_00 step 6");
+     ctx.metrics.incr("alpha_00.step_6");
+-    log_info(ctx, "alpha_00 step 7");
++    tracing::info!(target: "app", "alpha_00 step 7");
+     ctx.metrics.incr("alpha_00.step_7");
+-    log_info(ctx, "alpha_00 step 8");
++    tracing::info!(target: "app", "alpha_00 step 8");
+     ctx.metrics.incr("alpha_00.step_8");
+-    log_info(ctx, "alpha_00 step 9");
++    tracing::info!(target: "app", "alpha_00 step 9");
+     ctx.metrics.incr("alpha_00.step_9");
+-    log_info(ctx, "alpha_00 step 10");
++    tracing::info!(target: "app", "alpha_00 step 10");
+     ctx.metrics.incr("alpha_00.step_10");
+-    log_info(ctx, "alpha_00 step 11");
++    tracing::info!(target: "app", "alpha_00 step 11");
+     ctx.metrics.incr("alpha_00.step_11");
+-    log_info(ctx, "alpha_00 step 12");
++    tracing::info!(target: "app", "alpha_00 step 12");
+     ctx.metrics.incr("alpha_00.step_12");
+-    log_info(ctx, "alpha_00 step 13");
++    tracing::info!(target: "app", "alpha_00 step 13");
+     ctx.metrics.incr("alpha_00.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/alpha_10.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_alpha_10(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "alpha_10 step 0");
++    tracing::info!(target: "app", "alpha_10 step 0");
+     ctx.metrics.incr("alpha_10.step_0");
+-    log_info(ctx, "alpha_10 step 1");
++    tracing::info!(target: "app", "alpha_10 step 1");
+     ctx.metrics.incr("alpha_10.step_1");
+-    log_info(ctx, "alpha_10 step 2");
++    tracing::info!(target: "app", "alpha_10 step 2");
+     ctx.metrics.incr("alpha_10.step_2");
+-    log_info(ctx, "alpha_10 step 3");
++    tracing::info!(target: "app", "alpha_10 step 3");
+     ctx.metrics.incr("alpha_10.step_3");
+-    log_info(ctx, "alpha_10 step 4");
++    tracing::info!(target: "app", "alpha_10 step 4");
+     ctx.metrics.incr("alpha_10.step_4");
+-    log_info(ctx, "alpha_10 step 5");
++    tracing::info!(target: "app", "alpha_10 step 5");
+     ctx.metrics.incr("alpha_10.step_5");
+-    log_info(ctx, "alpha_10 step 6");
++    tracing::info!(target: "app", "alpha_10 step 6");
+     ctx.metrics.incr("alpha_10.step_6");
+-    log_info(ctx, "alpha_10 step 7");
++    tracing::info!(target: "app", "alpha_10 step 7");
+     ctx.metrics.incr("alpha_10.step_7");
+-    log_info(ctx, "alpha_10 step 8");
++    tracing::info!(target: "app", "alpha_10 step 8");
+     ctx.metrics.incr("alpha_10.step_8");
+-    log_info(ctx, "alpha_10 step 9");
++    tracing::info!(target: "app", "alpha_10 step 9");
+     ctx.metrics.incr("alpha_10.step_9");
+-    log_info(ctx, "alpha_10 step 10");
++    tracing::info!(target: "app", "alpha_10 step 10");
+     ctx.metrics.incr("alpha_10.step_10");
+-    log_info(ctx, "alpha_10 step 11");
++    tracing::info!(target: "app", "alpha_10 step 11");
+     ctx.metrics.incr("alpha_10.step_11");
+-    log_info(ctx, "alpha_10 step 12");
++    tracing::info!(target: "app", "alpha_10 step 12");
+     ctx.metrics.incr("alpha_10.step_12");
+-    log_info(ctx, "alpha_10 step 13");
++    tracing::info!(target: "app", "alpha_10 step 13");
+     ctx.metrics.incr("alpha_10.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/bravo_01.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_bravo_01(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "bravo_01 step 0");
++    tracing::info!(target: "app", "bravo_01 step 0");
+     ctx.metrics.incr("bravo_01.step_0");
+-    log_info(ctx, "bravo_01 step 1");
++    tracing::info!(target: "app", "bravo_01 step 1");
+     ctx.metrics.incr("bravo_01.step_1");
+-    log_info(ctx, "bravo_01 step 2");
++    tracing::info!(target: "app", "bravo_01 step 2");
+     ctx.metrics.incr("bravo_01.step_2");
+-    log_info(ctx, "bravo_01 step 3");
++    tracing::info!(target: "app", "bravo_01 step 3");
+     ctx.metrics.incr("bravo_01.step_3");
+-    log_info(ctx, "bravo_01 step 4");
++    tracing::info!(target: "app", "bravo_01 step 4");
+     ctx.metrics.incr("bravo_01.step_4");
+-    log_info(ctx, "bravo_01 step 5");
++    tracing::info!(target: "app", "bravo_01 step 5");
+     ctx.metrics.incr("bravo_01.step_5");
+-    log_info(ctx, "bravo_01 step 6");
++    tracing::info!(target: "app", "bravo_01 step 6");
+     ctx.metrics.incr("bravo_01.step_6");
+-    log_info(ctx, "bravo_01 step 7");
++    tracing::info!(target: "app", "bravo_01 step 7");
+     ctx.metrics.incr("bravo_01.step_7");
+-    log_info(ctx, "bravo_01 step 8");
++    tracing::info!(target: "app", "bravo_01 step 8");
+     ctx.metrics.incr("bravo_01.step_8");
+-    log_info(ctx, "bravo_01 step 9");
++    tracing::info!(target: "app", "bravo_01 step 9");
+     ctx.metrics.incr("bravo_01.step_9");
+-    log_info(ctx, "bravo_01 step 10");
++    tracing::info!(target: "app", "bravo_01 step 10");
+     ctx.metrics.incr("bravo_01.step_10");
+-    log_info(ctx, "bravo_01 step 11");
++    tracing::info!(target: "app", "bravo_01 step 11");
+     ctx.metrics.incr("bravo_01.step_11");
+-    log_info(ctx, "bravo_01 step 12");
++    tracing::info!(target: "app", "bravo_01 step 12");
+     ctx.metrics.incr("bravo_01.step_12");
+-    log_info(ctx, "bravo_01 step 13");
++    tracing::info!(target: "app", "bravo_01 step 13");
+     ctx.metrics.incr("bravo_01.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/bravo_11.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_bravo_11(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "bravo_11 step 0");
++    tracing::info!(target: "app", "bravo_11 step 0");
+     ctx.metrics.incr("bravo_11.step_0");
+-    log_info(ctx, "bravo_11 step 1");
++    tracing::info!(target: "app", "bravo_11 step 1");
+     ctx.metrics.incr("bravo_11.step_1");
+-    log_info(ctx, "bravo_11 step 2");
++    tracing::info!(target: "app", "bravo_11 step 2");
+     ctx.metrics.incr("bravo_11.step_2");
+-    log_info(ctx, "bravo_11 step 3");
++    tracing::info!(target: "app", "bravo_11 step 3");
+     ctx.metrics.incr("bravo_11.step_3");
+-    log_info(ctx, "bravo_11 step 4");
++    tracing::info!(target: "app", "bravo_11 step 4");
+     ctx.metrics.incr("bravo_11.step_4");
+-    log_info(ctx, "bravo_11 step 5");
++    tracing::info!(target: "app", "bravo_11 step 5");
+     ctx.metrics.incr("bravo_11.step_5");
+-    log_info(ctx, "bravo_11 step 6");
++    tracing::info!(target: "app", "bravo_11 step 6");
+     ctx.metrics.incr("bravo_11.step_6");
+-    log_info(ctx, "bravo_11 step 7");
++    tracing::info!(target: "app", "bravo_11 step 7");
+     ctx.metrics.incr("bravo_11.step_7");
+-    log_info(ctx, "bravo_11 step 8");
++    tracing::info!(target: "app", "bravo_11 step 8");
+     ctx.metrics.incr("bravo_11.step_8");
+-    log_info(ctx, "bravo_11 step 9");
++    tracing::info!(target: "app", "bravo_11 step 9");
+     ctx.metrics.incr("bravo_11.step_9");
+-    log_info(ctx, "bravo_11 step 10");
++    tracing::info!(target: "app", "bravo_11 step 10");
+     ctx.metrics.incr("bravo_11.step_10");
+-    log_info(ctx, "bravo_11 step 11");
++    tracing::info!(target: "app", "bravo_11 step 11");
+     ctx.metrics.incr("bravo_11.step_11");
+-    log_info(ctx, "bravo_11 step 12");
++    tracing::info!(target: "app", "bravo_11 step 12");
+     ctx.metrics.incr("bravo_11.step_12");
+-    log_info(ctx, "bravo_11 step 13");
++    tracing::info!(target: "app", "bravo_11 step 13");
+     ctx.metrics.incr("bravo_11.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/cobalt_02.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_cobalt_02(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "cobalt_02 step 0");
++    tracing::info!(target: "app", "cobalt_02 step 0");
+     ctx.metrics.incr("cobalt_02.step_0");
+-    log_info(ctx, "cobalt_02 step 1");
++    tracing::info!(target: "app", "cobalt_02 step 1");
+     ctx.metrics.incr("cobalt_02.step_1");
+-    log_info(ctx, "cobalt_02 step 2");
++    tracing::info!(target: "app", "cobalt_02 step 2");
+     ctx.metrics.incr("cobalt_02.step_2");
+-    log_info(ctx, "cobalt_02 step 3");
++    tracing::info!(target: "app", "cobalt_02 step 3");
+     ctx.metrics.incr("cobalt_02.step_3");
+-    log_info(ctx, "cobalt_02 step 4");
++    tracing::info!(target: "app", "cobalt_02 step 4");
+     ctx.metrics.incr("cobalt_02.step_4");
+-    log_info(ctx, "cobalt_02 step 5");
++    tracing::info!(target: "app", "cobalt_02 step 5");
+     ctx.metrics.incr("cobalt_02.step_5");
+-    log_info(ctx, "cobalt_02 step 6");
++    tracing::info!(target: "app", "cobalt_02 step 6");
+     ctx.metrics.incr("cobalt_02.step_6");
+-    log_info(ctx, "cobalt_02 step 7");
++    tracing::info!(target: "app", "cobalt_02 step 7");
+     ctx.metrics.incr("cobalt_02.step_7");
+-    log_info(ctx, "cobalt_02 step 8");
++    tracing::info!(target: "app", "cobalt_02 step 8");
+     ctx.metrics.incr("cobalt_02.step_8");
+-    log_info(ctx, "cobalt_02 step 9");
++    tracing::info!(target: "app", "cobalt_02 step 9");
+     ctx.metrics.incr("cobalt_02.step_9");
+-    log_info(ctx, "cobalt_02 step 10");
++    tracing::info!(target: "app", "cobalt_02 step 10");
+     ctx.metrics.incr("cobalt_02.step_10");
+-    log_info(ctx, "cobalt_02 step 11");
++    tracing::info!(target: "app", "cobalt_02 step 11");
+     ctx.metrics.incr("cobalt_02.step_11");
+-    log_info(ctx, "cobalt_02 step 12");
++    tracing::info!(target: "app", "cobalt_02 step 12");
+     ctx.metrics.incr("cobalt_02.step_12");
+-    log_info(ctx, "cobalt_02 step 13");
++    tracing::info!(target: "app", "cobalt_02 step 13");
+     ctx.metrics.incr("cobalt_02.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/cobalt_12.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_cobalt_12(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "cobalt_12 step 0");
++    tracing::info!(target: "app", "cobalt_12 step 0");
+     ctx.metrics.incr("cobalt_12.step_0");
+-    log_info(ctx, "cobalt_12 step 1");
++    tracing::info!(target: "app", "cobalt_12 step 1");
+     ctx.metrics.incr("cobalt_12.step_1");
+-    log_info(ctx, "cobalt_12 step 2");
++    tracing::info!(target: "app", "cobalt_12 step 2");
+     ctx.metrics.incr("cobalt_12.step_2");
+-    log_info(ctx, "cobalt_12 step 3");
++    tracing::info!(target: "app", "cobalt_12 step 3");
+     ctx.metrics.incr("cobalt_12.step_3");
+-    log_info(ctx, "cobalt_12 step 4");
++    tracing::info!(target: "app", "cobalt_12 step 4");
+     ctx.metrics.incr("cobalt_12.step_4");
+-    log_info(ctx, "cobalt_12 step 5");
++    tracing::info!(target: "app", "cobalt_12 step 5");
+     ctx.metrics.incr("cobalt_12.step_5");
+-    log_info(ctx, "cobalt_12 step 6");
++    tracing::info!(target: "app", "cobalt_12 step 6");
+     ctx.metrics.incr("cobalt_12.step_6");
+-    log_info(ctx, "cobalt_12 step 7");
++    tracing::info!(target: "app", "cobalt_12 step 7");
+     ctx.metrics.incr("cobalt_12.step_7");
+-    log_info(ctx, "cobalt_12 step 8");
++    tracing::info!(target: "app", "cobalt_12 step 8");
+     ctx.metrics.incr("cobalt_12.step_8");
+-    log_info(ctx, "cobalt_12 step 9");
++    tracing::info!(target: "app", "cobalt_12 step 9");
+     ctx.metrics.incr("cobalt_12.step_9");
+-    log_info(ctx, "cobalt_12 step 10");
++    tracing::info!(target: "app", "cobalt_12 step 10");
+     ctx.metrics.incr("cobalt_12.step_10");
+-    log_info(ctx, "cobalt_12 step 11");
++    tracing::info!(target: "app", "cobalt_12 step 11");
+     ctx.metrics.incr("cobalt_12.step_11");
+-    log_info(ctx, "cobalt_12 step 12");
++    tracing::info!(target: "app", "cobalt_12 step 12");
+     ctx.metrics.incr("cobalt_12.step_12");
+-    log_info(ctx, "cobalt_12 step 13");
++    tracing::info!(target: "app", "cobalt_12 step 13");
+     ctx.metrics.incr("cobalt_12.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/delta_03.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_delta_03(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "delta_03 step 0");
++    tracing::info!(target: "app", "delta_03 step 0");
+     ctx.metrics.incr("delta_03.step_0");
+-    log_info(ctx, "delta_03 step 1");
++    tracing::info!(target: "app", "delta_03 step 1");
+     ctx.metrics.incr("delta_03.step_1");
+-    log_info(ctx, "delta_03 step 2");
++    tracing::info!(target: "app", "delta_03 step 2");
+     ctx.metrics.incr("delta_03.step_2");
+-    log_info(ctx, "delta_03 step 3");
++    tracing::info!(target: "app", "delta_03 step 3");
+     ctx.metrics.incr("delta_03.step_3");
+-    log_info(ctx, "delta_03 step 4");
++    tracing::info!(target: "app", "delta_03 step 4");
+     ctx.metrics.incr("delta_03.step_4");
+-    log_info(ctx, "delta_03 step 5");
++    tracing::info!(target: "app", "delta_03 step 5");
+     ctx.metrics.incr("delta_03.step_5");
+-    log_info(ctx, "delta_03 step 6");
++    tracing::info!(target: "app", "delta_03 step 6");
+     ctx.metrics.incr("delta_03.step_6");
+-    log_info(ctx, "delta_03 step 7");
++    tracing::info!(target: "app", "delta_03 step 7");
+     ctx.metrics.incr("delta_03.step_7");
+-    log_info(ctx, "delta_03 step 8");
++    tracing::info!(target: "app", "delta_03 step 8");
+     ctx.metrics.incr("delta_03.step_8");
+-    log_info(ctx, "delta_03 step 9");
++    tracing::info!(target: "app", "delta_03 step 9");
+     ctx.metrics.incr("delta_03.step_9");
+-    log_info(ctx, "delta_03 step 10");
++    tracing::info!(target: "app", "delta_03 step 10");
+     ctx.metrics.incr("delta_03.step_10");
+-    log_info(ctx, "delta_03 step 11");
++    tracing::info!(target: "app", "delta_03 step 11");
+     ctx.metrics.incr("delta_03.step_11");
+-    log_info(ctx, "delta_03 step 12");
++    tracing::info!(target: "app", "delta_03 step 12");
+     ctx.metrics.incr("delta_03.step_12");
+-    log_info(ctx, "delta_03 step 13");
++    tracing::info!(target: "app", "delta_03 step 13");
+     ctx.metrics.incr("delta_03.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/ember_04.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_ember_04(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "ember_04 step 0");
++    tracing::info!(target: "app", "ember_04 step 0");
+     ctx.metrics.incr("ember_04.step_0");
+-    log_info(ctx, "ember_04 step 1");
++    tracing::info!(target: "app", "ember_04 step 1");
+     ctx.metrics.incr("ember_04.step_1");
+-    log_info(ctx, "ember_04 step 2");
++    tracing::info!(target: "app", "ember_04 step 2");
+     ctx.metrics.incr("ember_04.step_2");
+-    log_info(ctx, "ember_04 step 3");
++    tracing::info!(target: "app", "ember_04 step 3");
+     ctx.metrics.incr("ember_04.step_3");
+-    log_info(ctx, "ember_04 step 4");
++    tracing::info!(target: "app", "ember_04 step 4");
+     ctx.metrics.incr("ember_04.step_4");
+-    log_info(ctx, "ember_04 step 5");
++    tracing::info!(target: "app", "ember_04 step 5");
+     ctx.metrics.incr("ember_04.step_5");
+-    log_info(ctx, "ember_04 step 6");
++    tracing::info!(target: "app", "ember_04 step 6");
+     ctx.metrics.incr("ember_04.step_6");
+-    log_info(ctx, "ember_04 step 7");
++    tracing::info!(target: "app", "ember_04 step 7");
+     ctx.metrics.incr("ember_04.step_7");
+-    log_info(ctx, "ember_04 step 8");
++    tracing::info!(target: "app", "ember_04 step 8");
+     ctx.metrics.incr("ember_04.step_8");
+-    log_info(ctx, "ember_04 step 9");
++    tracing::info!(target: "app", "ember_04 step 9");
+     ctx.metrics.incr("ember_04.step_9");
+-    log_info(ctx, "ember_04 step 10");
++    tracing::info!(target: "app", "ember_04 step 10");
+     ctx.metrics.incr("ember_04.step_10");
+-    log_info(ctx, "ember_04 step 11");
++    tracing::info!(target: "app", "ember_04 step 11");
+     ctx.metrics.incr("ember_04.step_11");
+-    log_info(ctx, "ember_04 step 12");
++    tracing::info!(target: "app", "ember_04 step 12");
+     ctx.metrics.incr("ember_04.step_12");
+-    log_info(ctx, "ember_04 step 13");
++    tracing::info!(target: "app", "ember_04 step 13");
+     ctx.metrics.incr("ember_04.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/falcon_05.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_falcon_05(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "falcon_05 step 0");
++    tracing::info!(target: "app", "falcon_05 step 0");
+     ctx.metrics.incr("falcon_05.step_0");
+-    log_info(ctx, "falcon_05 step 1");
++    tracing::info!(target: "app", "falcon_05 step 1");
+     ctx.metrics.incr("falcon_05.step_1");
+-    log_info(ctx, "falcon_05 step 2");
++    tracing::info!(target: "app", "falcon_05 step 2");
+     ctx.metrics.incr("falcon_05.step_2");
+-    log_info(ctx, "falcon_05 step 3");
++    tracing::info!(target: "app", "falcon_05 step 3");
+     ctx.metrics.incr("falcon_05.step_3");
+-    log_info(ctx, "falcon_05 step 4");
++    tracing::info!(target: "app", "falcon_05 step 4");
+     ctx.metrics.incr("falcon_05.step_4");
+-    log_info(ctx, "falcon_05 step 5");
++    tracing::info!(target: "app", "falcon_05 step 5");
+     ctx.metrics.incr("falcon_05.step_5");
+-    log_info(ctx, "falcon_05 step 6");
++    tracing::info!(target: "app", "falcon_05 step 6");
+     ctx.metrics.incr("falcon_05.step_6");
+-    log_info(ctx, "falcon_05 step 7");
++    tracing::info!(target: "app", "falcon_05 step 7");
+     ctx.metrics.incr("falcon_05.step_7");
+-    log_info(ctx, "falcon_05 step 8");
++    tracing::info!(target: "app", "falcon_05 step 8");
+     ctx.metrics.incr("falcon_05.step_8");
+-    log_info(ctx, "falcon_05 step 9");
++    tracing::info!(target: "app", "falcon_05 step 9");
+     ctx.metrics.incr("falcon_05.step_9");
+-    log_info(ctx, "falcon_05 step 10");
++    tracing::info!(target: "app", "falcon_05 step 10");
+     ctx.metrics.incr("falcon_05.step_10");
+-    log_info(ctx, "falcon_05 step 11");
++    tracing::info!(target: "app", "falcon_05 step 11");
+     ctx.metrics.incr("falcon_05.step_11");
+-    log_info(ctx, "falcon_05 step 12");
++    tracing::info!(target: "app", "falcon_05 step 12");
+     ctx.metrics.incr("falcon_05.step_12");
+-    log_info(ctx, "falcon_05 step 13");
++    tracing::info!(target: "app", "falcon_05 step 13");
+     ctx.metrics.incr("falcon_05.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/garnet_06.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_garnet_06(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "garnet_06 step 0");
++    tracing::info!(target: "app", "garnet_06 step 0");
+     ctx.metrics.incr("garnet_06.step_0");
+-    log_info(ctx, "garnet_06 step 1");
++    tracing::info!(target: "app", "garnet_06 step 1");
+     ctx.metrics.incr("garnet_06.step_1");
+-    log_info(ctx, "garnet_06 step 2");
++    tracing::info!(target: "app", "garnet_06 step 2");
+     ctx.metrics.incr("garnet_06.step_2");
+-    log_info(ctx, "garnet_06 step 3");
++    tracing::info!(target: "app", "garnet_06 step 3");
+     ctx.metrics.incr("garnet_06.step_3");
+-    log_info(ctx, "garnet_06 step 4");
++    tracing::info!(target: "app", "garnet_06 step 4");
+     ctx.metrics.incr("garnet_06.step_4");
+-    log_info(ctx, "garnet_06 step 5");
++    tracing::info!(target: "app", "garnet_06 step 5");
+     ctx.metrics.incr("garnet_06.step_5");
+-    log_info(ctx, "garnet_06 step 6");
++    tracing::info!(target: "app", "garnet_06 step 6");
+     ctx.metrics.incr("garnet_06.step_6");
+-    log_info(ctx, "garnet_06 step 7");
++    tracing::info!(target: "app", "garnet_06 step 7");
+     ctx.metrics.incr("garnet_06.step_7");
+-    log_info(ctx, "garnet_06 step 8");
++    tracing::info!(target: "app", "garnet_06 step 8");
+     ctx.metrics.incr("garnet_06.step_8");
+-    log_info(ctx, "garnet_06 step 9");
++    tracing::info!(target: "app", "garnet_06 step 9");
+     ctx.metrics.incr("garnet_06.step_9");
+-    log_info(ctx, "garnet_06 step 10");
++    tracing::info!(target: "app", "garnet_06 step 10");
+     ctx.metrics.incr("garnet_06.step_10");
+-    log_info(ctx, "garnet_06 step 11");
++    tracing::info!(target: "app", "garnet_06 step 11");
+     ctx.metrics.incr("garnet_06.step_11");
+-    log_info(ctx, "garnet_06 step 12");
++    tracing::info!(target: "app", "garnet_06 step 12");
+     ctx.metrics.incr("garnet_06.step_12");
+-    log_info(ctx, "garnet_06 step 13");
++    tracing::info!(target: "app", "garnet_06 step 13");
+     ctx.metrics.incr("garnet_06.step_13");
+     Ok(())
+ }
+  +14 -14
+
+src/handlers/harbor_07.rs
+@@ -1,31 +1,31 @@
+ pub fn handle_harbor_07(ctx: &Context) -> Result<()> {
+-    log_info(ctx, "harbor_07 step 0");
++    tracing::info!(target: "app", "harbor_07 step 0");
+     ctx.metrics.incr("harbor_07.step_0");
+-    log_info(ctx, "harbor_07 step 1");
++    tracing::info!(target: "app", "harbor_07 step 1");
+     ctx.metrics.incr("harbor_07.step_1");
+-    log_info(ctx, "harbor_07 step 2");
++    tracing::info!(target: "app", "harbor_07 step 2");
+     ctx.metrics.incr("harbor_07.step_2");
+-    log_info(ctx, "harbor_07 step 3");
++    tracing::info!(target: "app", "harbor_07 step 3");
+     ctx.metrics.incr("harbor_07.step_3");
+-    log_info(ctx, "harbor_07 step 4");
++    tracing::info!(target: "app", "harbor_07 step 4");
+     ctx.metrics.incr("harbor_07.step_4");
+-    log_info(ctx, "harbor_07 step 5");
++    tracing::info!(target: "app", "harbor_07 step 5");
+     ctx.metrics.incr("harbor_07.step_5");
+-    log_info(ctx, "harbor_07 step 6");
++    tracing::info!(target: "app", "harbor_07 step 6");
+     ctx.metrics.incr("harbor_07.step_6");
+-    log_info(ctx, "harbor_07 step 7");
++    tracing::info!(target: "app", "harbor_07 step 7");
+     ctx.metrics.incr("harbor_07.step_7");
+-    log_info(ctx, "harbor_07 step 8");
++    tracing::info!(target: "app", "harbor_07 step 8");
+     ctx.metrics.incr("harbor_07.step_8");
+-    log_info(ctx, "harbor_07 step 9");
+
+... (more changes truncated)
+  +9 -10
+[full diff: rtk git diff --no-compact]

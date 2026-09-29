@@ -1,0 +1,311 @@
+src/area00.rs |  5 +++--
+ src/area01.rs | 25 +++++++++++++------------
+ src/area02.rs |  5 +++--
+ src/area03.rs |  5 +++--
+ src/area04.rs |  5 +++--
+ src/area05.rs |  5 +++--
+ src/area06.rs |  5 +++--
+ src/area07.rs |  5 +++--
+ src/area08.rs |  5 +++--
+ src/area09.rs |  5 +++--
+ src/area10.rs |  5 +++--
+ src/area11.rs |  5 +++--
+ src/money.rs  |  2 +-
+ 13 files changed, 47 insertions(+), 35 deletions(-)
+
+Changes:
+
+src/area00.rs
+@@ -1,11 +1,11 @@
+-pub fn f0_0(x: u32) -> u32 { x + 0 }
++pub fn f0_0(x: u32) -> u32 { x.saturating_add(0) }
+ pub fn f0_1(x: u32) -> u32 { x + 1 }
+ pub fn f0_2(x: u32) -> u32 { x + 2 }
+ pub fn f0_3(x: u32) -> u32 { x + 3 }
+ pub fn f0_4(x: u32) -> u32 { x + 4 }
+ pub fn f0_5(x: u32) -> u32 { x + 5 }
+ pub fn f0_6(x: u32) -> u32 { x + 6 }
+-pub fn f0_7(x: u32) -> u32 { x + 7 }
++pub fn f0_7(x: u32) -> u32 { x.wrapping_add(7) }
+ pub fn f0_8(x: u32) -> u32 { x + 8 }
+ pub fn f0_9(x: u32) -> u32 { x + 9 }
+ pub fn f0_10(x: u32) -> u32 { x + 10 }
+@@ -18,3 +18,4 @@ pub fn f0_16(x: u32) -> u32 { x + 16 }
+ pub fn f0_17(x: u32) -> u32 { x + 17 }
+ pub fn f0_18(x: u32) -> u32 { x + 18 }
+ pub fn f0_19(x: u32) -> u32 { x + 19 }
++pub fn extra_0() -> u32 { 0 }
+  +3 -2
+
+src/area01.rs
+@@ -1,20 +1,21 @@
+ pub fn f1_0(x: u32) -> u32 { x + 0 }
+-pub fn f1_1(x: u32) -> u32 { x + 1 }
++pub fn f1_1(x: u32) -> u32 { x.saturating_add(1) }
+ pub fn f1_2(x: u32) -> u32 { x + 2 }
+ pub fn f1_3(x: u32) -> u32 { x + 3 }
+ pub fn f1_4(x: u32) -> u32 { x + 4 }
+ pub fn f1_5(x: u32) -> u32 { x + 5 }
+ pub fn f1_6(x: u32) -> u32 { x + 6 }
+ pub fn f1_7(x: u32) -> u32 { x + 7 }
+-pub fn f1_8(x: u32) -> u32 { x + 8 }
++pub fn f1_8(x: u32) -> u32 { x.wrapping_add(8) }
+ pub fn f1_9(x: u32) -> u32 { x + 9 }
+-pub fn f1_10(x: u32) -> u32 { x + 10 }
+-pub fn f1_11(x: u32) -> u32 { x + 11 }
+-pub fn f1_12(x: u32) -> u32 { x + 12 }
+-pub fn f1_13(x: u32) -> u32 { x + 13 }
+-pub fn f1_14(x: u32) -> u32 { x + 14 }
+-pub fn f1_15(x: u32) -> u32 { x + 15 }
+-pub fn f1_16(x: u32) -> u32 { x + 16 }
+-pub fn f1_17(x: u32) -> u32 { x + 17 }
+-pub fn f1_18(x: u32) -> u32 { x + 18 }
+-pub fn f1_19(x: u32) -> u32 { x + 19 }
++pub fn f1_10(x: u32) -> u32 { x.saturating_add(1)0 }
++pub fn f1_11(x: u32) -> u32 { x.saturating_add(1)1 }
++pub fn f1_12(x: u32) -> u32 { x.saturating_add(1)2 }
++pub fn f1_13(x: u32) -> u32 { x.saturating_add(1)3 }
++pub fn f1_14(x: u32) -> u32 { x.saturating_add(1)4 }
++pub fn f1_15(x: u32) -> u32 { x.saturating_add(1)5 }
++pub fn f1_16(x: u32) -> u32 { x.saturating_add(1)6 }
++pub fn f1_17(x: u32) -> u32 { x.saturating_add(1)7 }
++pub fn f1_18(x: u32) -> u32 { x.saturating_add(1)8 }
++pub fn f1_19(x: u32) -> u32 { x.saturating_add(1)9 }
++pub fn extra_1() -> u32 { 1 }
+  +13 -12
+
+src/area02.rs
+@@ -1,13 +1,13 @@
+ pub fn f2_0(x: u32) -> u32 { x + 0 }
+ pub fn f2_1(x: u32) -> u32 { x + 1 }
+-pub fn f2_2(x: u32) -> u32 { x + 2 }
++pub fn f2_2(x: u32) -> u32 { x.saturating_add(2) }
+ pub fn f2_3(x: u32) -> u32 { x + 3 }
+ pub fn f2_4(x: u32) -> u32 { x + 4 }
+ pub fn f2_5(x: u32) -> u32 { x + 5 }
+ pub fn f2_6(x: u32) -> u32 { x + 6 }
+ pub fn f2_7(x: u32) -> u32 { x + 7 }
+ pub fn f2_8(x: u32) -> u32 { x + 8 }
+-pub fn f2_9(x: u32) -> u32 { x + 9 }
++pub fn f2_9(x: u32) -> u32 { x.wrapping_add(9) }
+ pub fn f2_10(x: u32) -> u32 { x + 10 }
+ pub fn f2_11(x: u32) -> u32 { x + 11 }
+ pub fn f2_12(x: u32) -> u32 { x + 12 }
+@@ -18,3 +18,4 @@ pub fn f2_16(x: u32) -> u32 { x + 16 }
+ pub fn f2_17(x: u32) -> u32 { x + 17 }
+ pub fn f2_18(x: u32) -> u32 { x + 18 }
+ pub fn f2_19(x: u32) -> u32 { x + 19 }
++pub fn extra_2() -> u32 { 2 }
+  +3 -2
+
+src/area03.rs
+@@ -1,14 +1,14 @@
+ pub fn f3_0(x: u32) -> u32 { x + 0 }
+ pub fn f3_1(x: u32) -> u32 { x + 1 }
+ pub fn f3_2(x: u32) -> u32 { x + 2 }
+-pub fn f3_3(x: u32) -> u32 { x + 3 }
++pub fn f3_3(x: u32) -> u32 { x.saturating_add(3) }
+ pub fn f3_4(x: u32) -> u32 { x + 4 }
+ pub fn f3_5(x: u32) -> u32 { x + 5 }
+ pub fn f3_6(x: u32) -> u32 { x + 6 }
+ pub fn f3_7(x: u32) -> u32 { x + 7 }
+ pub fn f3_8(x: u32) -> u32 { x + 8 }
+ pub fn f3_9(x: u32) -> u32 { x + 9 }
+-pub fn f3_10(x: u32) -> u32 { x + 10 }
++pub fn f3_10(x: u32) -> u32 { x.wrapping_add(10) }
+ pub fn f3_11(x: u32) -> u32 { x + 11 }
+ pub fn f3_12(x: u32) -> u32 { x + 12 }
+ pub fn f3_13(x: u32) -> u32 { x + 13 }
+@@ -18,3 +18,4 @@ pub fn f3_16(x: u32) -> u32 { x + 16 }
+ pub fn f3_17(x: u32) -> u32 { x + 17 }
+ pub fn f3_18(x: u32) -> u32 { x + 18 }
+ pub fn f3_19(x: u32) -> u32 { x + 19 }
++pub fn extra_3() -> u32 { 3 }
+  +3 -2
+
+src/area04.rs
+@@ -2,14 +2,14 @@ pub fn f4_0(x: u32) -> u32 { x + 0 }
+ pub fn f4_1(x: u32) -> u32 { x + 1 }
+ pub fn f4_2(x: u32) -> u32 { x + 2 }
+ pub fn f4_3(x: u32) -> u32 { x + 3 }
+-pub fn f4_4(x: u32) -> u32 { x + 4 }
++pub fn f4_4(x: u32) -> u32 { x.saturating_add(4) }
+ pub fn f4_5(x: u32) -> u32 { x + 5 }
+ pub fn f4_6(x: u32) -> u32 { x + 6 }
+ pub fn f4_7(x: u32) -> u32 { x + 7 }
+ pub fn f4_8(x: u32) -> u32 { x + 8 }
+ pub fn f4_9(x: u32) -> u32 { x + 9 }
+ pub fn f4_10(x: u32) -> u32 { x + 10 }
+-pub fn f4_11(x: u32) -> u32 { x + 11 }
++pub fn f4_11(x: u32) -> u32 { x.wrapping_add(11) }
+ pub fn f4_12(x: u32) -> u32 { x + 12 }
+ pub fn f4_13(x: u32) -> u32 { x + 13 }
+ pub fn f4_14(x: u32) -> u32 { x + 14 }
+@@ -18,3 +18,4 @@ pub fn f4_16(x: u32) -> u32 { x + 16 }
+ pub fn f4_17(x: u32) -> u32 { x + 17 }
+ pub fn f4_18(x: u32) -> u32 { x + 18 }
+ pub fn f4_19(x: u32) -> u32 { x + 19 }
++pub fn extra_4() -> u32 { 4 }
+  +3 -2
+
+src/area05.rs
+@@ -3,14 +3,14 @@ pub fn f5_1(x: u32) -> u32 { x + 1 }
+ pub fn f5_2(x: u32) -> u32 { x + 2 }
+ pub fn f5_3(x: u32) -> u32 { x + 3 }
+ pub fn f5_4(x: u32) -> u32 { x + 4 }
+-pub fn f5_5(x: u32) -> u32 { x + 5 }
++pub fn f5_5(x: u32) -> u32 { x.saturating_add(5) }
+ pub fn f5_6(x: u32) -> u32 { x + 6 }
+ pub fn f5_7(x: u32) -> u32 { x + 7 }
+ pub fn f5_8(x: u32) -> u32 { x + 8 }
+ pub fn f5_9(x: u32) -> u32 { x + 9 }
+ pub fn f5_10(x: u32) -> u32 { x + 10 }
+ pub fn f5_11(x: u32) -> u32 { x + 11 }
+-pub fn f5_12(x: u32) -> u32 { x + 12 }
++pub fn f5_12(x: u32) -> u32 { x.wrapping_add(12) }
+ pub fn f5_13(x: u32) -> u32 { x + 13 }
+ pub fn f5_14(x: u32) -> u32 { x + 14 }
+ pub fn f5_15(x: u32) -> u32 { x + 15 }
+@@ -18,3 +18,4 @@ pub fn f5_16(x: u32) -> u32 { x + 16 }
+ pub fn f5_17(x: u32) -> u32 { x + 17 }
+ pub fn f5_18(x: u32) -> u32 { x + 18 }
+ pub fn f5_19(x: u32) -> u32 { x + 19 }
++pub fn extra_5() -> u32 { 5 }
+  +3 -2
+
+src/area06.rs
+@@ -4,17 +4,18 @@ pub fn f6_2(x: u32) -> u32 { x + 2 }
+ pub fn f6_3(x: u32) -> u32 { x + 3 }
+ pub fn f6_4(x: u32) -> u32 { x + 4 }
+ pub fn f6_5(x: u32) -> u32 { x + 5 }
+-pub fn f6_6(x: u32) -> u32 { x + 6 }
++pub fn f6_6(x: u32) -> u32 { x.saturating_add(6) }
+ pub fn f6_7(x: u32) -> u32 { x + 7 }
+ pub fn f6_8(x: u32) -> u32 { x + 8 }
+ pub fn f6_9(x: u32) -> u32 { x + 9 }
+ pub fn f6_10(x: u32) -> u32 { x + 10 }
+ pub fn f6_11(x: u32) -> u32 { x + 11 }
+ pub fn f6_12(x: u32) -> u32 { x + 12 }
+-pub fn f6_13(x: u32) -> u32 { x + 13 }
++pub fn f6_13(x: u32) -> u32 { x.wrapping_add(13) }
+ pub fn f6_14(x: u32) -> u32 { x + 14 }
+ pub fn f6_15(x: u32) -> u32 { x + 15 }
+ pub fn f6_16(x: u32) -> u32 { x + 16 }
+ pub fn f6_17(x: u32) -> u32 { x + 17 }
+ pub fn f6_18(x: u32) -> u32 { x + 18 }
+ pub fn f6_19(x: u32) -> u32 { x + 19 }
++pub fn extra_6() -> u32 { 6 }
+  +3 -2
+
+src/area07.rs
+@@ -5,16 +5,17 @@ pub fn f7_3(x: u32) -> u32 { x + 3 }
+ pub fn f7_4(x: u32) -> u32 { x + 4 }
+ pub fn f7_5(x: u32) -> u32 { x + 5 }
+ pub fn f7_6(x: u32) -> u32 { x + 6 }
+-pub fn f7_7(x: u32) -> u32 { x + 7 }
++pub fn f7_7(x: u32) -> u32 { x.saturating_add(7) }
+ pub fn f7_8(x: u32) -> u32 { x + 8 }
+ pub fn f7_9(x: u32) -> u32 { x + 9 }
+ pub fn f7_10(x: u32) -> u32 { x + 10 }
+ pub fn f7_11(x: u32) -> u32 { x + 11 }
+ pub fn f7_12(x: u32) -> u32 { x + 12 }
+ pub fn f7_13(x: u32) -> u32 { x + 13 }
+-pub fn f7_14(x: u32) -> u32 { x + 14 }
++pub fn f7_14(x: u32) -> u32 { x.wrapping_add(14) }
+ pub fn f7_15(x: u32) -> u32 { x + 15 }
+ pub fn f7_16(x: u32) -> u32 { x + 16 }
+ pub fn f7_17(x: u32) -> u32 { x + 17 }
+ pub fn f7_18(x: u32) -> u32 { x + 18 }
+ pub fn f7_19(x: u32) -> u32 { x + 19 }
++pub fn extra_7() -> u32 { 7 }
+  +3 -2
+
+src/area08.rs
+@@ -6,15 +6,16 @@ pub fn f8_4(x: u32) -> u32 { x + 4 }
+ pub fn f8_5(x: u32) -> u32 { x + 5 }
+ pub fn f8_6(x: u32) -> u32 { x + 6 }
+ pub fn f8_7(x: u32) -> u32 { x + 7 }
+-pub fn f8_8(x: u32) -> u32 { x + 8 }
++pub fn f8_8(x: u32) -> u32 { x.saturating_add(8) }
+ pub fn f8_9(x: u32) -> u32 { x + 9 }
+ pub fn f8_10(x: u32) -> u32 { x + 10 }
+ pub fn f8_11(x: u32) -> u32 { x + 11 }
+ pub fn f8_12(x: u32) -> u32 { x + 12 }
+ pub fn f8_13(x: u32) -> u32 { x + 13 }
+ pub fn f8_14(x: u32) -> u32 { x + 14 }
+-pub fn f8_15(x: u32) -> u32 { x + 15 }
++pub fn f8_15(x: u32) -> u32 { x.wrapping_add(15) }
+ pub fn f8_16(x: u32) -> u32 { x + 16 }
+ pub fn f8_17(x: u32) -> u32 { x + 17 }
+ pub fn f8_18(x: u32) -> u32 { x + 18 }
+ pub fn f8_19(x: u32) -> u32 { x + 19 }
++pub fn extra_8() -> u32 { 8 }
+  +3 -2
+
+src/area09.rs
+@@ -7,14 +7,15 @@ pub fn f9_5(x: u32) -> u32 { x + 5 }
+ pub fn f9_6(x: u32) -> u32 { x + 6 }
+ pub fn f9_7(x: u32) -> u32 { x + 7 }
+ pub fn f9_8(x: u32) -> u32 { x + 8 }
+-pub fn f9_9(x: u32) -> u32 { x + 9 }
++pub fn f9_9(x: u32) -> u32 { x.saturating_add(9) }
+ pub fn f9_10(x: u32) -> u32 { x + 10 }
+ pub fn f9_11(x: u32) -> u32 { x + 11 }
+ pub fn f9_12(x: u32) -> u32 { x + 12 }
+ pub fn f9_13(x: u32) -> u32 { x + 13 }
+ pub fn f9_14(x: u32) -> u32 { x + 14 }
+ pub fn f9_15(x: u32) -> u32 { x + 15 }
+-pub fn f9_16(x: u32) -> u32 { x + 16 }
++pub fn f9_16(x: u32) -> u32 { x.wrapping_add(16) }
+ pub fn f9_17(x: u32) -> u32 { x + 17 }
+ pub fn f9_18(x: u32) -> u32 { x + 18 }
+ pub fn f9_19(x: u32) -> u32 { x + 19 }
++pub fn extra_9() -> u32 { 9 }
+  +3 -2
+
+src/area10.rs
+@@ -8,13 +8,14 @@ pub fn f10_6(x: u32) -> u32 { x + 6 }
+ pub fn f10_7(x: u32) -> u32 { x + 7 }
+ pub fn f10_8(x: u32) -> u32 { x + 8 }
+ pub fn f10_9(x: u32) -> u32 { x + 9 }
+-pub fn f10_10(x: u32) -> u32 { x + 10 }
++pub fn f10_10(x: u32) -> u32 { x.saturating_add(10) }
+ pub fn f10_11(x: u32) -> u32 { x + 11 }
+ pub fn f10_12(x: u32) -> u32 { x + 12 }
+ pub fn f10_13(x: u32) -> u32 { x + 13 }
+ pub fn f10_14(x: u32) -> u32 { x + 14 }
+ pub fn f10_15(x: u32) -> u32 { x + 15 }
+ pub fn f10_16(x: u32) -> u32 { x + 16 }
+-pub fn f10_17(x: u32) -> u32 { x + 17 }
++pub fn f10_17(x: u32) -> u32 { x.wrapping_add(17) }
+ pub fn f10_18(x: u32) -> u32 { x + 18 }
+ pub fn f10_19(x: u32) -> u32 { x + 19 }
++pub fn extra_10() -> u32 { 10 }
+  +3 -2
+
+src/area11.rs
+@@ -9,12 +9,13 @@ pub fn f11_7(x: u32) -> u32 { x + 7 }
+ pub fn f11_8(x: u32) -> u32 { x + 8 }
+ pub fn f11_9(x: u32) -> u32 { x + 9 }
+ pub fn f11_10(x: u32) -> u32 { x + 10 }
+-pub fn f11_11(x: u32) -> u32 { x + 11 }
++pub fn f11_11(x: u32) -> u32 { x.saturating_add(11) }
+ pub fn f11_12(x: u32) -> u32 { x + 12 }
+ pub fn f11_13(x: u32) -> u32 { x + 13 }
+ pub fn f11_14(x: u32) -> u32 { x + 14 }
+ pub fn f11_15(x: u32) -> u32 { x + 15 }
+ pub fn f11_16(x: u32) -> u32 { x + 16 }
+ pub fn f11_17(x: u32) -> u32 { x + 17 }
+-pub fn f11_18(x: u32) -> u32 { x + 18 }
++pub fn f11_18(x: u32) -> u32 { x.wrapping_add(18) }
+ pub fn f11_19(x: u32) -> u32 { x + 19 }
++pub fn extra_11() -> u32 { 11 }
+  +3 -2
+
+src/money.rs
+@@ -1,3 +1,3 @@
+ pub fn to_units(cents: i64) -> f64 {
+-    (cents as f64 / 100.0).round()
++    (cents as f64 / 100.0).floor()
+ }
+  +1 -1

@@ -1,0 +1,25 @@
+jevto exit=1 omitted=193
+... 180 passing tests hidden [stdout-0-5204]
+✖ slug trims surrounding whitespace (1.7785ms)
+ℹ tests 181
+ℹ pass 180
+ℹ fail 1
+✖ failing tests:
+
+test at slug.test.js:186:1
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '-hello-world-'
+  - 'hello-world'
+  
+      at TestContext.<anonymous> (<tmp>\jevto-bench-node-test-failure-szk3v7rc\work\slug.test.js:186:58)
+... 6 runtime-internal stack frames hidden [stdout-5741-6139]
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '-hello-world-',
+    expected: 'hello-world',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+recall: `'<jevto>' recall adcb9a9b` [--section ID]

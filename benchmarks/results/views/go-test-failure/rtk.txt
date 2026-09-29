@@ -1,0 +1,6 @@
+Go test: 200 passed, 1 failed in 1 packages
+
+headers (200 passed, 1 failed)
+  [FAIL] TestParseHeaderRejectsLeadingSpace
+     headers_test.go:205: parse_header: expected 4 fields, got 3
+[full output: "$HOME/AppData/Local/rtk/tee/1790722618_go_test.log"]

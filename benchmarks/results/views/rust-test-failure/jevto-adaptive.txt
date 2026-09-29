@@ -1,0 +1,15 @@
+jevto exit=101 omitted=161
+... 150 passing tests hidden [stdout-19-4219]
+test tests::parse_header_rejects_leading_space ... FAILED
+
+failures:
+
+---- tests::parse_header_rejects_leading_space stdout ----
+
+thread 'tests::parse_header_rejects_leading_space' (4676) panicked at src\lib.rs:310:9:
+assertion `left == right` failed: leading space must be rejected
+  left: Some((" k", "v"))
+ right: None
+test result: FAILED. 150 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+error: test failed, to rerun pass `--lib`
+recall: `'<jevto>' recall 96f67eeb` [--section ID]

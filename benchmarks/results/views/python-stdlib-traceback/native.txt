@@ -1,0 +1,87 @@
+test_key_00 (test_config.ConfigTest.test_key_00) ... ok
+test_key_01 (test_config.ConfigTest.test_key_01) ... ok
+test_key_02 (test_config.ConfigTest.test_key_02) ... ok
+test_key_03 (test_config.ConfigTest.test_key_03) ... ok
+test_key_04 (test_config.ConfigTest.test_key_04) ... ok
+test_key_05 (test_config.ConfigTest.test_key_05) ... ok
+test_key_06 (test_config.ConfigTest.test_key_06) ... ok
+test_key_07 (test_config.ConfigTest.test_key_07) ... ok
+test_key_08 (test_config.ConfigTest.test_key_08) ... ok
+test_key_09 (test_config.ConfigTest.test_key_09) ... ok
+test_key_10 (test_config.ConfigTest.test_key_10) ... ok
+test_key_11 (test_config.ConfigTest.test_key_11) ... ok
+test_key_12 (test_config.ConfigTest.test_key_12) ... ok
+test_key_13 (test_config.ConfigTest.test_key_13) ... ok
+test_key_14 (test_config.ConfigTest.test_key_14) ... ok
+test_key_15 (test_config.ConfigTest.test_key_15) ... ok
+test_key_16 (test_config.ConfigTest.test_key_16) ... ok
+test_key_17 (test_config.ConfigTest.test_key_17) ... ok
+test_key_18 (test_config.ConfigTest.test_key_18) ... ok
+test_key_19 (test_config.ConfigTest.test_key_19) ... ok
+test_key_20 (test_config.ConfigTest.test_key_20) ... ok
+test_key_21 (test_config.ConfigTest.test_key_21) ... ok
+test_key_22 (test_config.ConfigTest.test_key_22) ... ok
+test_key_23 (test_config.ConfigTest.test_key_23) ... ok
+test_key_24 (test_config.ConfigTest.test_key_24) ... ok
+test_key_25 (test_config.ConfigTest.test_key_25) ... ok
+test_key_26 (test_config.ConfigTest.test_key_26) ... ok
+test_key_27 (test_config.ConfigTest.test_key_27) ... ok
+test_key_28 (test_config.ConfigTest.test_key_28) ... ok
+test_key_29 (test_config.ConfigTest.test_key_29) ... ok
+test_key_30 (test_config.ConfigTest.test_key_30) ... ok
+test_key_31 (test_config.ConfigTest.test_key_31) ... ok
+test_key_32 (test_config.ConfigTest.test_key_32) ... ok
+test_key_33 (test_config.ConfigTest.test_key_33) ... ok
+test_key_34 (test_config.ConfigTest.test_key_34) ... ok
+test_key_35 (test_config.ConfigTest.test_key_35) ... ok
+test_key_36 (test_config.ConfigTest.test_key_36) ... ok
+test_key_37 (test_config.ConfigTest.test_key_37) ... ok
+test_key_38 (test_config.ConfigTest.test_key_38) ... ok
+test_key_39 (test_config.ConfigTest.test_key_39) ... ok
+test_key_40 (test_config.ConfigTest.test_key_40) ... ok
+test_key_41 (test_config.ConfigTest.test_key_41) ... ok
+test_key_42 (test_config.ConfigTest.test_key_42) ... ok
+test_key_43 (test_config.ConfigTest.test_key_43) ... ok
+test_key_44 (test_config.ConfigTest.test_key_44) ... ok
+test_key_45 (test_config.ConfigTest.test_key_45) ... ok
+test_key_46 (test_config.ConfigTest.test_key_46) ... ok
+test_key_47 (test_config.ConfigTest.test_key_47) ... ok
+test_key_48 (test_config.ConfigTest.test_key_48) ... ok
+test_key_49 (test_config.ConfigTest.test_key_49) ... ok
+test_key_50 (test_config.ConfigTest.test_key_50) ... ok
+test_key_51 (test_config.ConfigTest.test_key_51) ... ok
+test_key_52 (test_config.ConfigTest.test_key_52) ... ok
+test_key_53 (test_config.ConfigTest.test_key_53) ... ok
+test_key_54 (test_config.ConfigTest.test_key_54) ... ok
+test_key_55 (test_config.ConfigTest.test_key_55) ... ok
+test_key_56 (test_config.ConfigTest.test_key_56) ... ok
+test_key_57 (test_config.ConfigTest.test_key_57) ... ok
+test_key_58 (test_config.ConfigTest.test_key_58) ... ok
+test_key_59 (test_config.ConfigTest.test_key_59) ... ok
+test_load_rejects_trailing_comma (test_config.ConfigTest.test_load_rejects_trailing_comma) ... ERROR
+
+======================================================================
+ERROR: test_load_rejects_trailing_comma (test_config.ConfigTest.test_load_rejects_trailing_comma)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<tmp>\jevto-bench-python-stdlib-traceback-60i0cjm6\work\test_config.py", line 188, in test_load_rejects_trailing_comma
+    self.assertEqual(load('{"retries": 3,}'), {'retries': 3})
+                     ~~~~^^^^^^^^^^^^^^^^^^^
+  File "<tmp>\jevto-bench-python-stdlib-traceback-60i0cjm6\work\config_loader.py", line 5, in load
+    return json.loads(text)
+           ~~~~~~~~~~^^^^^^
+  File "~\scoop\apps\python\current\Lib\json\__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "~\scoop\apps\python\current\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\scoop\apps\python\current\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 1 column 14 (char 13)
+
+----------------------------------------------------------------------
+Ran 61 tests in 0.012s
+
+FAILED (errors=1)

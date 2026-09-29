@@ -1,0 +1,161 @@
+src\api\file_00.rs:1:// TODO: tidy error message
+src\api\file_00.rs:3:// TODO: remove after migration
+src\api\file_00.rs:5:// TODO: add metrics
+src\api\file_00.rs:7:// TODO: handle unicode
+src\api\file_08.rs:1:// TODO: tidy error message
+src\api\file_08.rs:3:// TODO: remove after migration
+src\api\file_08.rs:5:// TODO: add metrics
+src\api\file_08.rs:7:// TODO: handle unicode
+src\api\file_16.rs:1:// TODO: tidy error message
+src\api\file_16.rs:3:// TODO: remove after migration
+src\api\file_16.rs:5:// TODO: add metrics
+src\api\file_16.rs:7:// TODO: handle unicode
+src\api\file_24.rs:1:// TODO: tidy error message
+src\api\file_24.rs:3:// TODO: remove after migration
+src\api\file_24.rs:5:// TODO: add metrics
+src\api\file_24.rs:7:// TODO: handle unicode
+src\api\file_32.rs:1:// TODO: tidy error message
+src\api\file_32.rs:3:// TODO: remove after migration
+src\api\file_32.rs:5:// TODO: add metrics
+src\api\file_32.rs:7:// TODO: handle unicode
+src\cache\file_01.rs:1:// TODO: remove after migration
+src\cache\file_01.rs:3:// TODO: add metrics
+src\cache\file_01.rs:5:// TODO: handle unicode
+src\cache\file_01.rs:7:// TODO: document this
+src\cache\file_09.rs:1:// TODO: remove after migration
+src\cache\file_09.rs:3:// TODO: add metrics
+src\cache\file_09.rs:5:// TODO: handle unicode
+src\cache\file_09.rs:7:// TODO: document this
+src\cache\file_17.rs:1:// TODO: remove after migration
+src\cache\file_17.rs:3:// TODO: add metrics
+src\cache\file_17.rs:5:// TODO: handle unicode
+src\cache\file_17.rs:7:// TODO: document this
+src\cache\file_25.rs:1:// TODO: remove after migration
+src\cache\file_25.rs:3:// TODO: add metrics
+src\cache\file_25.rs:5:// TODO: handle unicode
+src\cache\file_25.rs:7:// TODO: document this
+src\cache\file_33.rs:1:// TODO: remove after migration
+src\cache\file_33.rs:3:// TODO: add metrics
+src\cache\file_33.rs:5:// TODO: handle unicode
+src\cache\file_33.rs:7:// TODO: document this
+src\cli\file_02.rs:1:// TODO: add metrics
+src\cli\file_02.rs:3:// TODO: handle unicode
+src\cli\file_02.rs:5:// TODO: document this
+src\cli\file_02.rs:7:// TODO: split function
+src\cli\file_10.rs:1:// TODO: add metrics
+src\cli\file_10.rs:3:// TODO: handle unicode
+src\cli\file_10.rs:5:// TODO: document this
+src\cli\file_10.rs:7:// TODO: split function
+src\cli\file_18.rs:1:// TODO: add metrics
+src\cli\file_18.rs:3:// TODO: handle unicode
+src\cli\file_18.rs:5:// TODO: document this
+src\cli\file_18.rs:7:// TODO: split function
+src\cli\file_26.rs:1:// TODO: add metrics
+src\cli\file_26.rs:3:// TODO: handle unicode
+src\cli\file_26.rs:5:// TODO: document this
+src\cli\file_26.rs:7:// TODO: split function
+src\cli\file_34.rs:1:// TODO: add metrics
+src\cli\file_34.rs:3:// TODO: handle unicode
+src\cli\file_34.rs:5:// TODO: document this
+src\cli\file_34.rs:7:// TODO: split function
+src\db\file_03.rs:1:// TODO: handle unicode
+src\db\file_03.rs:3:// TODO: document this
+src\db\file_03.rs:5:// TODO: split function
+src\db\file_03.rs:7:// TODO: check null case
+src\db\file_11.rs:1:// TODO: handle unicode
+src\db\file_11.rs:3:// TODO: document this
+src\db\file_11.rs:5:// TODO: split function
+src\db\file_11.rs:7:// TODO: check null case
+src\db\file_19.rs:1:// TODO: handle unicode
+src\db\file_19.rs:3:// TODO: document this
+src\db\file_19.rs:5:// TODO: split function
+src\db\file_19.rs:7:// TODO: check null case
+src\db\file_27.rs:1:// TODO: handle unicode
+src\db\file_27.rs:3:// TODO: document this
+src\db\file_27.rs:5:// TODO: split function
+src\db\file_27.rs:7:// TODO: check null case
+src\db\file_35.rs:1:// TODO: handle unicode
+src\db\file_35.rs:3:// TODO: document this
+src\db\file_35.rs:5:// TODO: split function
+src\db\file_35.rs:7:// TODO: check null case
+src\jobs\file_04.rs:1:// TODO: document this
+src\jobs\file_04.rs:3:// TODO: split function
+src\jobs\file_04.rs:5:// TODO: check null case
+src\jobs\file_04.rs:7:// TODO: log at debug
+src\jobs\file_12.rs:1:// TODO: document this
+src\jobs\file_12.rs:3:// TODO: split function
+src\jobs\file_12.rs:5:// TODO: check null case
+src\jobs\file_12.rs:7:// TODO: log at debug
+src\jobs\file_20.rs:1:// TODO: document this
+src\jobs\file_20.rs:3:// TODO: split function
+src\jobs\file_20.rs:5:// TODO: check null case
+src\jobs\file_20.rs:7:// TODO: log at debug
+src\jobs\file_28.rs:1:// TODO: document this
+src\jobs\file_28.rs:3:// TODO: split function
+src\jobs\file_28.rs:5:// TODO: check null case
+src\jobs\file_28.rs:7:// TODO: log at debug
+src\jobs\file_36.rs:1:// TODO: document this
+src\jobs\file_36.rs:3:// TODO: split function
+src\jobs\file_36.rs:5:// TODO: check null case
+src\jobs\file_36.rs:7:// TODO: log at debug
+src\mail\file_05.rs:1:// TODO: split function
+src\mail\file_05.rs:3:// TODO: check null case
+src\mail\file_05.rs:5:// TODO: log at debug
+src\mail\file_05.rs:7:// TODO: tidy error message
+src\mail\file_13.rs:1:// TODO: split function
+src\mail\file_13.rs:3:// TODO: check null case
+src\mail\file_13.rs:5:// TODO: log at debug
+src\mail\file_13.rs:7:// TODO: tidy error message
+src\mail\file_21.rs:1:// TODO: split function
+src\mail\file_21.rs:3:// TODO: check null case
+src\mail\file_21.rs:5:// TODO: log at debug
+src\mail\file_21.rs:7:// TODO: tidy error message
+src\mail\file_29.rs:1:// TODO: split function
+src\mail\file_29.rs:3:// TODO: check null case
+src\mail\file_29.rs:5:// TODO: log at debug
+src\mail\file_29.rs:7:// TODO: tidy error message
+src\mail\file_37.rs:1:// TODO: split function
+src\mail\file_37.rs:3:// TODO: check null case
+src\mail\file_37.rs:5:// TODO: log at debug
+src\mail\file_37.rs:7:// TODO: tidy error message
+src\payments\file_06.rs:1:// TODO: check null case
+src\payments\file_06.rs:3:// TODO: log at debug
+src\payments\file_06.rs:5:// TODO: tidy error message
+src\payments\file_06.rs:7:// TODO: remove after migration
+src\payments\file_14.rs:1:// TODO: check null case
+src\payments\file_14.rs:3:// TODO: log at debug
+src\payments\file_14.rs:5:// TODO: tidy error message
+src\payments\file_14.rs:7:// TODO: remove after migration
+src\payments\file_22.rs:1:// TODO: check null case
+src\payments\file_22.rs:3:// TODO: log at debug
+src\payments\file_22.rs:5:// TODO: tidy error message
+src\payments\file_22.rs:7:// TODO: remove after migration
+src\payments\file_30.rs:1:// TODO: check null case
+src\payments\file_30.rs:3:// TODO: log at debug
+src\payments\file_30.rs:4:// TODO(payments): add rate limiting before retrying card charges
+src\payments\file_30.rs:6:// TODO: tidy error message
+src\payments\file_30.rs:8:// TODO: remove after migration
+src\payments\file_38.rs:1:// TODO: check null case
+src\payments\file_38.rs:3:// TODO: log at debug
+src\payments\file_38.rs:5:// TODO: tidy error message
+src\payments\file_38.rs:7:// TODO: remove after migration
+src\search\file_07.rs:1:// TODO: log at debug
+src\search\file_07.rs:3:// TODO: tidy error message
+src\search\file_07.rs:5:// TODO: remove after migration
+src\search\file_07.rs:7:// TODO: add metrics
+src\search\file_15.rs:1:// TODO: log at debug
+src\search\file_15.rs:3:// TODO: tidy error message
+src\search\file_15.rs:5:// TODO: remove after migration
+src\search\file_15.rs:7:// TODO: add metrics
+src\search\file_23.rs:1:// TODO: log at debug
+src\search\file_23.rs:3:// TODO: tidy error message
+src\search\file_23.rs:5:// TODO: remove after migration
+src\search\file_23.rs:7:// TODO: add metrics
+src\search\file_31.rs:1:// TODO: log at debug
+src\search\file_31.rs:3:// TODO: tidy error message
+src\search\file_31.rs:5:// TODO: remove after migration
+src\search\file_31.rs:7:// TODO: add metrics
+src\search\file_39.rs:1:// TODO: log at debug
+src\search\file_39.rs:3:// TODO: tidy error message
+src\search\file_39.rs:5:// TODO: remove after migration
+src\search\file_39.rs:7:// TODO: add metrics

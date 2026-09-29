@@ -1,0 +1,314 @@
+src/auth/session.rs | 2 +-
+ src/handlers/h00.rs | 6 +++---
+ src/handlers/h01.rs | 6 +++---
+ src/handlers/h02.rs | 6 +++---
+ src/handlers/h03.rs | 6 +++---
+ src/handlers/h04.rs | 6 +++---
+ src/handlers/h05.rs | 6 +++---
+ src/handlers/h06.rs | 6 +++---
+ src/handlers/h07.rs | 6 +++---
+ src/handlers/h08.rs | 6 +++---
+ src/handlers/h09.rs | 6 +++---
+ src/handlers/h10.rs | 6 +++---
+ src/handlers/h11.rs | 6 +++---
+ src/handlers/h12.rs | 6 +++---
+ src/handlers/h13.rs | 6 +++---
+ src/handlers/h14.rs | 6 +++---
+ src/handlers/h15.rs | 6 +++---
+ src/handlers/h16.rs | 6 +++---
+ src/handlers/h17.rs | 6 +++---
+ src/handlers/h18.rs | 6 +++---
+ src/handlers/h19.rs | 6 +++---
+ 21 files changed, 61 insertions(+), 61 deletions(-)
+
+Changes:
+
+src/auth/session.rs
+@@ -1,5 +1,5 @@
+ pub fn expired(age: u64, max_age: u64) -> bool {
+-    if age > max_age {
++    if age >= max_age {
+         return true;
+     }
+     false
+  +1 -1
+
+src/handlers/h00.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_00() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h01.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_01() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h02.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_02() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h03.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_03() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h04.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_04() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h05.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_05() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h06.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_06() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h07.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_07() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h08.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_08() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h09.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_09() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h10.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_10() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h11.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_11() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h12.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_12() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h13.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_13() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h14.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_14() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h15.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_15() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h16.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_16() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h17.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_17() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h18.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_18() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3
+
+src/handlers/h19.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_19() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+  +3 -3

@@ -1,0 +1,228 @@
+//! `jevto gain`: what JevTO did, from local receipts only.
+//!
+//! Token figures are estimates (bytes / 4), the same convention other output
+//! filters use; they are not provider-billed tokens. Jev cost is the sum of
+//! response-reported costs.
+
+use jevto_core::{Receipt, Store};
+use serde_json::{json, Value};
+use std::collections::BTreeMap;
+use std::error::Error;
+use std::path::Path;
+
+/// A privacy-preserving label: program basename plus a short subcommand word.
+pub fn command_label(program: &[String]) -> String {
+    let Some(executable) = program.first() else {
+        return "unknown".into();
+    };
+    let name = Path::new(executable)
+        .file_stem()
+        .map(|name| name.to_string_lossy().to_ascii_lowercase())
+        .unwrap_or_else(|| "unknown".into());
+    match program.get(1) {
+        Some(word)
+            if word.len() <= 12
+                && word
+                    .bytes()
+                    .all(|byte| byte.is_ascii_alphabetic() || byte == b'-')
+                && !word.starts_with('-') =>
+        {
+            format!("{name} {word}")
+        }
+        Some(word) if word == "-m" => match program.get(2) {
+            Some(module) if module.bytes().all(|byte| byte.is_ascii_alphanumeric()) => {
+                format!("{name} -m {module}")
+            }
+            _ => name,
+        },
+        _ => name,
+    }
+}
+
+fn estimate_tokens(bytes: u64) -> u64 {
+    bytes.div_ceil(4)
+}
+
+#[derive(Default)]
+struct Row {
+    runs: u64,
+    reduced: u64,
+    raw: u64,
+    delivered: u64,
+}
+
+pub fn summarize(receipts: &[Receipt]) -> Value {
+    let mut total = Row::default();
+    let mut by_command: BTreeMap<String, Row> = BTreeMap::new();
+    let mut bypass: BTreeMap<String, u64> = BTreeMap::new();
+    let mut recalls = 0u64;
+    let mut jev_calls = 0u64;
+    let mut jev_cache_hits = 0u64;
+    let mut jev_input_tokens = 0u64;
+    let mut jev_cost = 0.0f64;
+    let mut adaptive_fallbacks: BTreeMap<String, u64> = BTreeMap::new();
+    for receipt in receipts {
+        let command = receipt
+            .extra
+            .get("command")
+            .and_then(Value::as_str)
+            .unwrap_or("other")
+            .to_string();
+        let replaced = receipt.coverage.iter().any(|coverage| coverage.replaced);
+        for row in [&mut total, by_command.entry(command).or_default()] {
+            row.runs += 1;
+            row.reduced += u64::from(replaced);
+            row.raw += receipt.raw_bytes;
+            row.delivered += receipt.delivered_bytes;
+        }
+        for coverage in &receipt.coverage {
+            if let Some(reason) = &coverage.bypass_reason {
+                *bypass.entry(reason.clone()).or_default() += 1;
+            }
+        }
+        recalls += receipt.recalls;
+        if let Some(usage) = &receipt.jev_usage {
+            jev_calls += 1;
+            jev_input_tokens += usage.total_input_tokens.unwrap_or(0);
+            jev_cost += usage.billed_cost.unwrap_or(0.0);
+        }
+        if receipt.extra.get("jev_cache_hit").and_then(Value::as_bool) == Some(true) {
+            jev_cache_hits += 1;
+        }
+        if let Some(reason) = receipt
+            .extra
+            .get("adaptive_fallback")
+            .and_then(Value::as_str)
+        {
+            *adaptive_fallbacks.entry(reason.into()).or_default() += 1;
+        }
+    }
+    let row_json = |row: &Row| {
+        json!({
+            "runs": row.runs,
+            "reduced_runs": row.reduced,
+            "raw_bytes": row.raw,
+            "delivered_bytes": row.delivered,
+            "saved_bytes": row.raw.saturating_sub(row.delivered),
+            "estimated_tokens_saved": estimate_tokens(row.raw.saturating_sub(row.delivered)),
+            "saved_percent": if row.raw == 0 { 0.0 } else { 100.0 * row.raw.saturating_sub(row.delivered) as f64 / row.raw as f64 },
+        })
+    };
+    json!({
+        "token_estimate": "bytes/4; not provider-billed tokens",
+        "total": row_json(&total),
+        "by_command": by_command.iter().map(|(command, row)| (command.clone(), row_json(row))).collect::<serde_json::Map<_, _>>(),
+        "recalls": recalls,
+        "bypass_reasons": bypass,
+        "jev": {
+            "calls": jev_calls,
+            "cache_hits": jev_cache_hits,
+            "input_tokens": jev_input_tokens,
+            "reported_cost_usd": jev_cost,
+            "fallbacks": adaptive_fallbacks,
+        }
+    })
+}
+
+pub fn report(store: &Store, session: Option<&str>, as_json: bool) -> Result<(), Box<dyn Error>> {
+    let receipts = match session {
+        Some(session) => store.receipts_for_session(session)?,
+        None => store.all_receipts()?,
+    };
+    let summary = summarize(&receipts);
+    if as_json {
+        println!("{}", serde_json::to_string_pretty(&summary)?);
+        return Ok(());
+    }
+    let total = &summary["total"];
+    println!(
+        "JevTO gain ({} receipts in {})",
+        receipts.len(),
+        store.root.display()
+    );
+    println!(
+        "  runs: {} ({} reduced)   raw: {} B   delivered: {} B   saved: {} B ({:.1}%, ~{} tokens)",
+        total["runs"],
+        total["reduced_runs"],
+        total["raw_bytes"],
+        total["delivered_bytes"],
+        total["saved_bytes"],
+        total["saved_percent"].as_f64().unwrap_or_default(),
+        total["estimated_tokens_saved"],
+    );
+    println!("  recalls: {}", summary["recalls"]);
+    let jev = &summary["jev"];
+    if jev["calls"].as_u64().unwrap_or(0) > 0 || jev["cache_hits"].as_u64().unwrap_or(0) > 0 {
+        println!(
+            "  jev: {} calls, {} cache hits, {} input tokens, ${:.6} reported",
+            jev["calls"],
+            jev["cache_hits"],
+            jev["input_tokens"],
+            jev["reported_cost_usd"].as_f64().unwrap_or_default()
+        );
+    }
+    if let Some(commands) = summary["by_command"].as_object() {
+        let mut rows = commands.iter().collect::<Vec<_>>();
+        rows.sort_by_key(|(_, row)| std::cmp::Reverse(row["saved_bytes"].as_u64().unwrap_or(0)));
+        println!(
+            "  {:<24} {:>5} {:>10} {:>10} {:>7}",
+            "command", "runs", "raw B", "saved B", "saved"
+        );
+        for (command, row) in rows.into_iter().take(15) {
+            let number = |key: &str| row[key].as_u64().unwrap_or(0);
+            println!(
+                "  {:<24} {:>5} {:>10} {:>10} {:>6.1}%",
+                command,
+                number("runs"),
+                number("raw_bytes"),
+                number("saved_bytes"),
+                row["saved_percent"].as_f64().unwrap_or_default()
+            );
+        }
+    }
+    println!("  token figures are bytes/4 estimates, not provider-billed usage");
+    Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn command_labels_keep_only_safe_words() {
+        let label = |args: &[&str]| {
+            command_label(&args.iter().map(|arg| arg.to_string()).collect::<Vec<_>>())
+        };
+        assert_eq!(
+            label(&["C:\\bin\\cargo.exe", "test", "-p", "x"]),
+            "cargo test"
+        );
+        assert_eq!(
+            label(&["python", "-m", "pytest", "tests/"]),
+            "python -m pytest"
+        );
+        assert_eq!(label(&["python", "secret_script.py"]), "python");
+        assert_eq!(label(&["rg", "-n", "-H", "token"]), "rg");
+    }
+
+    #[test]
+    fn summary_totals_bytes_and_estimated_tokens() {
+        let receipt: Receipt = serde_json::from_value(json!({
+            "schema_version": 1,
+            "session_id": "s",
+            "run_id": "00000000-0000-4000-8000-000000000000",
+            "mode": "deterministic",
+            "coverage": [{"tool_path": "explicit_cli_run", "captured": true, "replaced": true}],
+            "raw_bytes": 4000,
+            "delivered_bytes": 1000,
+            "recalls": 1,
+            "command": "cargo test"
+        }))
+        .unwrap();
+        let summary = summarize(&[receipt]);
+        assert_eq!(summary["total"]["saved_bytes"], 3000);
+        assert_eq!(summary["total"]["estimated_tokens_saved"], 750);
+        assert_eq!(summary["by_command"]["cargo test"]["runs"], 1);
+        assert_eq!(summary["recalls"], 1);
+    }
+}

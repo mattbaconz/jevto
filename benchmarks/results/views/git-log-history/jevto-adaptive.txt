@@ -1,0 +1,83 @@
+jevto exit=0 omitted=2000
+commit 27bbcae9fc29fc89db076ceaa7dd466c88afa948
+Author: Bench <bench@example.invalid>
+Date:   Sun Jan 11 19:00:00 2026 +0000
+
+    Refine juniper module step 259
+    
+    Body line for change 259.
+
+commit c0adfa864a48a10acd60f4867465fe97f2b08551
+Author: Bench <bench@example.invalid>
+Date:   Sun Jan 11 18:00:00 2026 +0000
+
+    Refine indigo module step 258
+    
+    Body line for change 258.
+
+commit a571ae2ccae36e0027fb8230c7171e6f54bced0b
+Author: Bench <bench@example.invalid>
+Date:   Sun Jan 11 17:00:00 2026 +0000
+
+    Refine harbor module step 257
+    
+    Body line for change 257.
+
+commit 0f51220503888c856c14d05a15be5e353ef1674b
+Author: Bench <bench@example.invalid>
+Date:   Sun Jan 11 16:00:00 2026 +0000
+
+    Refine garnet module step 256
+... 662 lower-relevance lines hidden [stdout-754-16915]
+    Increase reconnect backoff to 250ms after flaky CI runs
+... 1336 lower-relevance lines hidden [stdout-16975-49297]
+    Body line for change 6.
+
+commit 278ad6be1ac07c38bf681c2ad551cdb12e2e8fc0
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 05:00:00 2026 +0000
+
+    Refine falcon module step 5
+    
+    Body line for change 5.
+
+commit 8964915c87260149f594310e7049f53f104b6aa1
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 04:00:00 2026 +0000
+
+    Refine ember module step 4
+    
+    Body line for change 4.
+
+commit 7bd0db797c42f15d053f29fa6581f48dca47af55
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 03:00:00 2026 +0000
+
+    Refine delta module step 3
+    
+    Body line for change 3.
+
+commit a0d51e4ef4d30f4e6299a5fd8ed1441fbf2f6bb0
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 02:00:00 2026 +0000
+
+    Refine cobalt module step 2
+    
+    Body line for change 2.
+
+commit 8363c05f5e04c2162c342894aa919944e8c1defe
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 01:00:00 2026 +0000
+
+    Refine bravo module step 1
+    
+    Body line for change 1.
+
+commit e5c04d1bf15e3630e21f7c2d119d23443f0ffcea
+Author: Bench <bench@example.invalid>
+Date:   Thu Jan 1 00:00:00 2026 +0000
+
+    Refine alpha module step 0
+    
+    Body line for change 0.
+recall: `'<jevto>' recall 09069aba` [--section ID]

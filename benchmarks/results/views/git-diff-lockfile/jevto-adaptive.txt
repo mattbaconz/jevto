@@ -1,0 +1,15 @@
+jevto exit=0 omitted=1804
+diff --git a/Cargo.lock b/Cargo.lock
+... 1804 generated/lockfile diff lines hidden [stdout-37-45663]
+diff --git a/src/http.rs b/src/http.rs
+index 6596aa2..931711d 100644
+--- a/src/http.rs
++++ b/src/http.rs
+@@ -1,3 +1,6 @@
+ pub fn parse_header(line: &str) -> Option<(&str, &str)> {
++    if line.starts_with(' ') {
++        return None;
++    }
+     line.split_once('=')
+ }
+recall: `'<jevto>' recall 4e38eac3` [--section ID]

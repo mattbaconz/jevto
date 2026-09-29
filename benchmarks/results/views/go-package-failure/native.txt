@@ -1,0 +1,16 @@
+--- FAIL: TestInvoiceTotalRoundsHalfUp (0.00s)
+    invoice_test.go:8: total = 10.04, want 10.05
+FAIL
+FAIL	example.com/app/billing	1.372s
+ok  	example.com/app/pkg00	1.382s
+ok  	example.com/app/pkg01	1.332s
+ok  	example.com/app/pkg02	1.378s
+ok  	example.com/app/pkg03	1.295s
+ok  	example.com/app/pkg04	1.399s
+ok  	example.com/app/pkg05	1.282s
+ok  	example.com/app/pkg06	1.374s
+ok  	example.com/app/pkg07	1.418s
+ok  	example.com/app/pkg08	1.375s
+ok  	example.com/app/pkg09	1.265s
+ok  	example.com/app/pkg10	1.273s
+FAIL

@@ -1,0 +1,13 @@
+jevto exit=1 omitted=225
+... 220 passing tests hidden [stderr-0-13420]
+test_rejects_leading_space (test_parser.ParserTest.test_rejects_leading_space) ... FAIL
+FAIL: test_rejects_leading_space (test_parser.ParserTest.test_rejects_leading_space)
+Traceback (most recent call last):
+  File "<tmp>\jevto-bench-python-unittest-failure-3s2bpsur\work\test_parser.py", line 671, in test_rejects_leading_space
+    self.assertIsNone(parse(' value=7'), 'leading-space lines are not headers')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '7' is not None : leading-space lines are not headers
+Ran 221 tests in 0.014s
+
+FAILED (failures=1)
+recall: `jevto recall d3768e28` [--section ID]

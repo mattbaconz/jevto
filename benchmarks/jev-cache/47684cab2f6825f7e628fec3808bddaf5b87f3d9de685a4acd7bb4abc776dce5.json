@@ -1,0 +1,10 @@
+{
+  "schema_version": 2,
+  "model": "typesafe/jev-1.13-20260917",
+  "exists": 0.83,
+  "need": 1.85,
+  "kept_ids": [
+    "section_13_7180_7239",
+    "section_00_0_545"
+  ]
+}

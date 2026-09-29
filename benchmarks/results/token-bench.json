@@ -1,0 +1,1573 @@
+{
+  "meta": {
+    "generated": "2026-09-30",
+    "jevto": "jevto.exe",
+    "jevto_version": "jevto 0.1.0",
+    "rtk_version": "rtk 0.48.0",
+    "platform": "win32"
+  },
+  "results": [
+    {
+      "name": "rust-test-failure",
+      "suite": "dev",
+      "command": "cargo test",
+      "goal": "Fix the failing parse_header test",
+      "arms": {
+        "native": {
+          "bytes": 4978,
+          "est_tokens": 1245,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 101,
+          "seconds": 2.454,
+          "effective_tokens": 1245
+        },
+        "rtk": {
+          "bytes": 504,
+          "est_tokens": 126,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "rtk cargo test",
+          "exit": 101,
+          "seconds": 0.403,
+          "effective_tokens": 126
+        },
+        "jevto": {
+          "bytes": 620,
+          "est_tokens": 155,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rust-test-failure --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.415,
+          "effective_tokens": 155
+        },
+        "jevto-adaptive": {
+          "bytes": 619,
+          "est_tokens": 155,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rust-test-failure --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.413,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 155
+        }
+      },
+      "native_exit": 101
+    },
+    {
+      "name": "go-test-failure",
+      "suite": "dev",
+      "command": "go test -v -count=1 ./...",
+      "goal": "Fix the failing header parser test",
+      "arms": {
+        "native": {
+          "bytes": 10604,
+          "est_tokens": 2651,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 2.212,
+          "effective_tokens": 2651
+        },
+        "rtk": {
+          "bytes": 253,
+          "est_tokens": 64,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "rtk go test -v -count=1 ./...",
+          "exit": 1,
+          "seconds": 2.26,
+          "effective_tokens": 64
+        },
+        "jevto": {
+          "bytes": 312,
+          "est_tokens": 78,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-go-test-failure --workspace-id claude -- go test -v -count=1 ./...",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 2.341,
+          "effective_tokens": 78
+        },
+        "jevto-adaptive": {
+          "bytes": 312,
+          "est_tokens": 78,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-go-test-failure --workspace-id claude -- go test -v -count=1 ./...",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 2.963,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 78
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "python-unittest-failure",
+      "suite": "dev",
+      "command": "python -m unittest -v",
+      "goal": "Fix the failing parser test",
+      "arms": {
+        "native": {
+          "bytes": 14285,
+          "est_tokens": 3572,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.515,
+          "effective_tokens": 3572
+        },
+        "rtk": {
+          "bytes": 14285,
+          "est_tokens": 3572,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.446,
+          "effective_tokens": 3572
+        },
+        "jevto": {
+          "bytes": 798,
+          "est_tokens": 200,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-unittest-failure --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.574,
+          "effective_tokens": 200
+        },
+        "jevto-adaptive": {
+          "bytes": 798,
+          "est_tokens": 200,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-unittest-failure --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.556,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 200
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "python-quiet-warning",
+      "suite": "dev",
+      "command": "python -m unittest -v",
+      "goal": "Confirm the cache suite passes",
+      "arms": {
+        "native": {
+          "bytes": 13588,
+          "est_tokens": 3397,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.433,
+          "effective_tokens": 3397
+        },
+        "rtk": {
+          "bytes": 13588,
+          "est_tokens": 3397,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.439,
+          "effective_tokens": 3397
+        },
+        "jevto": {
+          "bytes": 356,
+          "est_tokens": 89,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-quiet-warning --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.569,
+          "effective_tokens": 89
+        },
+        "jevto-adaptive": {
+          "bytes": 356,
+          "est_tokens": 89,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-quiet-warning --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.548,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 89
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "node-test-failure",
+      "suite": "dev",
+      "command": "node --test",
+      "goal": "Fix the failing slug test",
+      "arms": {
+        "native": {
+          "bytes": 6304,
+          "est_tokens": 1576,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.516,
+          "effective_tokens": 1576
+        },
+        "rtk": {
+          "bytes": 6295,
+          "est_tokens": 1574,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.588,
+          "effective_tokens": 1574
+        },
+        "jevto": {
+          "bytes": 787,
+          "est_tokens": 197,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-node-test-failure --workspace-id claude -- node --test",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.737,
+          "effective_tokens": 197
+        },
+        "jevto-adaptive": {
+          "bytes": 787,
+          "est_tokens": 197,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-node-test-failure --workspace-id claude -- node --test",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.848,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 197
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "rust-test-lean",
+      "suite": "dev",
+      "command": "cargo test",
+      "goal": "Run the tests",
+      "arms": {
+        "native": {
+          "bytes": 473,
+          "est_tokens": 119,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.981,
+          "effective_tokens": 119
+        },
+        "rtk": {
+          "bytes": 39,
+          "est_tokens": 10,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "rtk cargo test",
+          "exit": 0,
+          "seconds": 0.841,
+          "effective_tokens": 10
+        },
+        "jevto": {
+          "bytes": 242,
+          "est_tokens": 61,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rust-test-lean --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.511,
+          "effective_tokens": 61
+        },
+        "jevto-adaptive": {
+          "bytes": 242,
+          "est_tokens": 61,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rust-test-lean --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.51,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 61
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "service-log-triage",
+      "suite": "dev",
+      "command": "python print_log.py",
+      "goal": "Why are users suddenly getting logged out of the app?",
+      "arms": {
+        "native": {
+          "bytes": 208649,
+          "est_tokens": 52163,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.241,
+          "effective_tokens": 52163
+        },
+        "rtk": {
+          "bytes": 208649,
+          "est_tokens": 52163,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.222,
+          "effective_tokens": 52163
+        },
+        "jevto": {
+          "bytes": 8298,
+          "est_tokens": 2075,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-service-log-triage --workspace-id claude -- python print_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 0.35,
+          "effective_tokens": 2075
+        },
+        "jevto-adaptive": {
+          "bytes": 8298,
+          "est_tokens": 2075,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-service-log-triage --workspace-id claude -- python print_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 1.394,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "jev_no_relevant_evidence",
+            "decision": null,
+            "request": {
+              "kind": "command_output",
+              "candidates": 60,
+              "bytes": 12514
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 2075
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "search-many-hits",
+      "suite": "dev",
+      "command": "rg -n -H retry_budget src --sort=path",
+      "goal": "How many times do we retry before giving up?",
+      "arms": {
+        "native": {
+          "bytes": 14750,
+          "est_tokens": 3688,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.178,
+          "effective_tokens": 3688
+        },
+        "rtk": {
+          "bytes": 14750,
+          "est_tokens": 3688,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "rtk rg -n -H retry_budget src --sort=path",
+          "exit": 0,
+          "seconds": 0.299,
+          "effective_tokens": 3688
+        },
+        "jevto": {
+          "bytes": 1424,
+          "est_tokens": 356,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-search-many-hits --workspace-id claude -- rg -n -H retry_budget src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.265,
+          "effective_tokens": 356
+        },
+        "jevto-adaptive": {
+          "bytes": 932,
+          "est_tokens": 233,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-search-many-hits --workspace-id claude -- rg -n -H retry_budget src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.262,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 1,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": null,
+            "decision": {
+              "kind": "search_results",
+              "need": 1.85,
+              "candidates": 28,
+              "kept": 2
+            },
+            "request": {
+              "kind": "search_results",
+              "candidates": 28,
+              "bytes": 20635
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 233
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "git-diff-lockfile",
+      "suite": "dev",
+      "command": "git diff",
+      "goal": "Review the header parsing change",
+      "arms": {
+        "native": {
+          "bytes": 45933,
+          "est_tokens": 11484,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.193,
+          "effective_tokens": 11484
+        },
+        "rtk": {
+          "bytes": 3063,
+          "est_tokens": 766,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "rtk git diff",
+          "exit": 0,
+          "seconds": 0.363,
+          "effective_tokens": 766
+        },
+        "jevto": {
+          "bytes": 479,
+          "est_tokens": 120,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-lockfile --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.302,
+          "effective_tokens": 120
+        },
+        "jevto-adaptive": {
+          "bytes": 479,
+          "est_tokens": 120,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-lockfile --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.299,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_reducible_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 120
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "git-diff-multi-file",
+      "suite": "dev",
+      "command": "git diff",
+      "goal": "Check that tokens can no longer exceed the maximum when the limiter refills",
+      "arms": {
+        "native": {
+          "bytes": 28900,
+          "est_tokens": 7225,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.232,
+          "effective_tokens": 7225
+        },
+        "rtk": {
+          "bytes": 22952,
+          "est_tokens": 5738,
+          "needles_found": 0,
+          "needles_total": 1,
+          "missing": [
+            ".min(self.capacity)"
+          ],
+          "rewritten": "rtk git diff",
+          "exit": 0,
+          "seconds": 0.503,
+          "effective_tokens": 12963
+        },
+        "jevto": {
+          "bytes": 4436,
+          "est_tokens": 1109,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-multi-file --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.365,
+          "effective_tokens": 1109
+        },
+        "jevto-adaptive": {
+          "bytes": 2405,
+          "est_tokens": 602,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-multi-file --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.371,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 1,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": null,
+            "decision": {
+              "kind": "diff_files",
+              "need": 1.0909090909090908,
+              "candidates": 14,
+              "kept": 1
+            },
+            "request": {
+              "kind": "diff_files",
+              "candidates": 14,
+              "bytes": 34005
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 602
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "git-log-history",
+      "suite": "dev",
+      "command": "git log",
+      "goal": "When did we change the reconnect backoff?",
+      "arms": {
+        "native": {
+          "bytes": 50472,
+          "est_tokens": 12618,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.341,
+          "effective_tokens": 12618
+        },
+        "rtk": {
+          "bytes": 887,
+          "est_tokens": 222,
+          "needles_found": 0,
+          "needles_total": 1,
+          "missing": [
+            "Increase reconnect backoff to 250ms"
+          ],
+          "rewritten": "rtk git log",
+          "exit": 0,
+          "seconds": 0.302,
+          "effective_tokens": 12840
+        },
+        "jevto": {
+          "bytes": 2202,
+          "est_tokens": 551,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-log-history --workspace-id claude -- git log",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.467,
+          "effective_tokens": 551
+        },
+        "jevto-adaptive": {
+          "bytes": 2202,
+          "est_tokens": 551,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-log-history --workspace-id claude -- git log",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 4.509,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "jev_http_failed",
+            "decision": null,
+            "request": {
+              "kind": "command_output",
+              "candidates": 63,
+              "bytes": 28910
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 551
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "cargo-multi-failure",
+      "suite": "holdout",
+      "command": "cargo test",
+      "goal": "Fix the failing tests",
+      "arms": {
+        "native": {
+          "bytes": 17243,
+          "est_tokens": 4311,
+          "needles_found": 6,
+          "needles_total": 6,
+          "missing": [],
+          "rewritten": null,
+          "exit": 101,
+          "seconds": 0.623,
+          "effective_tokens": 4311
+        },
+        "rtk": {
+          "bytes": 820,
+          "est_tokens": 205,
+          "needles_found": 6,
+          "needles_total": 6,
+          "missing": [],
+          "rewritten": "rtk cargo test",
+          "exit": 101,
+          "seconds": 0.459,
+          "effective_tokens": 205
+        },
+        "jevto": {
+          "bytes": 1119,
+          "est_tokens": 280,
+          "needles_found": 6,
+          "needles_total": 6,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-cargo-multi-failure --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.443,
+          "effective_tokens": 280
+        },
+        "jevto-adaptive": {
+          "bytes": 1118,
+          "est_tokens": 280,
+          "needles_found": 6,
+          "needles_total": 6,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-cargo-multi-failure --workspace-id claude -- cargo test",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.466,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 280
+        }
+      },
+      "native_exit": 101
+    },
+    {
+      "name": "tsc-type-errors",
+      "suite": "holdout",
+      "command": "tsc -p .",
+      "goal": "Fix the type errors",
+      "arms": {
+        "native": {
+          "bytes": 279,
+          "est_tokens": 70,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 1.667,
+          "effective_tokens": 70
+        },
+        "rtk": {
+          "bytes": 360,
+          "est_tokens": 90,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "rtk tsc -p .",
+          "exit": 1,
+          "seconds": 1.287,
+          "effective_tokens": 90
+        },
+        "jevto": {
+          "bytes": 279,
+          "est_tokens": 70,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-tsc-type-errors --workspace-id claude -- tsc -p .",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 1.236,
+          "effective_tokens": 70
+        },
+        "jevto-adaptive": {
+          "bytes": 279,
+          "est_tokens": 70,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-tsc-type-errors --workspace-id claude -- tsc -p .",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 1.269,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 70
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "go-package-failure",
+      "suite": "holdout",
+      "command": "go test -count=1 ./...",
+      "goal": "Fix the failing billing test",
+      "arms": {
+        "native": {
+          "bytes": 516,
+          "est_tokens": 129,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 5.175,
+          "effective_tokens": 129
+        },
+        "rtk": {
+          "bytes": 231,
+          "est_tokens": 58,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "rtk go test -count=1 ./...",
+          "exit": 1,
+          "seconds": 3.143,
+          "effective_tokens": 58
+        },
+        "jevto": {
+          "bytes": 393,
+          "est_tokens": 99,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-go-package-failure --workspace-id claude -- go test -count=1 ./...",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 3.235,
+          "effective_tokens": 99
+        },
+        "jevto-adaptive": {
+          "bytes": 393,
+          "est_tokens": 99,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-go-package-failure --workspace-id claude -- go test -count=1 ./...",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 2.868,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 99
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "node-all-pass",
+      "suite": "holdout",
+      "command": "node --test",
+      "goal": "Make sure the amount formatting tests pass",
+      "arms": {
+        "native": {
+          "bytes": 10282,
+          "est_tokens": 2571,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.573,
+          "effective_tokens": 2571
+        },
+        "rtk": {
+          "bytes": 10293,
+          "est_tokens": 2574,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.522,
+          "effective_tokens": 2574
+        },
+        "jevto": {
+          "bytes": 191,
+          "est_tokens": 48,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-node-all-pass --workspace-id claude -- node --test",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.621,
+          "effective_tokens": 48
+        },
+        "jevto-adaptive": {
+          "bytes": 191,
+          "est_tokens": 48,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-node-all-pass --workspace-id claude -- node --test",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.666,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 48
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "python-stdlib-traceback",
+      "suite": "holdout",
+      "command": "python -m unittest -v",
+      "goal": "Fix the config loading error",
+      "arms": {
+        "native": {
+          "bytes": 5043,
+          "est_tokens": 1261,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.46,
+          "effective_tokens": 1261
+        },
+        "rtk": {
+          "bytes": 5043,
+          "est_tokens": 1261,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 1,
+          "seconds": 0.414,
+          "effective_tokens": 1261
+        },
+        "jevto": {
+          "bytes": 1553,
+          "est_tokens": 389,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-stdlib-traceback --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.573,
+          "effective_tokens": 389
+        },
+        "jevto-adaptive": {
+          "bytes": 1553,
+          "est_tokens": 389,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-python-stdlib-traceback --workspace-id claude -- python -m unittest -v",
+          "routing": "hook",
+          "exit": 1,
+          "seconds": 0.573,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 389
+        }
+      },
+      "native_exit": 1
+    },
+    {
+      "name": "rg-todo-sweep",
+      "suite": "holdout",
+      "command": "rg -n -H TODO src --sort=path",
+      "goal": "Find the TODO about rate limiting in the payments module",
+      "arms": {
+        "native": {
+          "bytes": 7652,
+          "est_tokens": 1913,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.17,
+          "effective_tokens": 1913
+        },
+        "rtk": {
+          "bytes": 7652,
+          "est_tokens": 1913,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "rtk rg -n -H TODO src --sort=path",
+          "exit": 0,
+          "seconds": 0.252,
+          "effective_tokens": 1913
+        },
+        "jevto": {
+          "bytes": 858,
+          "est_tokens": 215,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rg-todo-sweep --workspace-id claude -- rg -n -H TODO src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.254,
+          "effective_tokens": 215
+        },
+        "jevto-adaptive": {
+          "bytes": 858,
+          "est_tokens": 215,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-rg-todo-sweep --workspace-id claude -- rg -n -H TODO src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.244,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "search_candidate_limit",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 215
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "git-diff-rename-plus-fix",
+      "suite": "holdout",
+      "command": "git diff",
+      "goal": "Review this change before merge",
+      "arms": {
+        "native": {
+          "bytes": 8932,
+          "est_tokens": 2233,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.275,
+          "effective_tokens": 2233
+        },
+        "rtk": {
+          "bytes": 7394,
+          "est_tokens": 1849,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "rtk git diff",
+          "exit": 0,
+          "seconds": 0.477,
+          "effective_tokens": 1849
+        },
+        "jevto": {
+          "bytes": 3338,
+          "est_tokens": 835,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-rename-plus-fix --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.345,
+          "effective_tokens": 835
+        },
+        "jevto-adaptive": {
+          "bytes": 3338,
+          "est_tokens": 835,
+          "needles_found": 2,
+          "needles_total": 2,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-git-diff-rename-plus-fix --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.377,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 1,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": null,
+            "decision": {
+              "kind": "diff_files",
+              "need": 3.42,
+              "candidates": 21,
+              "kept": 4
+            },
+            "request": {
+              "kind": "diff_files",
+              "candidates": 21,
+              "bytes": 12909
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 835
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "cargo-build-warnings",
+      "suite": "holdout",
+      "command": "cargo build",
+      "goal": "Fix the build",
+      "arms": {
+        "native": {
+          "bytes": 8335,
+          "est_tokens": 2084,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": null,
+          "exit": 101,
+          "seconds": 0.969,
+          "effective_tokens": 2084
+        },
+        "rtk": {
+          "bytes": 8103,
+          "est_tokens": 2026,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "rtk cargo build",
+          "exit": 101,
+          "seconds": 0.514,
+          "effective_tokens": 2026
+        },
+        "jevto": {
+          "bytes": 8335,
+          "est_tokens": 2084,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-cargo-build-warnings --workspace-id claude -- cargo build",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.45,
+          "effective_tokens": 2084
+        },
+        "jevto-adaptive": {
+          "bytes": 8335,
+          "est_tokens": 2084,
+          "needles_found": 3,
+          "needles_total": 3,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-cargo-build-warnings --workspace-id claude -- cargo build",
+          "routing": "hook",
+          "exit": 101,
+          "seconds": 0.449,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "no_rankable_sections",
+            "decision": null,
+            "request": null
+          },
+          "cache_added": 0,
+          "effective_tokens": 2084
+        }
+      },
+      "native_exit": 101
+    },
+    {
+      "name": "json-log-triage",
+      "suite": "holdout",
+      "command": "python emit_log.py",
+      "goal": "Why did checkout fail around 10:42?",
+      "arms": {
+        "native": {
+          "bytes": 434105,
+          "est_tokens": 108527,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.27,
+          "effective_tokens": 108527
+        },
+        "rtk": {
+          "bytes": 434105,
+          "est_tokens": 108527,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.291,
+          "effective_tokens": 108527
+        },
+        "jevto": {
+          "bytes": 13403,
+          "est_tokens": 3351,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-json-log-triage --workspace-id claude -- python emit_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 0.413,
+          "effective_tokens": 3351
+        },
+        "jevto-adaptive": {
+          "bytes": 13403,
+          "est_tokens": 3351,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-json-log-triage --workspace-id claude -- python emit_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 1.424,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "jev_no_relevant_evidence",
+            "decision": null,
+            "request": {
+              "kind": "command_output",
+              "candidates": 60,
+              "bytes": 17426
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 3351
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "semantic-log-signout",
+      "suite": "semantic",
+      "command": "python print_log.py",
+      "goal": "Why are people being signed out of the app?",
+      "arms": {
+        "native": {
+          "bytes": 171130,
+          "est_tokens": 42783,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.251,
+          "effective_tokens": 42783
+        },
+        "rtk": {
+          "bytes": 171130,
+          "est_tokens": 42783,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.255,
+          "effective_tokens": 42783
+        },
+        "jevto": {
+          "bytes": 5644,
+          "est_tokens": 1411,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-log-signout --workspace-id claude -- python print_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 0.384,
+          "effective_tokens": 1411
+        },
+        "jevto-adaptive": {
+          "bytes": 5644,
+          "est_tokens": 1411,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-log-signout --workspace-id claude -- python print_log.py",
+          "routing": "explicit",
+          "exit": 0,
+          "seconds": 4.414,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 0,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": "jev_http_failed",
+            "decision": null,
+            "request": {
+              "kind": "command_output",
+              "candidates": 61,
+              "bytes": 46235
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 1411
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "semantic-search-deadline",
+      "suite": "semantic",
+      "command": "rg -n -H timeout src --sort=path",
+      "goal": "How long do we wait on the card processor before giving up?",
+      "arms": {
+        "native": {
+          "bytes": 4525,
+          "est_tokens": 1132,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.156,
+          "effective_tokens": 1132
+        },
+        "rtk": {
+          "bytes": 4525,
+          "est_tokens": 1132,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "rtk rg -n -H timeout src --sort=path",
+          "exit": 0,
+          "seconds": 0.245,
+          "effective_tokens": 1132
+        },
+        "jevto": {
+          "bytes": 888,
+          "est_tokens": 222,
+          "needles_found": 0,
+          "needles_total": 1,
+          "missing": [
+            "Duration::from_secs(12)"
+          ],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-search-deadline --workspace-id claude -- rg -n -H timeout src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.237,
+          "effective_tokens": 1354
+        },
+        "jevto-adaptive": {
+          "bytes": 272,
+          "est_tokens": 68,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-search-deadline --workspace-id claude -- rg -n -H timeout src --sort=path",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.243,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 1,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": null,
+            "decision": {
+              "kind": "search_results",
+              "need": 1.52,
+              "candidates": 25,
+              "kept": 1
+            },
+            "request": {
+              "kind": "search_results",
+              "candidates": 25,
+              "bytes": 9266
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 68
+        }
+      },
+      "native_exit": 0
+    },
+    {
+      "name": "semantic-diff-rounding",
+      "suite": "semantic",
+      "command": "git diff",
+      "goal": "Did anything change how refunds get rounded?",
+      "arms": {
+        "native": {
+          "bytes": 11936,
+          "est_tokens": 2984,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": null,
+          "exit": 0,
+          "seconds": 0.21,
+          "effective_tokens": 2984
+        },
+        "rtk": {
+          "bytes": 11188,
+          "est_tokens": 2797,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "rtk git diff",
+          "exit": 0,
+          "seconds": 0.436,
+          "effective_tokens": 2797
+        },
+        "jevto": {
+          "bytes": 11936,
+          "est_tokens": 2984,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-diff-rounding --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.289,
+          "effective_tokens": 2984
+        },
+        "jevto-adaptive": {
+          "bytes": 1666,
+          "est_tokens": 417,
+          "needles_found": 1,
+          "needles_total": 1,
+          "missing": [],
+          "rewritten": "'<jevto>' run --host claude --session bench-semantic-diff-rounding --workspace-id claude -- git diff",
+          "routing": "hook",
+          "exit": 0,
+          "seconds": 0.348,
+          "jev": {
+            "calls": 0,
+            "cache_hits": 1,
+            "cost_usd": 0.0,
+            "input_tokens": 0,
+            "fallback": null,
+            "decision": {
+              "kind": "diff_files",
+              "need": 1.4999999999999998,
+              "candidates": 13,
+              "kept": 1
+            },
+            "request": {
+              "kind": "diff_files",
+              "candidates": 13,
+              "bytes": 14771
+            }
+          },
+          "cache_added": 0,
+          "effective_tokens": 417
+        }
+      },
+      "native_exit": 0
+    }
+  ]
+}

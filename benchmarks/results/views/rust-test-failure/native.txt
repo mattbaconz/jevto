@@ -1,0 +1,173 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src\lib.rs (target\debug\deps\headers-f03425790ee70ed6.exe)
+
+running 151 tests
+test tests::case_000 ... ok
+test tests::case_001 ... ok
+test tests::case_002 ... ok
+test tests::case_003 ... ok
+test tests::case_006 ... ok
+test tests::case_008 ... ok
+test tests::case_009 ... ok
+test tests::case_007 ... ok
+test tests::case_012 ... ok
+test tests::case_013 ... ok
+test tests::case_004 ... ok
+test tests::case_011 ... ok
+test tests::case_005 ... ok
+test tests::case_010 ... ok
+test tests::case_014 ... ok
+test tests::case_016 ... ok
+test tests::case_015 ... ok
+test tests::case_017 ... ok
+test tests::case_018 ... ok
+test tests::case_019 ... ok
+test tests::case_020 ... ok
+test tests::case_021 ... ok
+test tests::case_022 ... ok
+test tests::case_023 ... ok
+test tests::case_024 ... ok
+test tests::case_025 ... ok
+test tests::case_026 ... ok
+test tests::case_027 ... ok
+test tests::case_028 ... ok
+test tests::case_029 ... ok
+test tests::case_030 ... ok
+test tests::case_032 ... ok
+test tests::case_033 ... ok
+test tests::case_031 ... ok
+test tests::case_034 ... ok
+test tests::case_035 ... ok
+test tests::case_036 ... ok
+test tests::case_037 ... ok
+test tests::case_038 ... ok
+test tests::case_039 ... ok
+test tests::case_040 ... ok
+test tests::case_041 ... ok
+test tests::case_042 ... ok
+test tests::case_043 ... ok
+test tests::case_044 ... ok
+test tests::case_045 ... ok
+test tests::case_046 ... ok
+test tests::case_047 ... ok
+test tests::case_048 ... ok
+test tests::case_049 ... ok
+test tests::case_050 ... ok
+test tests::case_051 ... ok
+test tests::case_052 ... ok
+test tests::case_053 ... ok
+test tests::case_054 ... ok
+test tests::case_055 ... ok
+test tests::case_056 ... ok
+test tests::case_057 ... ok
+test tests::case_058 ... ok
+test tests::case_059 ... ok
+test tests::case_060 ... ok
+test tests::case_061 ... ok
+test tests::case_062 ... ok
+test tests::case_063 ... ok
+test tests::case_064 ... ok
+test tests::case_065 ... ok
+test tests::case_066 ... ok
+test tests::case_067 ... ok
+test tests::case_068 ... ok
+test tests::case_069 ... ok
+test tests::case_070 ... ok
+test tests::case_071 ... ok
+test tests::case_072 ... ok
+test tests::case_073 ... ok
+test tests::case_074 ... ok
+test tests::case_076 ... ok
+test tests::case_084 ... ok
+test tests::case_086 ... ok
+test tests::case_075 ... ok
+test tests::case_079 ... ok
+test tests::case_077 ... ok
+test tests::case_078 ... ok
+test tests::case_080 ... ok
+test tests::case_082 ... ok
+test tests::case_085 ... ok
+test tests::case_089 ... ok
+test tests::case_083 ... ok
+test tests::case_081 ... ok
+test tests::case_088 ... ok
+test tests::case_091 ... ok
+test tests::case_090 ... ok
+test tests::case_087 ... ok
+test tests::case_092 ... ok
+test tests::case_093 ... ok
+test tests::case_095 ... ok
+test tests::case_096 ... ok
+test tests::case_097 ... ok
+test tests::case_094 ... ok
+test tests::case_098 ... ok
+test tests::case_099 ... ok
+test tests::case_100 ... ok
+test tests::case_101 ... ok
+test tests::case_102 ... ok
+test tests::case_103 ... ok
+test tests::case_104 ... ok
+test tests::case_105 ... ok
+test tests::case_106 ... ok
+test tests::case_107 ... ok
+test tests::case_108 ... ok
+test tests::case_109 ... ok
+test tests::case_110 ... ok
+test tests::case_111 ... ok
+test tests::case_112 ... ok
+test tests::case_113 ... ok
+test tests::case_114 ... ok
+test tests::case_115 ... ok
+test tests::case_116 ... ok
+test tests::case_117 ... ok
+test tests::case_118 ... ok
+test tests::case_119 ... ok
+test tests::case_120 ... ok
+test tests::case_121 ... ok
+test tests::case_122 ... ok
+test tests::case_123 ... ok
+test tests::case_124 ... ok
+test tests::case_125 ... ok
+test tests::case_126 ... ok
+test tests::case_127 ... ok
+test tests::case_128 ... ok
+test tests::case_129 ... ok
+test tests::case_130 ... ok
+test tests::case_131 ... ok
+test tests::case_132 ... ok
+test tests::case_133 ... ok
+test tests::case_134 ... ok
+test tests::case_135 ... ok
+test tests::case_136 ... ok
+test tests::case_137 ... ok
+test tests::case_138 ... ok
+test tests::case_139 ... ok
+test tests::case_140 ... ok
+test tests::case_141 ... ok
+test tests::case_142 ... ok
+test tests::case_143 ... ok
+test tests::case_144 ... ok
+test tests::case_145 ... ok
+test tests::case_146 ... ok
+test tests::case_147 ... ok
+test tests::case_148 ... ok
+test tests::case_149 ... ok
+test tests::parse_header_rejects_leading_space ... FAILED
+
+failures:
+
+---- tests::parse_header_rejects_leading_space stdout ----
+
+thread 'tests::parse_header_rejects_leading_space' (30600) panicked at src\lib.rs:310:9:
+assertion `left == right` failed: leading space must be rejected
+  left: Some((" k", "v"))
+ right: None
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::parse_header_rejects_leading_space
+
+test result: FAILED. 150 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `--lib`

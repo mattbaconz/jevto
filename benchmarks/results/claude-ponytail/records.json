@@ -1,0 +1,440 @@
+[
+  {
+    "arm": "native",
+    "rep": 1,
+    "elapsed_s": 51.6,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 7,
+    "cost_usd_list_estimate": 0.05973749999999999,
+    "usage": {
+      "inputTokens": 58,
+      "cacheCreationInputTokens": 16855,
+      "cacheReadInputTokens": 100395,
+      "outputTokens": 3186
+    },
+    "combined_tokens": 120494,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 47,
+    "lines_removed": 1,
+    "implementation_lines": 34,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail",
+    "rep": 1,
+    "elapsed_s": 49.2,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 9,
+    "cost_usd_list_estimate": 0.0649088,
+    "usage": {
+      "inputTokens": 74,
+      "cacheCreationInputTokens": 18104,
+      "cacheReadInputTokens": 142968,
+      "outputTokens": 2866
+    },
+    "combined_tokens": 164012,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 30,
+    "lines_removed": 1,
+    "implementation_lines": 21,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "jevto",
+    "rep": 1,
+    "elapsed_s": 43.7,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 8,
+    "cost_usd_list_estimate": 0.043700300000000004,
+    "usage": {
+      "inputTokens": 66,
+      "cacheCreationInputTokens": 9758,
+      "cacheReadInputTokens": 115133,
+      "outputTokens": 2521
+    },
+    "combined_tokens": 127478,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 349,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 43,
+    "lines_removed": 1,
+    "implementation_lines": 31,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail+jevto",
+    "rep": 1,
+    "elapsed_s": 51.2,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 6,
+    "cost_usd_list_estimate": 0.05086960000000001,
+    "usage": {
+      "inputTokens": 50,
+      "cacheCreationInputTokens": 11827,
+      "cacheReadInputTokens": 92356,
+      "outputTokens": 3586
+    },
+    "combined_tokens": 107819,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 358,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 35,
+    "lines_removed": 1,
+    "implementation_lines": 23,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail+jevto",
+    "rep": 2,
+    "elapsed_s": 46.2,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 6,
+    "cost_usd_list_estimate": 0.0485769,
+    "usage": {
+      "inputTokens": 42,
+      "cacheCreationInputTokens": 11912,
+      "cacheReadInputTokens": 76509,
+      "outputTokens": 3412
+    },
+    "combined_tokens": 91875,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 358,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError\r\n'5 m': returned 300, want ValueError",
+    "lines_added": 31,
+    "lines_removed": 1,
+    "implementation_lines": 24,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "jevto",
+    "rep": 2,
+    "elapsed_s": 57.9,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 6,
+    "cost_usd_list_estimate": 0.0447464,
+    "usage": {
+      "inputTokens": 42,
+      "cacheCreationInputTokens": 10245,
+      "cacheReadInputTokens": 69894,
+      "outputTokens": 3445
+    },
+    "combined_tokens": 83626,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 349,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 41,
+    "lines_removed": 1,
+    "implementation_lines": 29,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail",
+    "rep": 2,
+    "elapsed_s": 73.9,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 6,
+    "cost_usd_list_estimate": 0.0844394,
+    "usage": {
+      "inputTokens": 50,
+      "cacheCreationInputTokens": 21308,
+      "cacheReadInputTokens": 94934,
+      "outputTokens": 6456
+    },
+    "combined_tokens": 122748,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError\r\n'5 m': returned 300, want ValueError",
+    "lines_added": 48,
+    "lines_removed": 1,
+    "implementation_lines": 32,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "native",
+    "rep": 2,
+    "elapsed_s": 64.6,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 10,
+    "cost_usd_list_estimate": 0.0787304,
+    "usage": {
+      "inputTokens": 82,
+      "cacheCreationInputTokens": 19083,
+      "cacheReadInputTokens": 152874,
+      "outputTokens": 5039
+    },
+    "combined_tokens": 177078,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 43,
+    "lines_removed": 1,
+    "implementation_lines": 30,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "native",
+    "rep": 3,
+    "elapsed_s": 43.9,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 7,
+    "cost_usd_list_estimate": 0.057947,
+    "usage": {
+      "inputTokens": 58,
+      "cacheCreationInputTokens": 16558,
+      "cacheReadInputTokens": 99680,
+      "outputTokens": 2961
+    },
+    "combined_tokens": 119257,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 40,
+    "lines_removed": 1,
+    "implementation_lines": 27,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail",
+    "rep": 3,
+    "elapsed_s": 37.8,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 7,
+    "cost_usd_list_estimate": 0.0543342,
+    "usage": {
+      "inputTokens": 58,
+      "cacheCreationInputTokens": 16870,
+      "cacheReadInputTokens": 106762,
+      "outputTokens": 1972
+    },
+    "combined_tokens": 125662,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 17705,
+    "jevto_receipts": 0,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 36,
+    "lines_removed": 1,
+    "implementation_lines": 27,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "jevto",
+    "rep": 3,
+    "elapsed_s": 75.4,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 8,
+    "cost_usd_list_estimate": 0.048329699999999996,
+    "usage": {
+      "inputTokens": 58,
+      "cacheCreationInputTokens": 10479,
+      "cacheReadInputTokens": 102637,
+      "outputTokens": 3410
+    },
+    "combined_tokens": 116584,
+    "plugins": [
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 1,
+    "test_result_bytes": 349,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 49,
+    "lines_removed": 1,
+    "implementation_lines": 35,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  },
+  {
+    "arm": "ponytail+jevto",
+    "rep": 3,
+    "elapsed_s": 85.6,
+    "cli_exit": 0,
+    "timed_out": false,
+    "subtype": "success",
+    "num_turns": 12,
+    "cost_usd_list_estimate": 0.06901059999999999,
+    "usage": {
+      "inputTokens": 98,
+      "cacheCreationInputTokens": 13906,
+      "cacheReadInputTokens": 201456,
+      "outputTokens": 4191
+    },
+    "combined_tokens": 219651,
+    "plugins": [
+      "ponytail",
+      "agents-md",
+      "telemetry"
+    ],
+    "bash_test_runs": 2,
+    "test_result_bytes": 1950,
+    "jevto_receipts": 1,
+    "visible_pass": true,
+    "holdout_pass": false,
+    "holdout_detail": "'1h  30m': returned 5400, want ValueError",
+    "lines_added": 37,
+    "lines_removed": 1,
+    "implementation_lines": 27,
+    "changed_files": [
+      "timekit/durations.py"
+    ],
+    "permission_denials": 0,
+    "valid": true,
+    "tests_untouched": true
+  }
+]

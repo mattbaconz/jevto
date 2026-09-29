@@ -1,0 +1,40 @@
+jevto exit=0 omitted=637
+diff --git a/src/handlers/alpha_00.rs b/src/handlers/alpha_00.rs
+... 49 lines ranked less relevant by Jev hidden [stdout-65-2161]
+diff --git a/src/handlers/alpha_10.rs b/src/handlers/alpha_10.rs
+... 49 lines repeating the same edit in more files hidden [stdout-2226-4322]
+diff --git a/src/handlers/bravo_01.rs b/src/handlers/bravo_01.rs
+... 49 lines repeating the same edit in more files hidden [stdout-4387-6483]
+diff --git a/src/handlers/bravo_11.rs b/src/handlers/bravo_11.rs
+... 49 lines repeating the same edit in more files hidden [stdout-6548-8644]
+diff --git a/src/handlers/cobalt_02.rs b/src/handlers/cobalt_02.rs
+... 49 lines repeating the same edit in more files hidden [stdout-8711-10852]
+diff --git a/src/handlers/cobalt_12.rs b/src/handlers/cobalt_12.rs
+... 49 lines repeating the same edit in more files hidden [stdout-10919-13060]
+diff --git a/src/handlers/delta_03.rs b/src/handlers/delta_03.rs
+... 49 lines repeating the same edit in more files hidden [stdout-13125-15221]
+diff --git a/src/handlers/ember_04.rs b/src/handlers/ember_04.rs
+... 49 lines repeating the same edit in more files hidden [stdout-15286-17382]
+diff --git a/src/handlers/falcon_05.rs b/src/handlers/falcon_05.rs
+... 49 lines repeating the same edit in more files hidden [stdout-17449-19590]
+diff --git a/src/handlers/garnet_06.rs b/src/handlers/garnet_06.rs
+... 49 lines repeating the same edit in more files hidden [stdout-19657-21798]
+diff --git a/src/handlers/harbor_07.rs b/src/handlers/harbor_07.rs
+... 49 lines repeating the same edit in more files hidden [stdout-21865-24006]
+diff --git a/src/handlers/indigo_08.rs b/src/handlers/indigo_08.rs
+... 49 lines repeating the same edit in more files hidden [stdout-24073-26214]
+diff --git a/src/handlers/juniper_09.rs b/src/handlers/juniper_09.rs
+... 49 lines repeating the same edit in more files hidden [stdout-26283-28469]
+diff --git a/src/limiter/bucket.rs b/src/limiter/bucket.rs
+index 8958ec2..bd6207d 100644
+--- a/src/limiter/bucket.rs
++++ b/src/limiter/bucket.rs
+@@ -2,6 +2,6 @@ pub struct Bucket { tokens: f64, capacity: f64, rate: f64 }
+ 
+ impl Bucket {
+     pub fn refill(&mut self, elapsed: f64) {
+-        self.tokens = self.tokens + elapsed * self.rate;
++        self.tokens = (self.tokens + elapsed * self.rate).min(self.capacity);
+     }
+ }
+recall: `'<jevto>' recall 52645331` [--section ID]

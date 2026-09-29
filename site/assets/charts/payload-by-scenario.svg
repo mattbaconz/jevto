@@ -1,0 +1,362 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 962" role="img" aria-labelledby="scenarios-title scenarios-desc">
+<title id="scenarios-title">Tokens per command, by scenario</title>
+<desc id="scenarios-desc">Estimated tokens per command on a log scale for 23 scenarios in 3 suites. Native totals 269,736 tokens and 46/46 facts; RTK totals 236,536 tokens and 44/46 facts; JevTO totals 16,986 tokens and 45/46 facts. Hollow dots with a red cross missed a required fact; double rings were not routed by RTK.</desc>
+<style>
+svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+      font-size: 12px; font-variant-numeric: tabular-nums; }
+.text { fill: #111214; }
+.muted { fill: #6B6F77; }
+.heading { font-size: 13px; font-weight: 700; }
+.suite { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; fill: #6B6F77; }
+.big { font-size: 22px; font-weight: 700; }
+.grid, .axis, .connector { fill: none; stroke: #E3E1DB; }
+.grid { stroke-width: 1; }
+.axis { stroke-width: 1.2; stroke: #C9C6BF; }
+.connector { stroke-width: 1.3; }
+.native-fill { fill: #B4B7BD; }
+.rtk-fill { fill: #D9921E; }
+.jevto-fill { fill: #111214; }
+.ponytail-fill { fill: #4E9A3F; }
+.combo-fill { fill: #3F7FBF; }
+.native-stroke { fill: none; stroke: #B4B7BD; }
+.rtk-stroke { fill: none; stroke: #D9921E; }
+.jevto-stroke { fill: none; stroke: #111214; }
+.ponytail-stroke { fill: none; stroke: #4E9A3F; }
+.combo-stroke { fill: none; stroke: #3F7FBF; }
+.miss { fill: none; stroke: #E5231B; stroke-width: 1.9; stroke-linecap: round; }
+.unrouted-outer { fill: none; stroke: #B4B7BD; stroke-width: 1.5; }
+.unrouted-inner { fill: none; stroke: #D9921E; stroke-width: 1.3; }
+.bar { opacity: .95; }
+.median { stroke-width: 2.7; stroke-linecap: round; }
+.accent { fill: #E5231B; }
+@media (prefers-color-scheme: dark) {
+  .text { fill: #F2F0EA; }
+  .muted, .suite { fill: #9A9EA6; }
+  .grid, .axis, .connector { stroke: #2E3137; }
+  .jevto-fill { fill: #F2F0EA; }
+  .jevto-stroke { stroke: #F2F0EA; }
+  .native-fill { fill: #5C6068; }
+  .native-stroke, .unrouted-outer { stroke: #5C6068; }
+}
+</style>
+<circle cx="250.0" cy="29.0" r="4.5" class="native-fill"/>
+<text x="261.0" y="33.0" class="text">Native</text>
+<circle cx="330.0" cy="29.0" r="4.5" class="rtk-fill"/>
+<text x="341.0" y="33.0" class="text">RTK</text>
+<circle cx="410.0" cy="29.0" r="4.5" class="jevto-fill"/>
+<text x="421.0" y="33.0" class="text">JevTO</text>
+<circle cx="500.0" cy="29.0" r="4.5" class="jevto-stroke"/>
+<line x1="498.0" y1="27.0" x2="502.0" y2="31.0" class="miss"/>
+<line x1="502.0" y1="27.0" x2="498.0" y2="31.0" class="miss"/>
+<text x="514.0" y="33.0" class="text">missed a fact</text>
+<circle cx="628.0" cy="29.0" r="5.0" class="unrouted-outer"/>
+<circle cx="628.0" cy="29.0" r="3.0" class="unrouted-inner"/>
+<text x="640.0" y="33.0" class="text">RTK did not route</text>
+<line x1="250.0" y1="70.0" x2="250.0" y2="904.0" class="grid"/>
+<text x="250.0" y="924.0" class="muted" text-anchor="middle">10</text>
+<line x1="368.0" y1="70.0" x2="368.0" y2="904.0" class="grid"/>
+<text x="368.0" y="924.0" class="muted" text-anchor="middle">100</text>
+<line x1="486.0" y1="70.0" x2="486.0" y2="904.0" class="grid"/>
+<text x="486.0" y="924.0" class="muted" text-anchor="middle">1k</text>
+<line x1="604.0" y1="70.0" x2="604.0" y2="904.0" class="grid"/>
+<text x="604.0" y="924.0" class="muted" text-anchor="middle">10k</text>
+<line x1="722.0" y1="70.0" x2="722.0" y2="904.0" class="grid"/>
+<text x="722.0" y="924.0" class="muted" text-anchor="middle">100k</text>
+<line x1="840.0" y1="70.0" x2="840.0" y2="904.0" class="grid"/>
+<text x="840.0" y="924.0" class="muted" text-anchor="middle">1M</text>
+<line x1="250.0" y1="904.0" x2="840.0" y2="904.0" class="axis"/>
+<text x="24.0" y="100.0" class="suite">Dev set · rules tuned here</text>
+<text x="230.0" y="126.0" class="text" text-anchor="end">cargo test, 1 failure</text>
+<line x1="497.2" y1="114.0" x2="379.8" y2="122.0" class="connector"/>
+<line x1="497.2" y1="114.0" x2="392.7" y2="130.0" class="connector"/>
+<g><title>cargo test, 1 failure: Native, 1,245 estimated tokens, 3/3 facts. Command: cargo test</title>
+<circle cx="497.2" cy="114.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>cargo test, 1 failure: RTK, 126 estimated tokens, 3/3 facts. Command: cargo test</title>
+<circle cx="379.8" cy="122.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>cargo test, 1 failure: JevTO, 162 estimated tokens, 3/3 facts. Command: cargo test</title>
+<circle cx="392.7" cy="130.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="156.0" class="text" text-anchor="end">go test -v, 1 failure</text>
+<line x1="536.0" y1="144.0" x2="345.1" y2="152.0" class="connector"/>
+<line x1="536.0" y1="144.0" x2="355.3" y2="160.0" class="connector"/>
+<g><title>go test -v, 1 failure: Native, 2,651 estimated tokens, 2/2 facts. Command: go test -v -count=1 ./...</title>
+<circle cx="536.0" cy="144.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>go test -v, 1 failure: RTK, 64 estimated tokens, 2/2 facts. Command: go test -v -count=1 ./...</title>
+<circle cx="345.1" cy="152.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>go test -v, 1 failure: JevTO, 78 estimated tokens, 2/2 facts. Command: go test -v -count=1 ./...</title>
+<circle cx="355.3" cy="160.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="186.0" class="text" text-anchor="end">unittest -v, 1 failure</text>
+<line x1="551.2" y1="174.0" x2="551.2" y2="182.0" class="connector"/>
+<line x1="551.2" y1="174.0" x2="403.5" y2="190.0" class="connector"/>
+<g><title>unittest -v, 1 failure: Native, 3,572 estimated tokens, 3/3 facts. Command: python -m unittest -v</title>
+<circle cx="551.2" cy="174.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>unittest -v, 1 failure: RTK, 3,572 estimated tokens, 3/3 facts; not routed, plotted at native value. Command: python -m unittest -v</title>
+<circle cx="551.2" cy="182.0" r="5.0" class="unrouted-outer"/>
+<circle cx="551.2" cy="182.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>unittest -v, 1 failure: JevTO, 200 estimated tokens, 3/3 facts. Command: python -m unittest -v</title>
+<circle cx="403.5" cy="190.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="216.0" class="text" text-anchor="end">unittest -v, 1 warning</text>
+<line x1="548.7" y1="204.0" x2="548.7" y2="212.0" class="connector"/>
+<line x1="548.7" y1="204.0" x2="362.0" y2="220.0" class="connector"/>
+<g><title>unittest -v, 1 warning: Native, 3,397 estimated tokens, 2/2 facts. Command: python -m unittest -v</title>
+<circle cx="548.7" cy="204.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>unittest -v, 1 warning: RTK, 3,397 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: python -m unittest -v</title>
+<circle cx="548.7" cy="212.0" r="5.0" class="unrouted-outer"/>
+<circle cx="548.7" cy="212.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>unittest -v, 1 warning: JevTO, 89 estimated tokens, 2/2 facts. Command: python -m unittest -v</title>
+<circle cx="362.0" cy="220.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="246.0" class="text" text-anchor="end">node --test, 1 failure</text>
+<line x1="509.3" y1="234.0" x2="509.3" y2="242.0" class="connector"/>
+<line x1="509.3" y1="234.0" x2="402.7" y2="250.0" class="connector"/>
+<g><title>node --test, 1 failure: Native, 1,575 estimated tokens, 2/2 facts. Command: node --test</title>
+<circle cx="509.3" cy="234.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>node --test, 1 failure: RTK, 1,576 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
+<circle cx="509.3" cy="242.0" r="5.0" class="unrouted-outer"/>
+<circle cx="509.3" cy="242.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>node --test, 1 failure: JevTO, 197 estimated tokens, 2/2 facts. Command: node --test</title>
+<circle cx="402.7" cy="250.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="276.0" class="text" text-anchor="end">cargo test, 3 passing</text>
+<line x1="376.9" y1="264.0" x2="250.0" y2="272.0" class="connector"/>
+<line x1="376.9" y1="264.0" x2="342.7" y2="280.0" class="connector"/>
+<g><title>cargo test, 3 passing: Native, 119 estimated tokens, 1/1 facts. Command: cargo test</title>
+<circle cx="376.9" cy="264.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>cargo test, 3 passing: RTK, 10 estimated tokens, 1/1 facts. Command: cargo test</title>
+<circle cx="250.0" cy="272.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>cargo test, 3 passing: JevTO, 61 estimated tokens, 1/1 facts. Command: cargo test</title>
+<circle cx="342.7" cy="280.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="306.0" class="text" text-anchor="end">service log, 2,400 lines</text>
+<line x1="688.6" y1="294.0" x2="688.6" y2="302.0" class="connector"/>
+<line x1="688.6" y1="294.0" x2="523.4" y2="310.0" class="connector"/>
+<g><title>service log, 2,400 lines: Native, 52,163 estimated tokens, 2/2 facts. Command: python print_log.py</title>
+<circle cx="688.6" cy="294.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>service log, 2,400 lines: RTK, 52,163 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: python print_log.py</title>
+<circle cx="688.6" cy="302.0" r="5.0" class="unrouted-outer"/>
+<circle cx="688.6" cy="302.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>service log, 2,400 lines: JevTO, 2,075 estimated tokens, 2/2 facts. Command: python print_log.py</title>
+<circle cx="523.4" cy="310.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="336.0" class="text" text-anchor="end">rg, 160 matches</text>
+<line x1="552.9" y1="324.0" x2="552.9" y2="332.0" class="connector"/>
+<line x1="552.9" y1="324.0" x2="433.1" y2="340.0" class="connector"/>
+<g><title>rg, 160 matches: Native, 3,688 estimated tokens, 1/1 facts. Command: rg -n -H retry_budget src --sort=path</title>
+<circle cx="552.9" cy="324.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>rg, 160 matches: RTK, 3,688 estimated tokens, 1/1 facts. Command: rg -n -H retry_budget src --sort=path</title>
+<circle cx="552.9" cy="332.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>rg, 160 matches: JevTO, 356 estimated tokens, 1/1 facts. Command: rg -n -H retry_budget src --sort=path</title>
+<circle cx="433.1" cy="340.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="366.0" class="text" text-anchor="end">git diff + lockfile</text>
+<line x1="611.1" y1="354.0" x2="472.3" y2="362.0" class="connector"/>
+<line x1="611.1" y1="354.0" x2="377.3" y2="370.0" class="connector"/>
+<g><title>git diff + lockfile: Native, 11,484 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="611.1" cy="354.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>git diff + lockfile: RTK, 766 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="472.3" cy="362.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>git diff + lockfile: JevTO, 120 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="377.3" cy="370.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="396.0" class="text" text-anchor="end">git diff, 14 files</text>
+<line x1="587.3" y1="384.0" x2="575.5" y2="392.0" class="connector"/>
+<line x1="587.3" y1="384.0" x2="491.3" y2="400.0" class="connector"/>
+<g><title>git diff, 14 files: Native, 7,225 estimated tokens, 1/1 facts. Command: git diff</title>
+<circle cx="587.3" cy="384.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>git diff, 14 files: RTK, 5,738 estimated tokens, 0/1 facts; missed required fact. Command: git diff</title>
+<circle cx="575.5" cy="392.0" r="4.5" class="rtk-stroke"/>
+<line x1="573.5" y1="390.0" x2="577.5" y2="394.0" class="miss"/>
+<line x1="577.5" y1="390.0" x2="573.5" y2="394.0" class="miss"/>
+</g>
+<g><title>git diff, 14 files: JevTO, 1,109 estimated tokens, 1/1 facts. Command: git diff</title>
+<circle cx="491.3" cy="400.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="426.0" class="text" text-anchor="end">git log, 260 commits</text>
+<line x1="615.9" y1="414.0" x2="408.9" y2="422.0" class="connector"/>
+<line x1="615.9" y1="414.0" x2="455.5" y2="430.0" class="connector"/>
+<g><title>git log, 260 commits: Native, 12,618 estimated tokens, 1/1 facts. Command: git log</title>
+<circle cx="615.9" cy="414.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>git log, 260 commits: RTK, 222 estimated tokens, 0/1 facts; missed required fact. Command: git log</title>
+<circle cx="408.9" cy="422.0" r="4.5" class="rtk-stroke"/>
+<line x1="406.9" y1="420.0" x2="410.9" y2="424.0" class="miss"/>
+<line x1="410.9" y1="420.0" x2="406.9" y2="424.0" class="miss"/>
+</g>
+<g><title>git log, 260 commits: JevTO, 551 estimated tokens, 1/1 facts. Command: git log</title>
+<circle cx="455.5" cy="430.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="24.0" y="474.0" class="suite">Holdout · written after the rules froze</text>
+<text x="230.0" y="500.0" class="text" text-anchor="end">cargo test, 3 failures</text>
+<line x1="560.9" y1="488.0" x2="404.8" y2="496.0" class="connector"/>
+<line x1="560.9" y1="488.0" x2="420.8" y2="504.0" class="connector"/>
+<g><title>cargo test, 3 failures: Native, 4,311 estimated tokens, 6/6 facts. Command: cargo test</title>
+<circle cx="560.9" cy="488.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>cargo test, 3 failures: RTK, 205 estimated tokens, 6/6 facts. Command: cargo test</title>
+<circle cx="404.8" cy="496.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>cargo test, 3 failures: JevTO, 280 estimated tokens, 6/6 facts. Command: cargo test</title>
+<circle cx="420.8" cy="504.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="530.0" class="text" text-anchor="end">tsc, 3 type errors</text>
+<line x1="349.7" y1="518.0" x2="362.6" y2="526.0" class="connector"/>
+<line x1="349.7" y1="518.0" x2="349.7" y2="534.0" class="connector"/>
+<g><title>tsc, 3 type errors: Native, 70 estimated tokens, 3/3 facts. Command: tsc -p .</title>
+<circle cx="349.7" cy="518.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>tsc, 3 type errors: RTK, 90 estimated tokens, 3/3 facts. Command: tsc -p .</title>
+<circle cx="362.6" cy="526.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>tsc, 3 type errors: JevTO, 70 estimated tokens, 3/3 facts. Command: tsc -p .</title>
+<circle cx="349.7" cy="534.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="560.0" class="text" text-anchor="end">go test ./..., 12 pkgs</text>
+<line x1="381.0" y1="548.0" x2="340.1" y2="556.0" class="connector"/>
+<line x1="381.0" y1="548.0" x2="367.5" y2="564.0" class="connector"/>
+<g><title>go test ./..., 12 pkgs: Native, 129 estimated tokens, 2/2 facts. Command: go test -count=1 ./...</title>
+<circle cx="381.0" cy="548.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>go test ./..., 12 pkgs: RTK, 58 estimated tokens, 2/2 facts. Command: go test -count=1 ./...</title>
+<circle cx="340.1" cy="556.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>go test ./..., 12 pkgs: JevTO, 99 estimated tokens, 2/2 facts. Command: go test -count=1 ./...</title>
+<circle cx="367.5" cy="564.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="590.0" class="text" text-anchor="end">node --test, 300 passing</text>
+<line x1="534.4" y1="578.0" x2="534.4" y2="586.0" class="connector"/>
+<line x1="534.4" y1="578.0" x2="330.4" y2="594.0" class="connector"/>
+<g><title>node --test, 300 passing: Native, 2,572 estimated tokens, 2/2 facts. Command: node --test</title>
+<circle cx="534.4" cy="578.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>node --test, 300 passing: RTK, 2,573 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
+<circle cx="534.4" cy="586.0" r="5.0" class="unrouted-outer"/>
+<circle cx="534.4" cy="586.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>node --test, 300 passing: JevTO, 48 estimated tokens, 2/2 facts. Command: node --test</title>
+<circle cx="330.4" cy="594.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="620.0" class="text" text-anchor="end">unittest, stdlib traceback</text>
+<line x1="497.9" y1="608.0" x2="497.9" y2="616.0" class="connector"/>
+<line x1="497.9" y1="608.0" x2="437.6" y2="624.0" class="connector"/>
+<g><title>unittest, stdlib traceback: Native, 1,261 estimated tokens, 3/3 facts. Command: python -m unittest -v</title>
+<circle cx="497.9" cy="608.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>unittest, stdlib traceback: RTK, 1,261 estimated tokens, 3/3 facts; not routed, plotted at native value. Command: python -m unittest -v</title>
+<circle cx="497.9" cy="616.0" r="5.0" class="unrouted-outer"/>
+<circle cx="497.9" cy="616.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>unittest, stdlib traceback: JevTO, 389 estimated tokens, 3/3 facts. Command: python -m unittest -v</title>
+<circle cx="437.6" cy="624.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="650.0" class="text" text-anchor="end">rg TODO, 160 matches</text>
+<line x1="519.2" y1="638.0" x2="519.2" y2="646.0" class="connector"/>
+<line x1="519.2" y1="638.0" x2="407.2" y2="654.0" class="connector"/>
+<g><title>rg TODO, 160 matches: Native, 1,913 estimated tokens, 1/1 facts. Command: rg -n -H TODO src --sort=path</title>
+<circle cx="519.2" cy="638.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>rg TODO, 160 matches: RTK, 1,913 estimated tokens, 1/1 facts. Command: rg -n -H TODO src --sort=path</title>
+<circle cx="519.2" cy="646.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>rg TODO, 160 matches: JevTO, 215 estimated tokens, 1/1 facts. Command: rg -n -H TODO src --sort=path</title>
+<circle cx="407.2" cy="654.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="680.0" class="text" text-anchor="end">git diff, rename + fix</text>
+<line x1="527.2" y1="668.0" x2="517.5" y2="676.0" class="connector"/>
+<line x1="527.2" y1="668.0" x2="476.8" y2="684.0" class="connector"/>
+<g><title>git diff, rename + fix: Native, 2,233 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="527.2" cy="668.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>git diff, rename + fix: RTK, 1,849 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="517.5" cy="676.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>git diff, rename + fix: JevTO, 835 estimated tokens, 2/2 facts. Command: git diff</title>
+<circle cx="476.8" cy="684.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="710.0" class="text" text-anchor="end">cargo build, 40 warnings</text>
+<line x1="523.6" y1="698.0" x2="522.2" y2="706.0" class="connector"/>
+<line x1="523.6" y1="698.0" x2="523.6" y2="714.0" class="connector"/>
+<g><title>cargo build, 40 warnings: Native, 2,084 estimated tokens, 3/3 facts. Command: cargo build</title>
+<circle cx="523.6" cy="698.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>cargo build, 40 warnings: RTK, 2,026 estimated tokens, 3/3 facts. Command: cargo build</title>
+<circle cx="522.2" cy="706.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>cargo build, 40 warnings: JevTO, 2,084 estimated tokens, 3/3 facts. Command: cargo build</title>
+<circle cx="523.6" cy="714.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="740.0" class="text" text-anchor="end">JSON log, 3,000 lines</text>
+<line x1="726.2" y1="728.0" x2="726.2" y2="736.0" class="connector"/>
+<line x1="726.2" y1="728.0" x2="548.0" y2="744.0" class="connector"/>
+<g><title>JSON log, 3,000 lines: Native, 108,527 estimated tokens, 1/1 facts. Command: python emit_log.py</title>
+<circle cx="726.2" cy="728.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>JSON log, 3,000 lines: RTK, 108,527 estimated tokens, 1/1 facts; not routed, plotted at native value. Command: python emit_log.py</title>
+<circle cx="726.2" cy="736.0" r="5.0" class="unrouted-outer"/>
+<circle cx="726.2" cy="736.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>JSON log, 3,000 lines: JevTO, 3,351 estimated tokens, 1/1 facts. Command: python emit_log.py</title>
+<circle cx="548.0" cy="744.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="24.0" y="788.0" class="suite">Semantic · goal and answer share no words</text>
+<text x="230.0" y="814.0" class="text" text-anchor="end">log, sign-out cause</text>
+<line x1="678.5" y1="802.0" x2="678.5" y2="810.0" class="connector"/>
+<line x1="678.5" y1="802.0" x2="503.6" y2="818.0" class="connector"/>
+<g><title>log, sign-out cause: Native, 42,783 estimated tokens, 1/1 facts. Command: python print_log.py</title>
+<circle cx="678.5" cy="802.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>log, sign-out cause: RTK, 42,783 estimated tokens, 1/1 facts; not routed, plotted at native value. Command: python print_log.py</title>
+<circle cx="678.5" cy="810.0" r="5.0" class="unrouted-outer"/>
+<circle cx="678.5" cy="810.0" r="3.0" class="unrouted-inner"/>
+</g>
+<g><title>log, sign-out cause: JevTO, 1,411 estimated tokens, 1/1 facts. Command: python print_log.py</title>
+<circle cx="503.6" cy="818.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="230.0" y="844.0" class="text" text-anchor="end">rg, vendor deadline</text>
+<line x1="492.4" y1="832.0" x2="492.4" y2="840.0" class="connector"/>
+<line x1="492.4" y1="832.0" x2="408.9" y2="848.0" class="connector"/>
+<g><title>rg, vendor deadline: Native, 1,132 estimated tokens, 1/1 facts. Command: rg -n -H timeout src --sort=path</title>
+<circle cx="492.4" cy="832.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>rg, vendor deadline: RTK, 1,132 estimated tokens, 1/1 facts. Command: rg -n -H timeout src --sort=path</title>
+<circle cx="492.4" cy="840.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>rg, vendor deadline: JevTO, 222 estimated tokens, 0/1 facts; missed required fact. Command: rg -n -H timeout src --sort=path</title>
+<circle cx="408.9" cy="848.0" r="4.5" class="jevto-stroke"/>
+<line x1="406.9" y1="846.0" x2="410.9" y2="850.0" class="miss"/>
+<line x1="410.9" y1="846.0" x2="406.9" y2="850.0" class="miss"/>
+</g>
+<text x="230.0" y="874.0" class="text" text-anchor="end">git diff, rounding</text>
+<line x1="542.0" y1="862.0" x2="538.7" y2="870.0" class="connector"/>
+<line x1="542.0" y1="862.0" x2="542.0" y2="878.0" class="connector"/>
+<g><title>git diff, rounding: Native, 2,984 estimated tokens, 1/1 facts. Command: git diff</title>
+<circle cx="542.0" cy="862.0" r="4.5" class="native-fill"/>
+</g>
+<g><title>git diff, rounding: RTK, 2,797 estimated tokens, 1/1 facts. Command: git diff</title>
+<circle cx="538.7" cy="870.0" r="4.5" class="rtk-fill"/>
+</g>
+<g><title>git diff, rounding: JevTO, 2,984 estimated tokens, 1/1 facts. Command: git diff</title>
+<circle cx="542.0" cy="878.0" r="4.5" class="jevto-fill"/>
+</g>
+<text x="545.0" y="948.0" class="muted" text-anchor="middle">Estimated tokens per command (log scale)</text>
+</svg>

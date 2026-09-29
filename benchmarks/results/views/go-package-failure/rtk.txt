@@ -1,0 +1,6 @@
+Go test: 330 passed, 1 failed in 12 packages
+
+billing (0 passed, 1 failed)
+  [FAIL] TestInvoiceTotalRoundsHalfUp
+     invoice_test.go:8: total = 10.04, want 10.05
+[full output: "$HOME/AppData/Local/rtk/tee/1790722777_go_test.log"]

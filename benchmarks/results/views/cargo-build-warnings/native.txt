@@ -1,0 +1,254 @@
+   Compiling noisy v0.1.0 (<tmp>\jevto-bench-cargo-build-warnings-w347p7yh\work)
+error[E0308]: mismatched types
+   --> src\lib.rs:202:22
+    |
+202 |     let count: u32 = "12";
+    |                ---   ^^^^ expected `u32`, found `&str`
+    |                |
+    |                expected due to this
+
+warning: unused variable: `unused_00`
+ --> src\lib.rs:2:9
+  |
+2 |     let unused_00 = 0;
+  |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_00`
+  |
+  = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `unused_01`
+ --> src\lib.rs:7:9
+  |
+7 |     let unused_01 = 1;
+  |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_01`
+
+warning: unused variable: `unused_02`
+  --> src\lib.rs:12:9
+   |
+12 |     let unused_02 = 2;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_02`
+
+warning: unused variable: `unused_03`
+  --> src\lib.rs:17:9
+   |
+17 |     let unused_03 = 3;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_03`
+
+warning: unused variable: `unused_04`
+  --> src\lib.rs:22:9
+   |
+22 |     let unused_04 = 4;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_04`
+
+warning: unused variable: `unused_05`
+  --> src\lib.rs:27:9
+   |
+27 |     let unused_05 = 5;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_05`
+
+warning: unused variable: `unused_06`
+  --> src\lib.rs:32:9
+   |
+32 |     let unused_06 = 6;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_06`
+
+warning: unused variable: `unused_07`
+  --> src\lib.rs:37:9
+   |
+37 |     let unused_07 = 7;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_07`
+
+warning: unused variable: `unused_08`
+  --> src\lib.rs:42:9
+   |
+42 |     let unused_08 = 8;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_08`
+
+warning: unused variable: `unused_09`
+  --> src\lib.rs:47:9
+   |
+47 |     let unused_09 = 9;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_09`
+
+warning: unused variable: `unused_10`
+  --> src\lib.rs:52:9
+   |
+52 |     let unused_10 = 10;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_10`
+
+warning: unused variable: `unused_11`
+  --> src\lib.rs:57:9
+   |
+57 |     let unused_11 = 11;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_11`
+
+warning: unused variable: `unused_12`
+  --> src\lib.rs:62:9
+   |
+62 |     let unused_12 = 12;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_12`
+
+warning: unused variable: `unused_13`
+  --> src\lib.rs:67:9
+   |
+67 |     let unused_13 = 13;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_13`
+
+warning: unused variable: `unused_14`
+  --> src\lib.rs:72:9
+   |
+72 |     let unused_14 = 14;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_14`
+
+warning: unused variable: `unused_15`
+  --> src\lib.rs:77:9
+   |
+77 |     let unused_15 = 15;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_15`
+
+warning: unused variable: `unused_16`
+  --> src\lib.rs:82:9
+   |
+82 |     let unused_16 = 16;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_16`
+
+warning: unused variable: `unused_17`
+  --> src\lib.rs:87:9
+   |
+87 |     let unused_17 = 17;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_17`
+
+warning: unused variable: `unused_18`
+  --> src\lib.rs:92:9
+   |
+92 |     let unused_18 = 18;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_18`
+
+warning: unused variable: `unused_19`
+  --> src\lib.rs:97:9
+   |
+97 |     let unused_19 = 19;
+   |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_19`
+
+warning: unused variable: `unused_20`
+   --> src\lib.rs:102:9
+    |
+102 |     let unused_20 = 20;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_20`
+
+warning: unused variable: `unused_21`
+   --> src\lib.rs:107:9
+    |
+107 |     let unused_21 = 21;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_21`
+
+warning: unused variable: `unused_22`
+   --> src\lib.rs:112:9
+    |
+112 |     let unused_22 = 22;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_22`
+
+warning: unused variable: `unused_23`
+   --> src\lib.rs:117:9
+    |
+117 |     let unused_23 = 23;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_23`
+
+warning: unused variable: `unused_24`
+   --> src\lib.rs:122:9
+    |
+122 |     let unused_24 = 24;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_24`
+
+warning: unused variable: `unused_25`
+   --> src\lib.rs:127:9
+    |
+127 |     let unused_25 = 25;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_25`
+
+warning: unused variable: `unused_26`
+   --> src\lib.rs:132:9
+    |
+132 |     let unused_26 = 26;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_26`
+
+warning: unused variable: `unused_27`
+   --> src\lib.rs:137:9
+    |
+137 |     let unused_27 = 27;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_27`
+
+warning: unused variable: `unused_28`
+   --> src\lib.rs:142:9
+    |
+142 |     let unused_28 = 28;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_28`
+
+warning: unused variable: `unused_29`
+   --> src\lib.rs:147:9
+    |
+147 |     let unused_29 = 29;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_29`
+
+warning: unused variable: `unused_30`
+   --> src\lib.rs:152:9
+    |
+152 |     let unused_30 = 30;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_30`
+
+warning: unused variable: `unused_31`
+   --> src\lib.rs:157:9
+    |
+157 |     let unused_31 = 31;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_31`
+
+warning: unused variable: `unused_32`
+   --> src\lib.rs:162:9
+    |
+162 |     let unused_32 = 32;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_32`
+
+warning: unused variable: `unused_33`
+   --> src\lib.rs:167:9
+    |
+167 |     let unused_33 = 33;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_33`
+
+warning: unused variable: `unused_34`
+   --> src\lib.rs:172:9
+    |
+172 |     let unused_34 = 34;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_34`
+
+warning: unused variable: `unused_35`
+   --> src\lib.rs:177:9
+    |
+177 |     let unused_35 = 35;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_35`
+
+warning: unused variable: `unused_36`
+   --> src\lib.rs:182:9
+    |
+182 |     let unused_36 = 36;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_36`
+
+warning: unused variable: `unused_37`
+   --> src\lib.rs:187:9
+    |
+187 |     let unused_37 = 37;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_37`
+
+warning: unused variable: `unused_38`
+   --> src\lib.rs:192:9
+    |
+192 |     let unused_38 = 38;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_38`
+
+warning: unused variable: `unused_39`
+   --> src\lib.rs:197:9
+    |
+197 |     let unused_39 = 39;
+    |         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_unused_39`
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `noisy` (lib) generated 40 warnings
+error: could not compile `noisy` (lib) due to 1 previous error; 40 warnings emitted

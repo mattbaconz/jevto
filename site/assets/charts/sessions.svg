@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 380" role="img" aria-labelledby="sessions-title sessions-desc">
+<title id="sessions-title">Agent session benchmark</title>
+<desc id="sessions-desc">Claude Code test output median bytes by arm: Native 17,705, Ponytail 17,705, JevTO 349, Ponytail + JevTO 358. Each session run is a dot and each median is a vertical tick. Claude combined-token medians: Native 120,494, Ponytail 125,662, JevTO 116,584, Ponytail + JevTO 107,819. Codex input-token medians (including cached input): Native 198,520, Ponytail 214,289, JevTO 180,533, Ponytail + JevTO 222,212. Holdout passes: Claude 0/12, Codex 12/12. 3 valid runs per arm on one task; indicative, not significant.</desc>
+<style>
+svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+      font-size: 12px; font-variant-numeric: tabular-nums; }
+.text { fill: #111214; }
+.muted { fill: #6B6F77; }
+.heading { font-size: 13px; font-weight: 700; }
+.suite { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; fill: #6B6F77; }
+.big { font-size: 22px; font-weight: 700; }
+.grid, .axis, .connector { fill: none; stroke: #E3E1DB; }
+.grid { stroke-width: 1; }
+.axis { stroke-width: 1.2; stroke: #C9C6BF; }
+.connector { stroke-width: 1.3; }
+.native-fill { fill: #B4B7BD; }
+.rtk-fill { fill: #D9921E; }
+.jevto-fill { fill: #111214; }
+.ponytail-fill { fill: #4E9A3F; }
+.combo-fill { fill: #3F7FBF; }
+.native-stroke { fill: none; stroke: #B4B7BD; }
+.rtk-stroke { fill: none; stroke: #D9921E; }
+.jevto-stroke { fill: none; stroke: #111214; }
+.ponytail-stroke { fill: none; stroke: #4E9A3F; }
+.combo-stroke { fill: none; stroke: #3F7FBF; }
+.miss { fill: none; stroke: #E5231B; stroke-width: 1.9; stroke-linecap: round; }
+.unrouted-outer { fill: none; stroke: #B4B7BD; stroke-width: 1.5; }
+.unrouted-inner { fill: none; stroke: #D9921E; stroke-width: 1.3; }
+.bar { opacity: .95; }
+.median { stroke-width: 2.7; stroke-linecap: round; }
+.accent { fill: #E5231B; }
+@media (prefers-color-scheme: dark) {
+  .text { fill: #F2F0EA; }
+  .muted, .suite { fill: #9A9EA6; }
+  .grid, .axis, .connector { stroke: #2E3137; }
+  .jevto-fill { fill: #F2F0EA; }
+  .jevto-stroke { stroke: #F2F0EA; }
+  .native-fill { fill: #5C6068; }
+  .native-stroke, .unrouted-outer { stroke: #5C6068; }
+}
+</style>
+<line x1="422.0" y1="20.0" x2="422.0" y2="348.0" class="grid"/>
+<text x="26.0" y="28.0" class="text heading">Test output the model read</text>
+<text x="26.0" y="47.0" class="muted">Bytes, median · Claude Code</text>
+<line x1="166.0" y1="84.0" x2="166.0" y2="241.0" class="grid"/>
+<text x="166.0" y="76.0" class="muted" text-anchor="middle">0</text>
+<line x1="201.0" y1="84.0" x2="201.0" y2="241.0" class="grid"/>
+<text x="201.0" y="76.0" class="muted" text-anchor="middle">5k</text>
+<line x1="236.0" y1="84.0" x2="236.0" y2="241.0" class="grid"/>
+<text x="236.0" y="76.0" class="muted" text-anchor="middle">10k</text>
+<line x1="271.0" y1="84.0" x2="271.0" y2="241.0" class="grid"/>
+<text x="271.0" y="76.0" class="muted" text-anchor="middle">15k</text>
+<line x1="306.0" y1="84.0" x2="306.0" y2="241.0" class="grid"/>
+<text x="306.0" y="76.0" class="muted" text-anchor="middle">20k</text>
+<line x1="166.0" y1="241.0" x2="306.0" y2="241.0" class="axis"/>
+<text x="27.0" y="113.0" class="text">Native</text>
+<rect x="166.0" y="100.0" width="123.9" height="16.0" rx="2" class="bar native-fill"/>
+<text x="316.0" y="113.0" class="text">17.7 KB</text>
+<text x="27.0" y="151.0" class="text">Ponytail</text>
+<rect x="166.0" y="138.0" width="123.9" height="16.0" rx="2" class="bar ponytail-fill"/>
+<text x="316.0" y="151.0" class="text">17.7 KB</text>
+<text x="27.0" y="189.0" class="text">JevTO</text>
+<rect x="166.0" y="176.0" width="2.4" height="16.0" rx="2" class="bar jevto-fill"/>
+<text x="316.0" y="189.0" class="text">349 B</text>
+<text x="27.0" y="227.0" class="text">Ponytail + JevTO</text>
+<rect x="166.0" y="214.0" width="2.5" height="16.0" rx="2" class="bar combo-fill"/>
+<text x="316.0" y="227.0" class="text">358 B</text>
+<text x="26.0" y="279.0" class="muted">Holdout passed (valid runs):</text>
+<text x="26.0" y="298.0" class="text">Claude 0/12 · Codex 12/12</text>
+<text x="440.0" y="28.0" class="text heading">Session tokens per run</text>
+<text x="440.0" y="47.0" class="muted">Dots = runs · vertical tick = median</text>
+<text x="440.0" y="64.0" class="muted">Codex input includes cached tokens</text>
+<line x1="589.0" y1="91.0" x2="589.0" y2="333.0" class="grid"/>
+<text x="589.0" y="352.0" class="muted" text-anchor="middle">0</text>
+<line x1="676.0" y1="91.0" x2="676.0" y2="333.0" class="grid"/>
+<text x="676.0" y="352.0" class="muted" text-anchor="middle">100k</text>
+<line x1="763.0" y1="91.0" x2="763.0" y2="333.0" class="grid"/>
+<text x="763.0" y="352.0" class="muted" text-anchor="middle">200k</text>
+<line x1="850.0" y1="91.0" x2="850.0" y2="333.0" class="grid"/>
+<text x="850.0" y="352.0" class="muted" text-anchor="middle">300k</text>
+<line x1="589.0" y1="333.0" x2="850.0" y2="333.0" class="axis"/>
+<text x="440.0" y="87.0" class="text heading">Claude Code · Haiku 4.5</text>
+<text x="440.0" y="112.0" class="text">Native</text>
+<line x1="693.8" y1="100.0" x2="693.8" y2="116.0" class="native-stroke median"/>
+<g><title>Claude Code · Haiku 4.5, Native, run 1: 120,494 tokens; median 120,494 tokens; holdout failed</title><circle cx="693.8" cy="103.0" r="3.1" class="native-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Native, run 2: 177,078 tokens; median 120,494 tokens; holdout failed</title><circle cx="743.1" cy="108.0" r="3.1" class="native-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Native, run 3: 119,257 tokens; median 120,494 tokens; holdout failed</title><circle cx="692.8" cy="113.0" r="3.1" class="native-fill"/></g>
+<text x="440.0" y="135.0" class="text">Ponytail</text>
+<line x1="698.3" y1="123.0" x2="698.3" y2="139.0" class="ponytail-stroke median"/>
+<g><title>Claude Code · Haiku 4.5, Ponytail, run 1: 164,012 tokens; median 125,662 tokens; holdout failed</title><circle cx="731.7" cy="126.0" r="3.1" class="ponytail-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Ponytail, run 2: 122,748 tokens; median 125,662 tokens; holdout failed</title><circle cx="695.8" cy="131.0" r="3.1" class="ponytail-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Ponytail, run 3: 125,662 tokens; median 125,662 tokens; holdout failed</title><circle cx="698.3" cy="136.0" r="3.1" class="ponytail-fill"/></g>
+<text x="440.0" y="158.0" class="text">JevTO</text>
+<line x1="690.4" y1="146.0" x2="690.4" y2="162.0" class="jevto-stroke median"/>
+<g><title>Claude Code · Haiku 4.5, JevTO, run 1: 127,478 tokens; median 116,584 tokens; holdout failed</title><circle cx="699.9" cy="149.0" r="3.1" class="jevto-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, JevTO, run 2: 83,626 tokens; median 116,584 tokens; holdout failed</title><circle cx="661.8" cy="154.0" r="3.1" class="jevto-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, JevTO, run 3: 116,584 tokens; median 116,584 tokens; holdout failed</title><circle cx="690.4" cy="159.0" r="3.1" class="jevto-fill"/></g>
+<text x="440.0" y="181.0" class="text">Ponytail + JevTO</text>
+<line x1="682.8" y1="169.0" x2="682.8" y2="185.0" class="combo-stroke median"/>
+<g><title>Claude Code · Haiku 4.5, Ponytail + JevTO, run 1: 107,819 tokens; median 107,819 tokens; holdout failed</title><circle cx="682.8" cy="172.0" r="3.1" class="combo-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Ponytail + JevTO, run 2: 91,875 tokens; median 107,819 tokens; holdout failed</title><circle cx="668.9" cy="177.0" r="3.1" class="combo-fill"/></g>
+<g><title>Claude Code · Haiku 4.5, Ponytail + JevTO, run 3: 219,651 tokens; median 107,819 tokens; holdout failed</title><circle cx="780.1" cy="182.0" r="3.1" class="combo-fill"/></g>
+<text x="440.0" y="216.0" class="text heading">Codex CLI · gpt-6-sol</text>
+<text x="440.0" y="241.0" class="text">Native</text>
+<line x1="761.7" y1="229.0" x2="761.7" y2="245.0" class="native-stroke median"/>
+<g><title>Codex CLI · gpt-6-sol, Native, run 1: 145,649 tokens; median 198,520 tokens; holdout passed</title><circle cx="715.7" cy="232.0" r="3.1" class="native-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Native, run 2: 242,865 tokens; median 198,520 tokens; holdout passed</title><circle cx="800.3" cy="237.0" r="3.1" class="native-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Native, run 3: 198,520 tokens; median 198,520 tokens; holdout passed</title><circle cx="761.7" cy="242.0" r="3.1" class="native-fill"/></g>
+<text x="440.0" y="264.0" class="text">Ponytail</text>
+<line x1="775.4" y1="252.0" x2="775.4" y2="268.0" class="ponytail-stroke median"/>
+<g><title>Codex CLI · gpt-6-sol, Ponytail, run 1: 209,650 tokens; median 214,289 tokens; holdout passed</title><circle cx="771.4" cy="255.0" r="3.1" class="ponytail-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Ponytail, run 2: 284,823 tokens; median 214,289 tokens; holdout passed</title><circle cx="836.8" cy="260.0" r="3.1" class="ponytail-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Ponytail, run 3: 214,289 tokens; median 214,289 tokens; holdout passed</title><circle cx="775.4" cy="265.0" r="3.1" class="ponytail-fill"/></g>
+<text x="440.0" y="287.0" class="text">JevTO</text>
+<line x1="746.1" y1="275.0" x2="746.1" y2="291.0" class="jevto-stroke median"/>
+<g><title>Codex CLI · gpt-6-sol, JevTO, run 1: 134,807 tokens; median 180,533 tokens; holdout passed</title><circle cx="706.3" cy="278.0" r="3.1" class="jevto-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, JevTO, run 2: 180,533 tokens; median 180,533 tokens; holdout passed</title><circle cx="746.1" cy="283.0" r="3.1" class="jevto-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, JevTO, run 3: 194,240 tokens; median 180,533 tokens; holdout passed</title><circle cx="758.0" cy="288.0" r="3.1" class="jevto-fill"/></g>
+<text x="440.0" y="310.0" class="text">Ponytail + JevTO</text>
+<line x1="782.3" y1="298.0" x2="782.3" y2="314.0" class="combo-stroke median"/>
+<g><title>Codex CLI · gpt-6-sol, Ponytail + JevTO, run 1: 222,212 tokens; median 222,212 tokens; holdout passed</title><circle cx="782.3" cy="301.0" r="3.1" class="combo-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Ponytail + JevTO, run 2: 194,148 tokens; median 222,212 tokens; holdout passed</title><circle cx="757.9" cy="306.0" r="3.1" class="combo-fill"/></g>
+<g><title>Codex CLI · gpt-6-sol, Ponytail + JevTO, run 3: 273,777 tokens; median 222,212 tokens; holdout passed</title><circle cx="827.2" cy="311.0" r="3.1" class="combo-fill"/></g>
+<text x="26.0" y="374.0" class="muted">n = 3 per arm, one task. Indicative, not significant.</text>
+</svg>

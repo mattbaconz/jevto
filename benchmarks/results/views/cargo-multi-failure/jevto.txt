@@ -1,0 +1,28 @@
+jevto exit=101 omitted=414
+... 100 passing tests hidden [stdout-19-4019]
+test index_tests::nth_out_of_range ... FAILED
+... 100 passing tests hidden [stdout-4065-8265]
+test lookup_tests::lookup_missing_region ... FAILED
+... 200 passing tests hidden [stdout-8317-16117]
+test parse_tests::port_rejects_zero ... FAILED
+
+failures:
+
+---- index_tests::nth_out_of_range stdout ----
+
+thread 'index_tests::nth_out_of_range' (42492) panicked at src\lib.rs:2:42:
+index out of bounds: the len is 3 but the index is 5
+---- lookup_tests::lookup_missing_region stdout ----
+
+thread 'lookup_tests::lookup_missing_region' (28800) panicked at src\lib.rs:3:99:
+called `Option::unwrap()` on a `None` value
+
+---- parse_tests::port_rejects_zero stdout ----
+
+thread 'parse_tests::port_rejects_zero' (38596) panicked at src\lib.rs:108:38:
+assertion `left == right` failed: port 0 is reserved
+  left: Some(0)
+ right: None
+test result: FAILED. 400 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+error: test failed, to rerun pass `--lib`
+recall: `'<jevto>' recall 44fc970c` [--section ID]

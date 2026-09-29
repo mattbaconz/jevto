@@ -1,0 +1,9 @@
+jevto exit=0 omitted=221
+... 117 passing tests hidden [stderr-0-7137]
+test_cache_117 (test_cache.CacheTest.test_cache_117) ... warning: cache invalidated before flush; stale reads possible
+ok
+... 102 passing tests hidden [stderr-7261-13483]
+Ran 220 tests in 0.014s
+
+OK
+recall: `'<jevto>' recall bbc61650` [--section ID]

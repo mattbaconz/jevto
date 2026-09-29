@@ -1,0 +1,66 @@
+jevto exit=0 omitted=266
+diff --git a/src/auth/session.rs b/src/auth/session.rs
+index c396c02..cfdc1ba 100644
+--- a/src/auth/session.rs
++++ b/src/auth/session.rs
+@@ -1,5 +1,5 @@
+ pub fn expired(age: u64, max_age: u64) -> bool {
+-    if age > max_age {
++    if age >= max_age {
+         return true;
+     }
+     false
+diff --git a/src/handlers/h00.rs b/src/handlers/h00.rs
+index b3090fb..3cff7c7 100644
+--- a/src/handlers/h00.rs
++++ b/src/handlers/h00.rs
+@@ -1,7 +1,7 @@
+-use crate::util::fetch_config;
++use crate::util::load_settings;
+ 
+ pub fn handle_00() {
+-    let cfg = fetch_config();
+-    let retry = fetch_config().retries;
++    let cfg = load_settings();
++    let retry = load_settings().retries;
+     println!("{} {}", cfg.name, retry);
+ }
+diff --git a/src/handlers/h01.rs b/src/handlers/h01.rs
+... 14 lines repeating the same edit in more files hidden [stdout-779-1156]
+diff --git a/src/handlers/h02.rs b/src/handlers/h02.rs
+... 14 lines repeating the same edit in more files hidden [stdout-1211-1588]
+diff --git a/src/handlers/h03.rs b/src/handlers/h03.rs
+... 14 lines repeating the same edit in more files hidden [stdout-1643-2020]
+diff --git a/src/handlers/h04.rs b/src/handlers/h04.rs
+... 14 lines repeating the same edit in more files hidden [stdout-2075-2452]
+diff --git a/src/handlers/h05.rs b/src/handlers/h05.rs
+... 14 lines repeating the same edit in more files hidden [stdout-2507-2884]
+diff --git a/src/handlers/h06.rs b/src/handlers/h06.rs
+... 14 lines repeating the same edit in more files hidden [stdout-2939-3316]
+diff --git a/src/handlers/h07.rs b/src/handlers/h07.rs
+... 14 lines repeating the same edit in more files hidden [stdout-3371-3748]
+diff --git a/src/handlers/h08.rs b/src/handlers/h08.rs
+... 14 lines repeating the same edit in more files hidden [stdout-3803-4180]
+diff --git a/src/handlers/h09.rs b/src/handlers/h09.rs
+... 14 lines repeating the same edit in more files hidden [stdout-4235-4612]
+diff --git a/src/handlers/h10.rs b/src/handlers/h10.rs
+... 14 lines repeating the same edit in more files hidden [stdout-4667-5044]
+diff --git a/src/handlers/h11.rs b/src/handlers/h11.rs
+... 14 lines repeating the same edit in more files hidden [stdout-5099-5476]
+diff --git a/src/handlers/h12.rs b/src/handlers/h12.rs
+... 14 lines repeating the same edit in more files hidden [stdout-5531-5908]
+diff --git a/src/handlers/h13.rs b/src/handlers/h13.rs
+... 14 lines repeating the same edit in more files hidden [stdout-5963-6340]
+diff --git a/src/handlers/h14.rs b/src/handlers/h14.rs
+... 14 lines repeating the same edit in more files hidden [stdout-6395-6772]
+diff --git a/src/handlers/h15.rs b/src/handlers/h15.rs
+... 14 lines repeating the same edit in more files hidden [stdout-6827-7204]
+diff --git a/src/handlers/h16.rs b/src/handlers/h16.rs
+... 14 lines repeating the same edit in more files hidden [stdout-7259-7636]
+diff --git a/src/handlers/h17.rs b/src/handlers/h17.rs
+... 14 lines repeating the same edit in more files hidden [stdout-7691-8068]
+diff --git a/src/handlers/h18.rs b/src/handlers/h18.rs
+... 14 lines repeating the same edit in more files hidden [stdout-8123-8500]
+diff --git a/src/handlers/h19.rs b/src/handlers/h19.rs
+... 14 lines repeating the same edit in more files hidden [stdout-8555-8932]
+recall: `'<jevto>' recall a979bbbd` [--section ID]

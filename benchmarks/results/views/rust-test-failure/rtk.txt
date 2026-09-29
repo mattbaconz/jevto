@@ -1,0 +1,11 @@
+---- tests::parse_header_rejects_leading_space stdout ----
+
+thread 'tests::parse_header_rejects_leading_space' (37924) panicked at src\lib.rs:310:9:
+assertion `left == right` failed: leading space must be rejected
+  left: Some((" k", "v"))
+ right: None
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+test result: FAILED. 150 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+[full output: "$HOME/AppData/Local/rtk/tee/1790722607_cargo_test.log"]

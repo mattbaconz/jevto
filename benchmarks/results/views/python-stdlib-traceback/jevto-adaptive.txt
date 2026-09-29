@@ -1,0 +1,25 @@
+jevto exit=1 omitted=65
+... 60 passing tests hidden [stderr-0-3420]
+test_load_rejects_trailing_comma (test_config.ConfigTest.test_load_rejects_trailing_comma) ... ERROR
+ERROR: test_load_rejects_trailing_comma (test_config.ConfigTest.test_load_rejects_trailing_comma)
+Traceback (most recent call last):
+  File "<tmp>\jevto-bench-python-stdlib-traceback-60i0cjm6\work\test_config.py", line 188, in test_load_rejects_trailing_comma
+    self.assertEqual(load('{"retries": 3,}'), {'retries': 3})
+                     ~~~~^^^^^^^^^^^^^^^^^^^
+  File "<tmp>\jevto-bench-python-stdlib-traceback-60i0cjm6\work\config_loader.py", line 5, in load
+    return json.loads(text)
+           ~~~~~~~~~~^^^^^^
+  File "~\scoop\apps\python\current\Lib\json\__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "~\scoop\apps\python\current\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "~\scoop\apps\python\current\Lib\json\decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 1 column 14 (char 13)
+Ran 61 tests in 0.012s
+
+FAILED (errors=1)
+recall: `'<jevto>' recall 032806c9` [--section ID]

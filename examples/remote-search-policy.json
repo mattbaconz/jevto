@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "data_classification": "synthetic",
+  "allow_search_snippets": true,
+  "allowed_roots": [
+    "C:\\path\\to\\trusted\\workspace"
+  ]
+}
