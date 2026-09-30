@@ -8,8 +8,20 @@ permissions:
   contents: write
 
 jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 ||
+            gh release create "$GITHUB_REF_NAME" --draft --title "JevTO $GITHUB_REF_NAME" --notes-file CHANGELOG.md
+
   build:
     name: build (${{ matrix.target }})
+    needs: draft
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -17,7 +29,7 @@ jobs:
         include:
           - { os: ubuntu-latest, target: x86_64-unknown-linux-gnu, exe: jevto }
           - { os: macos-latest, target: aarch64-apple-darwin, exe: jevto }
-          - { os: macos-13, target: x86_64-apple-darwin, exe: jevto }
+          - { os: macos-latest, target: x86_64-apple-darwin, exe: jevto }
           - { os: windows-latest, target: x86_64-pc-windows-msvc, exe: jevto.exe }
     steps:
       - uses: actions/checkout@v4
@@ -26,34 +38,22 @@ jobs:
           targets: ${{ matrix.target }}
       - name: Build
         run: cargo build --release --locked -p jevto --target ${{ matrix.target }}
-      - name: Package
+      # Assets go straight to the draft release (no workflow artifacts).
+      - name: Package and upload
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           name="jevto-${GITHUB_REF_NAME}-${{ matrix.target }}"
           mkdir "$name"
           cp "target/${{ matrix.target }}/release/${{ matrix.exe }}" README.md LICENSE CHANGELOG.md "$name/"
           if [ "${{ runner.os }}" = "Windows" ]; then
-            7z a "$name.zip" "$name" > /dev/null
+            archive="$name.zip"
+            7z a "$archive" "$name" > /dev/null
+            sha256sum "$archive" > "$archive.sha256"
           else
-            tar czf "$name.tar.gz" "$name"
+            archive="$name.tar.gz"
+            tar czf "$archive" "$name"
+            shasum -a 256 "$archive" > "$archive.sha256"
           fi
-      - uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.target }}
-          path: jevto-*.*
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with:
-          path: dist
-          merge-multiple: true
-      - name: Checksums
-        run: cd dist && sha256sum jevto-* > SHA256SUMS
-      - name: Draft release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" dist/* --draft --title "JevTO $GITHUB_REF_NAME" --notes-file CHANGELOG.md
+          gh release upload "$GITHUB_REF_NAME" "$archive" "$archive.sha256" --clobber
