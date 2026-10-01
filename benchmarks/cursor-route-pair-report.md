@@ -1,6 +1,6 @@
 # Cursor explicit-command route and one-command pair — 2026-09-28 local time
 
-These are bounded **pilot** observations on staged Cursor CLI `2026.09.23-86fc751`, requested model ID `grok-4.7-xhigh`, and reported label `Grok 4.7 256K Extra High`. No Fast or substitute model was used. Both turns used `--force --trust --sandbox disabled` on Windows and fresh disposable workspaces with all seven project MCP servers disabled. Those settings are part of the observation, not a general permission claim. The JevTO executable was `D:\jevto\.tooling\bin\jevto-0.1.0-c560828114fc.exe`, SHA256 `c560828114fc10a13585c821872a02a7c59ed8bde8419c31f968a82a070e5e56`.
+These are bounded **pilot** observations on staged Cursor CLI `2026.09.23-86fc751`, requested model ID `grok-4.7-xhigh`, and reported label `Grok 4.7 256K Extra High`. No Fast or substitute model was used. Both turns used `--force --trust --sandbox disabled` on Windows and fresh disposable workspaces with all seven project MCP servers disabled. Those settings are part of the observation, not a general permission claim. The JevTO executable was `<workdir>\bin\jevto-0.1.0-c560828114fc.exe`, SHA256 `c560828114fc10a13585c821872a02a7c59ed8bde8419c31f968a82a070e5e56`.
 
 ## Route diagnostic and correction
 

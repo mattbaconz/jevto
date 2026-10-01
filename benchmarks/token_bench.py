@@ -35,6 +35,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from receipt_accounting import summarize as summarize_jev
 
 ROOT = Path(__file__).resolve().parents[1]
 CACHE_DIR = ROOT / "benchmarks" / "jev-cache"
@@ -415,16 +416,10 @@ def harvest_cache(store: Path) -> int:
 
 
 def receipt_jev(store: Path) -> dict:
-    info = {"calls": 0, "cache_hits": 0, "cost_usd": 0.0, "input_tokens": 0, "fallback": None, "decision": None, "request": None}
-    for path in (store / "receipts").glob("*.json"):
-        receipt = json.loads(path.read_text(encoding="utf-8"))
-        usage = receipt.get("jev_usage")
-        if usage:
-            info["calls"] += 1
-            info["cost_usd"] += usage.get("billed_cost") or 0.0
-            info["input_tokens"] += usage.get("total_input_tokens") or 0
-        if receipt.get("jev_cache_hit"):
-            info["cache_hits"] += 1
+    receipts = [json.loads(path.read_text(encoding="utf-8")) for path in sorted((store / "receipts").glob("*.json"))]
+    info = summarize_jev(receipts)
+    info.update(fallback=None, decision=None, request=None)
+    for receipt in receipts:
         info["fallback"] = receipt.get("adaptive_fallback") or info["fallback"]
         info["decision"] = receipt.get("jev_decision") or info["decision"]
         info["request"] = receipt.get("jev_request") or info["request"]
@@ -639,8 +634,8 @@ def render_markdown(results: list[dict], meta: dict) -> str:
         "What JevTO would send to Jev for each scenario, measured before any network call. Long-output candidates are sent as line-shape digests "
         "(rare lines verbatim, repeats counted), so a 200 KB log becomes a small request. Cost uses $0.042 per million input tokens (bytes/4).",
         "",
-        "| Scenario | Kind | Candidates | Request | Est. cost per decision | Calls | Outcome |",
-        "| --- | --- | ---: | ---: | ---: | ---: | --- |",
+        "| Scenario | Kind | Candidates | Request | Est. cost per decision | Attempts / success / failed / cached | Known cost (complete?) | Outcome |",
+        "| --- | --- | ---: | ---: | ---: | --- | --- | --- |",
     ]
     for record in ran:
         data = record["arms"].get("jevto-adaptive")
@@ -654,10 +649,13 @@ def render_markdown(results: list[dict], meta: dict) -> str:
         outcome = f"kept {decision.get('kept')}/{decision.get('candidates')}, need {decision.get('need', 0):.1f}" if decision else (jev.get("fallback") or "")
         lines.append(
             f"| {record['name']} | {request.get('kind', '')} | {request.get('candidates', '')} | "
-            f"{f'{size / 1024:.1f} KB' if size else ''} | {cost} | {jev.get('calls', 0)} | {outcome} |"
+            f"{f'{size / 1024:.1f} KB' if size else ''} | {cost} | "
+            f"{jev.get('attempted_calls', '?')} / {jev.get('successful_calls', '?')} / {jev.get('failed_calls', '?')} / {jev.get('cache_hits', '?')} | "
+            f"${jev.get('cost_usd', 0):.6f} (complete: {jev.get('cost_complete', 'unknown')}) | {outcome} |"
         )
     lines += [
         "",
+        "Request outcomes and optimization fallbacks are independent. A valid no-evidence response is successful and may be billed. Cached responses incur no new usage. Legacy records without attempt/outcome evidence remain unknown; known cost is not necessarily total cost.",
         "`missing_jev_key` means the request was prepared and sized but not sent. `no_rankable_sections` / `no_reducible_sections` mean the "
         "deterministic view already had nothing left to rank, so Jev is never called.",
         "",

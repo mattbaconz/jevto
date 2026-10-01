@@ -1,3 +1,4 @@
+mod accounting;
 mod bounded_output;
 mod claude_auto;
 mod claude_hook;
@@ -54,12 +55,18 @@ enum ModeArg {
 
 impl From<ModeArg> for Mode {
     fn from(value: ModeArg) -> Self {
-        match value {
+        value.resolve(jev_key_present())
+    }
+}
+
+impl ModeArg {
+    fn resolve(self, key_present: bool) -> Mode {
+        match self {
             ModeArg::Passthrough => Mode::Passthrough,
             ModeArg::Deterministic => Mode::Deterministic,
             ModeArg::Adaptive => Mode::Adaptive,
             ModeArg::Auto => {
-                if jev_key_present() {
+                if key_present {
                     Mode::Adaptive
                 } else {
                     Mode::Deterministic
@@ -67,6 +74,26 @@ impl From<ModeArg> for Mode {
             }
         }
     }
+}
+
+fn mode_diagnostics() -> Result<serde_json::Value, Box<dyn std::error::Error>> {
+    let override_mode = std::env::var("JEVTO_MODE").ok();
+    let configured = match override_mode.as_deref() {
+        Some(value) => ModeArg::from_str(value, false).map_err(|_| {
+            "invalid JEVTO_MODE: expected passthrough, deterministic/rules, adaptive/jev, or auto"
+        })?,
+        None => ModeArg::Auto,
+    };
+    let key_present = jev_key_present();
+    let effective = configured.resolve(key_present);
+    Ok(json!({
+        "default_mode": "auto",
+        "configured_mode": configured.to_possible_value().expect("mode value").get_name(),
+        "mode_source": if override_mode.is_some() { "JEVTO_MODE" } else { "built_in_default" },
+        "effective_mode": effective,
+        "network_default": if effective == Mode::Adaptive && key_present { "conditional" } else { "off" },
+        "network_requirements": "A run needs a goal, rankable material, and an allowed outbound policy. Auto with a key uses the workspace policy; explicit adaptive also needs remote authorization and a policy. Per-run --mode overrides this diagnosis. Doctor sends no request."
+    }))
 }
 
 /// Auto mode turns full Jev on only when a key is present at runtime. The
@@ -494,6 +521,7 @@ fn dispatch(
                         }
                     }
                     let mut extra = serde_json::Map::new();
+                    extra.insert("jev_call_outcome".into(), json!("not_attempted"));
                     extra.insert("workspace_id".into(), json!(workspace_id));
                     extra.insert("child_exit".into(), json!(status.code()));
                     if let Some(frame) = &task {
@@ -566,7 +594,7 @@ fn dispatch(
             let mut adaptive_selection: Option<AdaptiveSelection> = None;
             let mut jev_usage = None;
             let mut jev_elapsed_ms = None;
-            let mut jev_call_attempted = false;
+            let mut jev_observation = jev::CallObservation::default();
             let mut jev_cache_hit = false;
             let mut jev_model = None;
             let mut jev_exists = None;
@@ -624,10 +652,13 @@ fn dispatch(
                     }
                     Ok(prepared) => {
                         let key = std::env::var("OPENROUTER_API_KEY").ok();
-                        jev_call_attempted =
-                            key.is_some() && !prepared.has_cache_candidate(&store.root);
                         let started = Instant::now();
-                        match jev::decide_cached(&prepared, key.as_deref(), &store.root) {
+                        match jev::decide_cached_observed(
+                            &prepared,
+                            key.as_deref(),
+                            &store.root,
+                            &mut jev_observation,
+                        ) {
                             Ok(decision) => {
                                 jev_detail = Some(json!({
                                     "kind": decision.kind.as_str(),
@@ -642,6 +673,10 @@ fn dispatch(
                                 jev_exists = Some(decision.exists);
                             }
                             Err(reason) => adaptive_fallback = Some(reason.to_owned()),
+                        }
+                        // Usage remains observed even when selection or a cache write fails.
+                        if jev_observation.usage.is_some() {
+                            jev_usage = jev_observation.usage.clone();
                         }
                         jev_elapsed_ms =
                             Some(started.elapsed().as_millis().min(u64::MAX as u128) as u64);
@@ -734,7 +769,8 @@ fn dispatch(
             if let Some(elapsed) = jev_elapsed_ms {
                 extra.insert("jev_elapsed_ms".into(), json!(elapsed));
             }
-            if jev_call_attempted {
+            extra.insert("jev_call_outcome".into(), json!(jev_observation.outcome));
+            if jev_observation.attempted {
                 extra.insert("jev_call_attempted".into(), json!(true));
             }
             if jev_cache_hit {
@@ -913,31 +949,28 @@ fn dispatch(
                             .and_then(|value| value.as_u64())
                     })
                     .sum();
-                let jev_attempts = receipts
-                    .iter()
-                    .filter(|r| {
-                        r.extra
-                            .get("jev_call_attempted")
-                            .and_then(|value| value.as_bool())
-                            == Some(true)
-                    })
-                    .count();
-                let priced_calls = receipts
-                    .iter()
-                    .filter_map(|r| r.jev_usage.as_ref().and_then(|usage| usage.billed_cost))
-                    .collect::<Vec<_>>();
-                let jev_reported_cost = priced_calls.iter().fold(0.0, |sum, cost| sum + *cost);
-                let cost_display = if jev_attempts == 0 {
+                let observed = accounting::summarize(&receipts);
+                let jev_attempts = observed["attempted_calls"].as_u64().unwrap_or(0);
+                let unknown = observed["unknown_outcomes"].as_u64().unwrap_or(0);
+                let unpriced = observed["unpriced_attempts"].as_u64().unwrap_or(0);
+                let jev_reported_cost = observed["reported_cost_usd"].as_f64().unwrap_or(0.0);
+                let cost_display = if jev_attempts == 0 && unknown == 0 {
                     "none (no Jev calls)".to_owned()
-                } else if priced_calls.is_empty() {
+                } else if unpriced == jev_attempts && unknown == 0 {
                     "unknown (no priced response)".to_owned()
                 } else {
                     format!(
-                        "${jev_reported_cost:.8} for {} priced response(s); {} attempt(s) unpriced",
-                        priced_calls.len(),
-                        jev_attempts.saturating_sub(priced_calls.len())
+                        "${jev_reported_cost:.8} known; {unpriced} attempt(s) unpriced; {unknown} outcome(s) unknown"
                     )
                 };
+                println!(
+                    "Jev outcomes: {} successful, {} failed, {} cached, {} unknown; fallbacks: {}",
+                    observed["successful_calls"],
+                    observed["failed_calls"],
+                    observed["cache_hits"],
+                    unknown,
+                    observed["fallbacks"]
+                );
                 println!("session: {session}\nobserved routed results: {}\nlocal raw bytes: {raw}\nlocal selected bytes: {delivered}\nrecalls: {recalls}\nrecalled bytes: {recalled_bytes}\nJev calls attempted: {jev_attempts}\nJev response-reported cost: {cost_display}\ncoding-provider usage: unknown\ncoding-provider bill: unknown\nverified task outcome: unknown", receipts.len());
                 for receipt in receipts {
                     for coverage in receipt.coverage {
@@ -954,6 +987,7 @@ fn dispatch(
             Ok(0)
         }
         Commands::Doctor { json } => {
+            let mode_diagnostics = mode_diagnostics()?;
             let health = store
                 .initialize()
                 .map(|_| "writable")
@@ -964,8 +998,8 @@ fn dispatch(
                 .map(|item| format!("{}={}", item.host, item.state))
                 .collect::<Vec<_>>()
                 .join(", ");
-            let value = json!({
-                "version": env!("CARGO_PKG_VERSION"), "default_mode": "deterministic", "network_default": "off",
+            let mut value = json!({
+                "version": env!("CARGO_PKG_VERSION"),
                 "store": {"path": store.root, "health": health, "retention_hours": store.retention_hours, "max_bytes": store.max_bytes, "run_capture_limit_bytes": bounded_output::capture_limit(store.max_bytes)},
                 "host_registrations": registrations,
                 "paths": [
@@ -990,10 +1024,23 @@ fn dispatch(
                 "deterministic_formats":["test_inventories: rust libtest, go test -v, python unittest -v, pytest -v, node:test, jest/vitest, TAP","runner_boilerplate","successful_cargo_progress","repeated_and_similar_lines","terminal_progress_redraws","lockfile_and_minified_diffs","long_output_head_tail_facts_goal_terms_and_rare_lines","consecutive_repeated_rg_matches"],
                 "output_formats":["compact","verbose"]
             });
+            value
+                .as_object_mut()
+                .expect("doctor object")
+                .extend(mode_diagnostics.as_object().expect("mode object").clone());
             if json {
                 println!("{}", serde_json::to_string_pretty(&value)?);
             } else {
-                println!("JevTO {}\nmode: deterministic (no network)\nstore: {} ({health})\nMCP registrations (config only): {registration_summary}\ncoverage: explicit jevto run; three non-executing MCP tools model-driven on Codex 0.158 with scoped grants; Cursor 2026.09.23 model-driven MCP status on exact Grok 4.7 xhigh under force mode; Cursor 2026.09.26 passing and failing exact verifier project-rule turns on xhigh under force mode; Codex 0.144.4 narrow success post-hook; Codex 0.158 Windows PowerShell pre-hook for plain cargo test/check/build and simple rg searches after project trust; Claude 2.1.283 project PostToolUse replacement observed for one Bash search, with post-fix Grep replacement proven by exact-event replay. Native Grep delivery after the parser fix, Cursor recall/review, native Cursor shell interception, and broader host coverage remain unverified; Claude 2.1.283 project PreToolUse auto-route (init-claude-auto) observed in six live sessions\nadaptive Jev: opt-in OpenRouter Choice + Noul + Score over search, diff, and long-output sections; opt-in Noul + Score diff scope review", env!("CARGO_PKG_VERSION"), store.root.display());
+                let configured_mode = mode_diagnostics["configured_mode"]
+                    .as_str()
+                    .unwrap_or("unknown");
+                let effective_mode = mode_diagnostics["effective_mode"]
+                    .as_str()
+                    .unwrap_or("unknown");
+                let network_default = mode_diagnostics["network_default"]
+                    .as_str()
+                    .unwrap_or("unknown");
+                println!("JevTO {}\nmode: {configured_mode} -> {effective_mode}\nnetwork: {network_default}; run prerequisites apply (doctor sends no requests)\nstore: {} ({health})\nMCP registrations (config only): {registration_summary}\ncoverage: explicit jevto run; three non-executing MCP tools model-driven on Codex 0.158 with scoped grants; Cursor 2026.09.23 model-driven MCP status on exact Grok 4.7 xhigh under force mode; Cursor 2026.09.26 passing and failing exact verifier project-rule turns on xhigh under force mode; Codex 0.144.4 narrow success post-hook; Codex 0.158 Windows PowerShell pre-hook for plain cargo test/check/build and simple rg searches after project trust; Claude 2.1.283 project PostToolUse replacement observed for one Bash search, with post-fix Grep replacement proven by exact-event replay. Native Grep delivery after the parser fix, Cursor recall/review, native Cursor shell interception, and broader host coverage remain unverified; Claude 2.1.283 project PreToolUse auto-route (init-claude-auto) observed in six live sessions\nadaptive Jev: auto with a key; explicit adaptive requires authorization and policy; OpenRouter Choice + Noul + Score over search, diff, and long-output sections; opt-in Noul + Score diff scope review", env!("CARGO_PKG_VERSION"), store.root.display());
             }
             Ok(0)
         }

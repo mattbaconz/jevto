@@ -1,5 +1,11 @@
 # Benchmarks
 
+## Fresh task preparation and request accounting
+
+The new [six-task offline preparation](fresh-tasks.md) freezes visible workspaces separately from hidden evaluators and control solutions. It launches no coding agent or provider request. Isolation and paid-run approval remain pending; fixture control passes are not agent benchmark results.
+
+Current payload summaries distinguish attempted, successful, failed, cached, and unknown Jev outcomes, fallback reasons, and cost completeness. Historical saved reports retain their original measurements and may undercount failed or no-evidence requests. Do not infer zero cost from missing usage.
+
 ## Payload benchmark (`token_bench.py`)
 
 `python benchmarks/token_bench.py` builds 23 realistic workspaces from scratch in three suites: **dev** (11 scenarios the rules were tuned on), **holdout** (9, written after the rules froze, in [`holdout_scenarios.py`](holdout_scenarios.py) with a run log), and **semantic** (3 vocabulary-mismatch cases where only Jev ranking can help). It covers Rust, Go, Python unittest, node:test, tsc, service and JSON logs, ripgrep, lockfile, refactor and multi-file diffs, and `git log`, and runs each command four ways, each chosen by that tool's own Claude Code hook: native, RTK (`rtk hook claude`), JevTO deterministic (`jevto hook claude-pre` with the goal recorded by `jevto hook claude-prompt`), and JevTO adaptive with Jev. It records bytes, bytes/4 token estimates, exit parity, **answerability** (required facts visible without a recall), **effective tokens** (a missed fact is charged the native payload), and the size and cost of the Jev request the adaptive arm would send. Views for every arm are saved under `results/views/` for audit. Results: [`results/token-bench.md`](results/token-bench.md).
@@ -78,7 +84,7 @@ Each invocation writes a new ignored `.bench-runs/pilot-injected-*` directory wi
 For another bounded headless attempt, `pilot.py` accepts `--cursor-cli` and `--jevto` paths, pins the exact model, disables project MCP servers in each disposable checkout, records Cursor's terminal usage fields when present, and stops after an invalid arm. Its current tested command was:
 
 ```powershell
-python benchmarks\pilot.py --cursor-cli D:\jevto\.tooling\cursor-agent-2026.09.23\dist-package\cursor-agent.ps1 --jevto D:\jevto\.tooling\bin\jevto-0.1.0-aac1ba3e26c4.exe --max-runs 2 --timeout-seconds 180
+python benchmarks\pilot.py --cursor-cli <workdir>\cursor-agent-2026.09.23\dist-package\cursor-agent.ps1 --jevto <workdir>\bin\jevto-0.1.0-aac1ba3e26c4.exe --max-runs 2 --timeout-seconds 180
 ```
 
 Those paths name the local test installation, not distribution paths. A completed model turn and a verified final candidate are required before comparing arms; the JevTO arm also needs an actual wrapper receipt.

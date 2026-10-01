@@ -8,7 +8,7 @@ license = "Apache-2.0"
 rust-version = "1.82"
 repository = "https://github.com/mattbaconz/jevto"
 homepage = "https://github.com/mattbaconz/jevto"
-version = "0.1.0"
+version = "0.1.1"
 
 [workspace.dependencies]
 base64 = "0.22"

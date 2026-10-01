@@ -1,12 +1,12 @@
 # Cursor exact-command MCP route — 2026-09-28 local time
 
-This is a bounded, disposable host check, not a paired token benchmark. Cursor CLI `2026.09.23-86fc751` requested the exact model ID `grok-4.7-xhigh` and reported `Grok 4.7 256K Extra High` in both completed turns. No Fast or substitute model, OpenRouter Jev call, or provider bill was involved. The JevTO executable was `D:\jevto\.tooling\bin\jevto-0.1.0-c560828114fc.exe`, SHA256 `c560828114fc10a13585c821872a02a7c59ed8bde8419c31f968a82a070e5e56`.
+This is a bounded, disposable host check, not a paired token benchmark. Cursor CLI `2026.09.23-86fc751` requested the exact model ID `grok-4.7-xhigh` and reported `Grok 4.7 256K Extra High` in both completed turns. No Fast or substitute model, OpenRouter Jev call, or provider bill was involved. The JevTO executable was `<workdir>\bin\jevto-0.1.0-c560828114fc.exe`, SHA256 `c560828114fc10a13585c821872a02a7c59ed8bde8419c31f968a82a070e5e56`.
 
 ## Route and permission
 
 Each run had a new disposable workspace, store, and project `.cursor/mcp.json`. The separate `jevto_exec` server used `jevto mcp --run-policy` with a policy outside the workspace. Its sole `inventory` command fixed the absolute Python executable and exact `verify_inventory.py` argument; the model could supply only the command ID. The seven normal user MCP servers were disabled **for these workspaces**. Before targeted approval, the first project listed `jevto_exec: not loaded (needs approval)`. `cursor-agent mcp enable jevto_exec` made it ready. The model calls used `--force --trust --sandbox disabled` on Windows, so this does not establish behavior without force or a host sandbox. The child runs with the MCP process's permissions. Do not treat the command policy as a shell sandbox.
 
-Both model turns looked up the tool schema, called `jevto_run` once with `{"command_id":"inventory"}`, received its text result, and completed with one successful Cursor terminal result. The normal user MCP registration remained the three non-executing tools; `jevto_exec` appeared only in these project files. Afterward, `cursor-agent mcp disable jevto_exec` left it disabled in both projects, and the normal `D:\jevto` workspace listed only its pre-existing user servers, including `jevto: ready`.
+Both model turns looked up the tool schema, called `jevto_run` once with `{"command_id":"inventory"}`, received its text result, and completed with one successful Cursor terminal result. The normal user MCP registration remained the three non-executing tools; `jevto_exec` appeared only in these project files. Afterward, `cursor-agent mcp disable jevto_exec` left it disabled in both projects, and the normal `<workspace>` workspace listed only its pre-existing user servers, including `jevto: ready`.
 
 | Observation | Passing fixture | Failing fixture |
 | --- | ---: | ---: |
@@ -33,7 +33,7 @@ The exact-command runner has no per-command timeout. A granted MCP child may mut
 
 ## Installer-based model retest — 2026-09-28 local time
 
-The revised `cursor_mcp_run_probe.py` used `init-cursor-runner --apply` with release `D:\jevto\.tooling\bin\jevto-0.1.0-bee26c2ee809.exe` (SHA256 `bee26c2ee80921121ef644c5d17f5fb52cdc2b7a41bc2e8a6b10cc312398a2e0`). The generated project entry pinned the external policy SHA-256. Cursor CLI `2026.09.23-86fc751` listed exact `grok-4.7-xhigh` separately from its Fast variant, explicitly enabled `jevto_exec` for each disposable project, and reported `Grok 4.7 256K Extra High` in both completed model turns. The project server was disabled through Cursor and removed with `disable-cursor-runner --apply` after each run. The normal user registration still listed only recall, review, and status; no `jevto_exec` remained in the global server list.
+The revised `cursor_mcp_run_probe.py` used `init-cursor-runner --apply` with release `<workdir>\bin\jevto-0.1.0-bee26c2ee809.exe` (SHA256 `bee26c2ee80921121ef644c5d17f5fb52cdc2b7a41bc2e8a6b10cc312398a2e0`). The generated project entry pinned the external policy SHA-256. Cursor CLI `2026.09.23-86fc751` listed exact `grok-4.7-xhigh` separately from its Fast variant, explicitly enabled `jevto_exec` for each disposable project, and reported `Grok 4.7 256K Extra High` in both completed model turns. The project server was disabled through Cursor and removed with `disable-cursor-runner --apply` after each run. The normal user registration still listed only recall, review, and status; no `jevto_exec` remained in the global server list.
 
 | Observation | Passing fixture | Failing fixture |
 | --- | ---: | ---: |

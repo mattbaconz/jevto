@@ -16,7 +16,7 @@ Agent run `cargo test`. Terminal throw 173 line at agent. 150 line say `ok`. Age
 
 <p align="center"><img src="assets/demo/jevto-demo.gif" alt="Terminal demo: native cargo test prints 173 lines; jevto run shows the failing test, the assertion, and a recall handle; jevto recall returns hidden lines byte for byte" width="100%"></p>
 
-> **Status:** experimental, unreleased source. Apache-2.0. Not made by TypeSafe AI or RTK.
+> **Status:** experimental (v0.1.1). Apache-2.0. Not made by TypeSafe AI or RTK.
 
 ## 🪨 Before, after
 
@@ -112,7 +112,7 @@ Same small parser task, 3 runs per arm, fresh repo each time. [Ponytail](https:/
 | JevTO | **349 B** | **$0.045 (−25%)** | **17,973 (−31%)** | 13 |
 | Ponytail + JevTO | 358 B | $0.051 | 23,153 (−11%) | 11 |
 
-JevTO alone cheapest arm on both harnesses, same outcomes (all 24 sessions valid). n = 3, one task: hint, not proof. Smaller output not always smaller bill ([Token Reduction Is Not Cost Reduction](https://arxiv.org/abs/2607.12161)). Reports: [Claude](benchmarks/results/claude-ponytail/report.md), [Codex](benchmarks/results/codex-ponytail/report.md), [older pilots](docs/EVIDENCE.md).
+JevTO alone had the lowest estimated cost on Claude and lowest uncached input on Codex in this pilot. All 24 sessions were valid harness runs, but quality differed by host: Claude passed **0/12 hidden holdouts** across all arms; Codex passed **12/12**. The hosts ran different models (Claude: Haiku 4.5; Codex: gpt-6-sol), and every Claude arm, native included, accepted `"1h  30m"` despite the prompt's single-space rule, so the gap tracks the model, not JevTO. Equal failures are not successful outcomes or evidence of quality equivalence. n = 3, one task: exploratory evidence only. Smaller output not always smaller bill ([Token Reduction Is Not Cost Reduction](https://arxiv.org/abs/2607.12161)). Reports: [Claude](benchmarks/results/claude-ponytail/report.md), [Codex](benchmarks/results/codex-ponytail/report.md), [older pilots](docs/EVIDENCE.md).
 
 <details><summary>Session chart</summary>
 <p align="center"><img src="site/assets/charts/sessions.svg" alt="Test output read per run, and session tokens per run for each arm on Claude Code and Codex" width="100%"></p>
@@ -120,8 +120,10 @@ JevTO alone cheapest arm on both harnesses, same outcomes (all 24 sessions valid
 
 ## 🔥 Install
 
+Grab a prebuilt binary (Linux x86_64, macOS arm64/x86_64, Windows x86_64, each with a `.sha256`) from [Releases](https://github.com/mattbaconz/jevto/releases) and put `jevto` on your `PATH`. Or build it (Rust 1.82+):
+
 ```sh
-cargo install --path crates/jevto-cli
+cargo install --git https://github.com/mattbaconz/jevto jevto
 jevto doctor
 ```
 
@@ -195,6 +197,10 @@ flowchart LR
 Long output go to Jev as **shape digest**: each line shape once, real text, with count of look-alikes. Rare line deep in noise survive; clipping would cut it. 208 KB log → 12 KB request → about $0.00013 per decision.
 
 **Full Jev (v0): key in, Jev on.** Set `OPENROUTER_API_KEY` and JevTO use Jev on every run that has a goal: no flag, no policy file. Scope is current workspace only. Want rules only? `JEVTO_MODE=rules`. Want tight control? Explicit `--mode adaptive` with an outbound [policy file](examples/remote-policy.json) and `--allow-remote-jev` still work.
+
+`jevto doctor --json` reports the built-in `auto` default, any `JEVTO_MODE` override, effective mode, and conditional network eligibility. It sends no request and displays no key. Eligibility is not a promise that a particular run will call Jev: goal, rankable output, policy, cache, and per-run flags still matter.
+
+New receipts distinguish attempted, successful, failed, and cached Jev requests. `gain`, text `report`, and the payload benchmark count fallback reasons separately: a valid "no relevant evidence" answer can be a successful request and still fall back to rules. Missing provider usage or cost remains unknown, including transport failures. Known response-reported cost is not a complete bill. Historical reports have not been rerun with this accounting. See [accounting and fresh task preparation](benchmarks/fresh-tasks.md).
 
 What leave your machine: the session goal plus shape digests or snippets of the one output being ranked, capped at 64 KiB. Secret-looking goals or sections never sent. 8-second timeout, no retry, cached by content. Jev say "nothing here help" or anything fail? Fall back to rules, receipt say why.
 

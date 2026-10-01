@@ -38,3 +38,7 @@ jobs:
         run: python tests/claude_auto_smoke.py
       - name: MCP runner smoke
         run: python tests/mcp_run_smoke.py
+      - name: Request accounting smoke (offline)
+        run: python tests/accounting_smoke.py
+      - name: Fresh task controls (offline)
+        run: python tests/fresh_tasks_smoke.py

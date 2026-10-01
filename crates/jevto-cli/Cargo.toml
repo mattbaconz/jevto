@@ -12,7 +12,7 @@ keywords = ["llm", "coding-agent", "tokens", "claude-code", "cli"]
 categories = ["command-line-utilities", "development-tools"]
 
 [dependencies]
-jevto-core = { path = "../jevto-core", version = "0.1.0" }
+jevto-core = { path = "../jevto-core", version = "0.1.1" }
 base64.workspace = true
 chrono.workspace = true
 clap.workspace = true

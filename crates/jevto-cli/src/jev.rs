@@ -81,6 +81,24 @@ pub struct Decision {
     pub cache_hit: bool,
 }
 
+/// Observations survive a selection/cache error. They describe this request,
+/// never a cached response's historical bill.
+pub struct CallObservation {
+    pub attempted: bool,
+    pub outcome: &'static str,
+    pub usage: Option<ObservedUsage>,
+}
+
+impl Default for CallObservation {
+    fn default() -> Self {
+        Self {
+            attempted: false,
+            outcome: "not_attempted",
+            usage: None,
+        }
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Candidate {
     id: String,
@@ -498,10 +516,6 @@ impl Prepared {
             .join(format!("{}.json", self.cache_key))
     }
 
-    pub fn has_cache_candidate(&self, cache_root: &Path) -> bool {
-        self.cache_path(cache_root).is_file()
-    }
-
     fn selection(&self, kept_ids: &[String]) -> AdaptiveSelection {
         let mut selection = AdaptiveSelection {
             stdout_ranges: Vec::new(),
@@ -523,23 +537,35 @@ impl Prepared {
 
 /// Uses a validated local cache entry when present; otherwise makes at most
 /// one request. A key is only required on a cache miss.
-pub fn decide_cached(
+#[cfg(test)]
+fn decide_cached(
     prepared: &Prepared,
     key: Option<&str>,
     cache_root: &Path,
+) -> Result<Decision, &'static str> {
+    decide_cached_observed(prepared, key, cache_root, &mut CallObservation::default())
+}
+
+pub fn decide_cached_observed(
+    prepared: &Prepared,
+    key: Option<&str>,
+    cache_root: &Path,
+    observation: &mut CallObservation,
 ) -> Result<Decision, &'static str> {
     let path = prepared.cache_path(cache_root);
     match fs::read(&path) {
         Ok(bytes) => {
             let cached: CachedDecision =
                 serde_json::from_slice(&bytes).map_err(|_| "jev_cache_invalid")?;
-            return decision_from_cache(prepared, cached);
+            let decision = decision_from_cache(prepared, cached)?;
+            observation.outcome = "cache_hit";
+            return Ok(decision);
         }
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
         Err(_) => return Err("jev_cache_unreadable"),
     }
     let key = key.ok_or("missing_jev_key")?;
-    let (decision, kept_ids) = decide_at(prepared, key, &endpoint())?;
+    let (decision, kept_ids) = decide_at_observed(prepared, key, &endpoint(), observation)?;
     let cached = CachedDecision {
         schema_version: 2,
         model: decision.model.clone(),
@@ -616,10 +642,21 @@ fn decision_from_cache(
 }
 
 fn post(body: &Value, key: &str, endpoint: &str) -> Result<Value, &'static str> {
+    post_observed(body, key, endpoint, &mut CallObservation::default())
+}
+
+fn post_observed(
+    body: &Value,
+    key: &str,
+    endpoint: &str,
+    observation: &mut CallObservation,
+) -> Result<Value, &'static str> {
     if key.trim().is_empty() {
         return Err("missing_jev_key");
     }
     let agent = ureq::AgentBuilder::new().timeout(JEV_TIMEOUT).build();
+    observation.attempted = true;
+    observation.outcome = "failed";
     let response = agent
         .post(endpoint)
         .set("Authorization", &format!("Bearer {key}"))
@@ -638,13 +675,34 @@ fn post(body: &Value, key: &str, endpoint: &str) -> Result<Value, &'static str> 
     serde_json::from_slice(&bytes).map_err(|_| "jev_response_malformed")
 }
 
+#[cfg(test)]
 fn decide_at(
     prepared: &Prepared,
     key: &str,
     endpoint: &str,
 ) -> Result<(Decision, Vec<String>), &'static str> {
-    let value = post(&prepared.body, key, endpoint)?;
-    parse_decision(prepared, &value)
+    decide_at_observed(prepared, key, endpoint, &mut CallObservation::default())
+}
+
+fn decide_at_observed(
+    prepared: &Prepared,
+    key: &str,
+    endpoint: &str,
+    observation: &mut CallObservation,
+) -> Result<(Decision, Vec<String>), &'static str> {
+    let value = post_observed(&prepared.body, key, endpoint, observation)?;
+    observation.usage = observed_usage(&value);
+    let result = parse_decision(prepared, &value);
+    if result.is_ok()
+        || (matches!(result, Err("jev_no_relevant_evidence"))
+            && model_of(&value)
+                .and_then(|model| usage_of(&value, model))
+                .is_ok()
+            && score_level(&value, "need", NEED_LEVELS.len()).is_ok())
+    {
+        observation.outcome = "succeeded";
+    }
+    result
 }
 
 fn model_of(value: &Value) -> Result<&str, &'static str> {
@@ -741,6 +799,38 @@ fn usage_of(value: &Value, model: &str) -> Result<ObservedUsage, &'static str> {
         fresh_input_tokens: None,
         cached_input_tokens: None,
         output_tokens: Some(output),
+        reasoning_tokens: None,
+        billed_cost: cost,
+        currency: cost.map(|_| "USD".into()),
+    })
+}
+
+/// Billing evidence is independent of whether the response can select output.
+/// Keep each valid observed field, including on invalid model/answer responses.
+fn observed_usage(value: &Value) -> Option<ObservedUsage> {
+    let usage = value.get("usage")?;
+    let input = usage.get("input_tokens").and_then(Value::as_u64);
+    let output = usage.get("output_tokens").and_then(Value::as_u64);
+    let cost = usage
+        .get("cost")
+        .and_then(Value::as_f64)
+        .filter(|cost| cost.is_finite() && *cost >= 0.0);
+    if input.is_none() && output.is_none() && cost.is_none() {
+        return None;
+    }
+    Some(ObservedUsage {
+        provider: "OpenRouter".into(),
+        model: value
+            .get("model")
+            .and_then(Value::as_str)
+            .filter(|model| model.len() <= 128)
+            .unwrap_or("unknown")
+            .into(),
+        source: "openrouter_decisions_response".into(),
+        total_input_tokens: input,
+        fresh_input_tokens: None,
+        cached_input_tokens: None,
+        output_tokens: output,
         reasoning_tokens: None,
         billed_cost: cost,
         currency: cost.map(|_| "USD".into()),

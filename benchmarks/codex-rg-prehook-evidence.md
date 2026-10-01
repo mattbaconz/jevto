@@ -5,7 +5,7 @@ This is a host integration check for a narrow `rg` search path, not a token-savi
 ## Setup
 
 - Host: Codex desktop-bundled CLI `0.158.0-alpha.2.1`, Windows PowerShell, model `gpt-6-luna`, `workspace-write` sandbox.
-- Disposable Git workspace: `D:\jevto\.tooling\codex-rg-fixture`. It contained one file with 80 identical, long search-match lines. A project `PreToolUse` hook installed by `jevto init-codex-pre-hook --workspace ... --apply` rewrote only a simple `rg -n -H needle search.txt` command to the explicit JevTO wrapper. The installer preview was inspected first. For unattended runs, `--dangerously-bypass-hook-trust` trusted only this reviewed local hook; no sandbox-bypass or approval-bypass flag was set. Normal use still requires Codex hook trust review.
+- Disposable Git workspace: `<workdir>\codex-rg-fixture`. It contained one file with 80 identical, long search-match lines. A project `PreToolUse` hook installed by `jevto init-codex-pre-hook --workspace ... --apply` rewrote only a simple `rg -n -H needle search.txt` command to the explicit JevTO wrapper. The installer preview was inspected first. For unattended runs, `--dangerously-bypass-hook-trust` trusted only this reviewed local hook; no sandbox-bypass or approval-bypass flag was set. Normal use still requires Codex hook trust review.
 - Raw host traces remain in the disposable workspace as `rg-success.jsonl` and `rg-failure.jsonl`. The currently built JevTO debug executable and its product installer were used.
 
 ## Observed paths

@@ -58,11 +58,6 @@ pub fn summarize(receipts: &[Receipt]) -> Value {
     let mut by_command: BTreeMap<String, Row> = BTreeMap::new();
     let mut bypass: BTreeMap<String, u64> = BTreeMap::new();
     let mut recalls = 0u64;
-    let mut jev_calls = 0u64;
-    let mut jev_cache_hits = 0u64;
-    let mut jev_input_tokens = 0u64;
-    let mut jev_cost = 0.0f64;
-    let mut adaptive_fallbacks: BTreeMap<String, u64> = BTreeMap::new();
     for receipt in receipts {
         let command = receipt
             .extra
@@ -83,21 +78,6 @@ pub fn summarize(receipts: &[Receipt]) -> Value {
             }
         }
         recalls += receipt.recalls;
-        if let Some(usage) = &receipt.jev_usage {
-            jev_calls += 1;
-            jev_input_tokens += usage.total_input_tokens.unwrap_or(0);
-            jev_cost += usage.billed_cost.unwrap_or(0.0);
-        }
-        if receipt.extra.get("jev_cache_hit").and_then(Value::as_bool) == Some(true) {
-            jev_cache_hits += 1;
-        }
-        if let Some(reason) = receipt
-            .extra
-            .get("adaptive_fallback")
-            .and_then(Value::as_str)
-        {
-            *adaptive_fallbacks.entry(reason.into()).or_default() += 1;
-        }
     }
     let row_json = |row: &Row| {
         json!({
@@ -116,13 +96,7 @@ pub fn summarize(receipts: &[Receipt]) -> Value {
         "by_command": by_command.iter().map(|(command, row)| (command.clone(), row_json(row))).collect::<serde_json::Map<_, _>>(),
         "recalls": recalls,
         "bypass_reasons": bypass,
-        "jev": {
-            "calls": jev_calls,
-            "cache_hits": jev_cache_hits,
-            "input_tokens": jev_input_tokens,
-            "reported_cost_usd": jev_cost,
-            "fallbacks": adaptive_fallbacks,
-        }
+        "jev": crate::accounting::summarize(receipts)
     })
 }
 
@@ -154,13 +128,22 @@ pub fn report(store: &Store, session: Option<&str>, as_json: bool) -> Result<(),
     );
     println!("  recalls: {}", summary["recalls"]);
     let jev = &summary["jev"];
-    if jev["calls"].as_u64().unwrap_or(0) > 0 || jev["cache_hits"].as_u64().unwrap_or(0) > 0 {
+    if jev["attempted_calls"].as_u64().unwrap_or(0) > 0
+        || jev["cache_hits"].as_u64().unwrap_or(0) > 0
+        || jev["unknown_outcomes"].as_u64().unwrap_or(0) > 0
+    {
         println!(
-            "  jev: {} calls, {} cache hits, {} input tokens, ${:.6} reported",
-            jev["calls"],
+            "  jev: {} attempted, {} successful, {} failed, {} cache hits, {} unknown outcomes; {} observed input tokens (complete={}), ${:.6} known cost (complete={}, {} unpriced attempts)",
+            jev["attempted_calls"],
+            jev["successful_calls"],
+            jev["failed_calls"],
             jev["cache_hits"],
+            jev["unknown_outcomes"],
             jev["input_tokens"],
-            jev["reported_cost_usd"].as_f64().unwrap_or_default()
+            jev["input_tokens_complete"],
+            jev["reported_cost_usd"].as_f64().unwrap_or_default(),
+            jev["cost_complete"],
+            jev["unpriced_attempts"]
         );
     }
     if let Some(commands) = summary["by_command"].as_object() {

@@ -262,8 +262,13 @@ fn save_receipt(
     fallback: Option<&str>,
     jev_usage: Option<jevto_core::ObservedUsage>,
     jev_metadata: Option<(&str, f64, bool, bool, u64)>,
+    observation: &jev::CallObservation,
 ) -> Result<(), Box<dyn Error>> {
     let mut extra = serde_json::Map::new();
+    extra.insert("jev_call_outcome".into(), json!(observation.outcome));
+    if observation.attempted {
+        extra.insert("jev_call_attempted".into(), json!(true));
+    }
     extra.insert("capture_id".into(), json!(capture_id));
     extra.insert("capture_scope".into(), json!("claude_hook_visible_text"));
     extra.insert("replacement_requested".into(), json!(requested));
@@ -329,6 +334,7 @@ fn process_event(
     let mut selection: Option<AdaptiveSelection> = None;
     let mut fallback = None;
     let mut usage = None;
+    let mut observation = jev::CallObservation::default();
     let mut metadata: Option<(String, f64, bool, bool, u64)> = None;
     match adaptive_inputs(Path::new(eligible.cwd)) {
         Ok(Some((frame, policy, key))) => {
@@ -343,9 +349,13 @@ fn process_event(
                 &policy,
             ) {
                 Ok(prepared) => {
-                    let attempted = key.is_some() && !prepared.has_cache_candidate(&store.root);
                     let started = Instant::now();
-                    match jev::decide_cached(&prepared, key.as_deref(), &store.root) {
+                    match jev::decide_cached_observed(
+                        &prepared,
+                        key.as_deref(),
+                        &store.root,
+                        &mut observation,
+                    ) {
                         Ok(decision) => {
                             let elapsed =
                                 started.elapsed().as_millis().min(u64::MAX as u128) as u64;
@@ -356,11 +366,14 @@ fn process_event(
                                 decision.model,
                                 decision.exists,
                                 decision.cache_hit,
-                                attempted,
+                                observation.attempted,
                                 elapsed,
                             ));
                         }
                         Err(reason) => fallback = Some(reason.to_owned()),
+                    }
+                    if observation.usage.is_some() {
+                        usage = observation.usage.clone();
                     }
                 }
                 Err(reason) => fallback = Some(reason.to_owned()),
@@ -413,6 +426,7 @@ fn process_event(
             metadata
                 .as_ref()
                 .map(|item| (item.0.as_str(), item.1, item.2, item.3, item.4)),
+            &observation,
         )?;
         return Ok(None);
     };
@@ -432,6 +446,7 @@ fn process_event(
             metadata
                 .as_ref()
                 .map(|item| (item.0.as_str(), item.1, item.2, item.3, item.4)),
+            &observation,
         )?;
         return Ok(None);
     }
@@ -455,6 +470,7 @@ fn process_event(
         metadata
             .as_ref()
             .map(|item| (item.0.as_str(), item.1, item.2, item.3, item.4)),
+        &observation,
     )?;
     Ok(Some(json!({
         "hookSpecificOutput": {

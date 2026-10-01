@@ -41,6 +41,8 @@ cargo build -p jevto
 python tests/cli_smoke.py
 python tests/claude_auto_smoke.py
 python tests/mcp_run_smoke.py
+python tests/accounting_smoke.py        # fabricated responses on loopback; no provider calls
+python tests/fresh_tasks_smoke.py       # offline task controls; no coding-agent runs
 python benchmarks/token_bench.py        # optional; needs cargo/go/python, RTK optional
 ```
 

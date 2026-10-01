@@ -16,8 +16,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Notes are this version's CHANGELOG section only.
+          awk -v v="## ${GITHUB_REF_NAME#v} " 'index($0, v) == 1 {on=1; next} on && /^## / {exit} on' CHANGELOG.md > notes.md
+          test -s notes.md || { echo "No CHANGELOG section for ${GITHUB_REF_NAME#v}"; exit 1; }
           gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 ||
-            gh release create "$GITHUB_REF_NAME" --draft --title "JevTO $GITHUB_REF_NAME" --notes-file CHANGELOG.md
+            gh release create "$GITHUB_REF_NAME" --draft --title "JevTO $GITHUB_REF_NAME" --notes-file notes.md
 
   build:
     name: build (${{ matrix.target }})

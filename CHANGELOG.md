@@ -1,6 +1,20 @@
 # Changelog
 
-All notable changes to this project are recorded here. The project is unreleased; entries describe the source tree.
+All notable changes to this project are recorded here. JevTO is experimental; benchmark results are exploratory and failures are published alongside them.
+
+## 0.1.1 - 2026-10-01
+
+### Added
+- Doctor reports configured and effective modes and conditional network eligibility without revealing API keys or making a request.
+- Run and Claude search-hook receipts record request outcomes separately from cache hits and fallback reasons. Gain/report and benchmark summaries expose unknown outcomes and incomplete costs; valid response usage survives a rejected decision or failed cache write. Existing receipt and summary fields remain available.
+- Six fresh offline task fixtures have separately exported evaluators and positive/negative controls, file hashes, and explicit native/rules/rules+Jev arms. No agent runs, isolation proof, or savings results are implied by preparation.
+- CI runs the offline request-accounting and fresh-task control smokes.
+
+### Changed
+- README distinguishes harness-valid sessions from passing hidden holdouts in the earlier Claude/Codex pilot and attributes the Claude 0/12 holdout result to the model (Haiku 4.5; every arm, native included, broke the same stated rule).
+- README documents installing prebuilt release binaries and `cargo install --git`.
+- Release notes contain only the tagged version's CHANGELOG section; a tag without one fails the release.
+- Host evidence notes use `<workdir>`/`<workspace>` placeholders instead of local machine paths.
 
 ## 0.1.0 - 2026-09-30
 

@@ -2,7 +2,7 @@
 
 This is an **invalid paired pilot**, kept as a transport and harness record. It gives no token-saving, cost, time, or task-quality comparison.
 
-The harness used staged Cursor CLI `2026.09.23-86fc751`, exact requested ID `grok-4.7-xhigh`, and `Grok 4.7 256K Extra High` in both stream init events. JevTO was the registered local release `D:\jevto\.tooling\bin\jevto-0.1.0-aac1ba3e26c4.exe` (SHA256 `aac1ba3e26c446f52cec915d32f21427cb3c04da1886ae550e6ba98d1c62bd0c`). Both arms began from the same `quiet_warning` tree hash `e2afe18b3baacec9f8088091c1416de3c181e723805226c48a86839e1b013862` in separate disposable Git checkouts. All seven configured MCP servers were disabled per checkout, `--force --trust --sandbox disabled` and headless `stream-json` were used in both, and each had a 180-second cap. No Fast model, substitute model, OpenRouter Jev request, or benchmark credit purchase was used.
+The harness used staged Cursor CLI `2026.09.23-86fc751`, exact requested ID `grok-4.7-xhigh`, and `Grok 4.7 256K Extra High` in both stream init events. JevTO was the registered local release `<workdir>\bin\jevto-0.1.0-aac1ba3e26c4.exe` (SHA256 `aac1ba3e26c446f52cec915d32f21427cb3c04da1886ae550e6ba98d1c62bd0c`). Both arms began from the same `quiet_warning` tree hash `e2afe18b3baacec9f8088091c1416de3c181e723805226c48a86839e1b013862` in separate disposable Git checkouts. All seven configured MCP servers were disabled per checkout, `--force --trust --sandbox disabled` and headless `stream-json` were used in both, and each had a 180-second cap. No Fast model, substitute model, OpenRouter Jev request, or benchmark credit purchase was used.
 
 | Arm | Cursor stream and command observations | Final state |
 | --- | --- | --- |
