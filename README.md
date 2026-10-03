@@ -259,6 +259,10 @@ python tests/cli_smoke.py && python tests/claude_auto_smoke.py
 
 [CONTRIBUTING.md](CONTRIBUTING.md): add a recognizer with a fixture. [SECURITY.md](SECURITY.md): report a problem. [`assets/`](assets/demo/README.md): re-render demo and images.
 
+## Support
+
+If JevTO helps you, you can [support its development on Ko-fi](https://ko-fi.com/mattbaconz).
+
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE). JevTO is independent. Not affiliated with or endorsed by TypeSafe AI or RTK.
