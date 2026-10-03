@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00.000 --> 00:03.200
+JevTO v0.1.1. A generated test fixture, run by the real CLI.
+
+00:03.200 --> 00:05.500
+The native test run: 150 passing tests and one deliberate failure.
+
+00:05.500 --> 00:10.500
+Rules-only selection keeps the failure and assertion. Exit code 101 is preserved.
+
+00:10.500 --> 00:14.300
+Recall reads the captured stdout without rerunning the tests. First four lines shown.
+
+00:14.300 --> 00:17.720
+Less tool output. Exact recall. Installation and evidence at jevto.xyz.

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#235bd0">
+  <title>Use JevTO with Claude Code, Codex, and Cursor | JevTO</title>
+  <meta name="description" content="Set up and remove JevTO's project hooks. Understand Claude Code coverage, Codex on Windows, Cursor's narrow routes, and hook conflicts.">
+  <link rel="canonical" href="https://jevto.xyz/docs/integrations/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JevTO">
+  <meta property="og:url" content="https://jevto.xyz/docs/integrations/">
+  <meta property="og:title" content="Use JevTO with Claude Code, Codex, and Cursor">
+  <meta property="og:description" content="Set up and remove JevTO's project hooks. Understand Claude Code coverage, Codex on Windows, Cursor's narrow routes, and hook conflicts.">
+  <meta property="og:image" content="https://jevto.xyz/assets/og.png">
+  <meta property="og:image:alt" content="JevTO — command-output selection with exact local recall">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
+  <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <script defer src="/site.js?v=4"></script>
+</head>
+<body class="docs-page">
+  <div class="wallpaper" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="docs-topbar"><a href="/" class="docs-brand"><img src="/assets/jevto-mark-64.png" alt="" width="32" height="32">JevTO</a><nav aria-label="Site"><a href="/docs/">Docs</a><a href="/demo/">Demo</a><a href="https://github.com/mattbaconz/jevto">GitHub</a></nav></header>
+  <div class="docs-layout">
+    <nav class="docs-sidebar" aria-label="Documentation"><a href="/docs/">Getting started</a><a href="/docs/integrations/" aria-current="page">Integrations</a><a href="/docs/privacy/">Privacy & troubleshooting</a><a href="/docs/benchmarks/">Benchmarks</a><a href="/demo/">Demo & first run</a><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1 ↗</a></nav>
+    <main id="main" class="xp-window docs-window">
+      <div class="window-titlebar"><img src="/assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO Help</span><span class="title-state">v0.1.1 · experimental</span></div>
+      <article class="doc-content"><p class="doc-eyebrow">JevTO / Documentation</p><h1>Use JevTO with Claude Code, Codex, and Cursor</h1><p class="doc-lead">Each integration covers a named route. Listing JevTO as an MCP server does not automatically filter every native tool result.</p>
+<h2 id="claude-code">Claude Code: automatic project routing</h2>
+<p>From the project you want to use, preview the change, inspect it, then apply it:</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="claude-setup">Copy</button></div><pre id="claude-setup"><code>jevto init-claude-auto --workspace .
+jevto init-claude-auto --workspace . --apply</code></pre></div>
+<p>The project <code>PreToolUse</code> hook rewrites supported simple Bash/PowerShell commands through <code>jevto run</code>. A <code>UserPromptSubmit</code> hook records your prompt locally as the session goal. Tests, builds, lints, searches, and supported <code>git diff/log/show</code> commands can be routed. Pipes, redirects, substitutions, and unsupported shell shapes stay native.</p>
+<p>Recorded live evidence used <strong>Claude Code 2.1.283</strong>, including passing and failing verifier routes. This is a tested version, not a guarantee about every future client. The hook does not set a permission decision. A configured OpenRouter key can enable goal-aware remote ranking in auto mode; <a href="/docs/privacy/">read the outbound-data behavior</a> first.</p>
+<div class="doc-callout"><strong>Already using RTK?</strong> Choose one command-rewriting hook per project. Claude rewrites do not chain. The installer warns about an RTK hook; review the preview rather than assuming both filters will compose.</div>
+<h3>Keep a session rules-only</h3>
+<p>Set the environment variable before starting Claude Code. Use the command for your shell:</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="rules-powershell">Copy</button></div><pre id="rules-powershell"><code># PowerShell
+$env:JEVTO_MODE = "rules"
+claude</code></pre></div>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="rules-posix">Copy</button></div><pre id="rules-posix"><code># Bash / Zsh
+export JEVTO_MODE=rules
+claude</code></pre></div>
+<h3>Remove the managed hook</h3>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="claude-remove">Copy</button></div><pre id="claude-remove"><code>jevto disable-claude-auto --workspace .
+jevto disable-claude-auto --workspace . --apply</code></pre></div>
+<p>Installers keep ownership records and backups. Removal targets the entries JevTO owns; review the preview, especially if you later edited the configuration by hand.</p>
+<h2 id="codex">Codex: Windows PowerShell route</h2>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="codex-setup">Copy</button></div><pre id="codex-setup"><code>jevto init-codex-pre-hook --workspace .
+jevto init-codex-pre-hook --workspace . --apply
+jevto disable-codex-pre-hook --workspace . --apply</code></pre></div>
+<p>Live pilot evidence used desktop-bundled <strong>Codex CLI 0.158.0-alpha.2.1</strong> on Windows with allowlisted simple PowerShell commands. Do not infer automatic macOS/Linux Codex support from that test. Use the explicit wrapper when a host route is unavailable.</p>
+<h2 id="cursor">Cursor: explicit, narrow integration</h2>
+<p><code>jevto init-cursor-rule</code> prepares a project rule for one exact verifier. <code>jevto init-cursor-runner</code> prepares an opt-in exact-command MCP runner. These are not universal tool interception. Run either command with <code>--help</code>, review its required workspace/program configuration, and inspect the preview before adding <code>--apply</code>.</p>
+<p>The historical Cursor coding pair had unequal holdout outcomes and is excluded from successful-task savings claims.</p>
+<h2 id="mcp">Read-only MCP tools</h2>
+<p><code>jevto init codex</code>, <code>jevto init claude</code>, and <code>jevto init cursor</code> prepare read-only recall, review, and status tools. Use the command's help and preview before applying it. Registration alone does not reroute your agent's shell commands.</p>
+<h2 id="manual">Any supported shell: explicit wrapper</h2>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="manual-wrapper">Copy</button></div><pre id="manual-wrapper"><code>jevto run --mode rules -- cargo test --workspace
+jevto doctor --json</code></pre></div>
+<p>The command wrapper is the smallest integration to diagnose. Consult <code>doctor</code> for the current mode and recorded host coverage. For issues, include the exact host version, route, and sanitized command rather than saying only “Claude” or “Codex.”</p></article>
+    </main>
+  </div>
+  <footer class="site-footer"><span>Apache-2.0 · independent of TypeSafe AI and RTK</span><nav aria-label="Footer"><a href="/">Home</a><a href="https://github.com/mattbaconz/jevto">GitHub</a><a href="https://ko-fi.com/mattbaconz">Support on Ko-fi</a></nav></footer>
+</body>
+</html>

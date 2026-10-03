@@ -12,4 +12,4 @@ index 6596aa2..931711d 100644
 +    }
      line.split_once('=')
  }
-recall: `jevto recall bb050c49` [--section ID]
+recall: `'<jevto>' recall 73d32689` [--section ID]

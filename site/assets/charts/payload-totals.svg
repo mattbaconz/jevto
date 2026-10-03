@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" role="img" aria-labelledby="totals-title totals-desc">
 <title id="totals-title">Total tokens: dev set vs unseen scenarios</title>
-<desc id="totals-desc">Dev set: Native 99,737 tokens, 20/20 facts, RTK 71,322 tokens, 18/20 facts, JevTO 4,998 tokens, 20/20 facts; Unseen: Native 169,999 tokens, 26/26 facts, RTK 165,214 tokens, 26/26 facts, JevTO 11,988 tokens, 25/26 facts</desc>
+<desc id="totals-desc">Dev set: Native 99,738 tokens, 20/20 facts, RTK 71,320 tokens, 18/20 facts, JevTO 4,991 tokens, 20/20 facts; Unseen: Native 169,998 tokens, 26/26 facts, RTK 165,215 tokens, 26/26 facts, JevTO 11,988 tokens, 25/26 facts</desc>
 <style>
 svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
       font-size: 12px; font-variant-numeric: tabular-nums; }
@@ -43,21 +43,21 @@ svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Ari
 <text x="24.0" y="48.0" class="muted">11 scenarios · rules tuned here</text>
 <text x="24.0" y="90.0" class="text">Native</text>
 <rect x="94.0" y="76.0" width="320.0" height="20.0" rx="2" class="bar native-fill"/>
-<text x="94.0" y="116.0" class="muted">99,737 tokens · 20/20 facts</text>
+<text x="94.0" y="116.0" class="muted">99,738 tokens · 20/20 facts</text>
 <text x="24.0" y="154.0" class="text">RTK 0.48</text>
 <rect x="94.0" y="140.0" width="228.8" height="20.0" rx="2" class="bar rtk-fill"/>
-<text x="94.0" y="180.0" class="accent">−28% · 71,322 tokens · 18/20 facts</text>
+<text x="94.0" y="180.0" class="accent">−28% · 71,320 tokens · 18/20 facts</text>
 <text x="24.0" y="218.0" class="text">JevTO</text>
 <rect x="94.0" y="204.0" width="16.0" height="20.0" rx="2" class="bar jevto-fill"/>
-<text x="94.0" y="244.0" class="muted">−95% · 4,998 tokens · 20/20 facts</text>
+<text x="94.0" y="244.0" class="muted">−95% · 4,991 tokens · 20/20 facts</text>
 <text x="456.0" y="30.0" class="text heading">Unseen</text>
 <text x="456.0" y="48.0" class="muted">12 scenarios · written after the rules froze</text>
 <text x="456.0" y="90.0" class="text">Native</text>
 <rect x="526.0" y="76.0" width="320.0" height="20.0" rx="2" class="bar native-fill"/>
-<text x="526.0" y="116.0" class="muted">169,999 tokens · 26/26 facts</text>
+<text x="526.0" y="116.0" class="muted">169,998 tokens · 26/26 facts</text>
 <text x="456.0" y="154.0" class="text">RTK 0.48</text>
 <rect x="526.0" y="140.0" width="311.0" height="20.0" rx="2" class="bar rtk-fill"/>
-<text x="526.0" y="180.0" class="muted">−3% · 165,214 tokens · 26/26 facts</text>
+<text x="526.0" y="180.0" class="muted">−3% · 165,215 tokens · 26/26 facts</text>
 <text x="456.0" y="218.0" class="text">JevTO</text>
 <rect x="526.0" y="204.0" width="22.6" height="20.0" rx="2" class="bar jevto-fill"/>
 <text x="526.0" y="244.0" class="accent">−93% · 11,988 tokens · 25/26 facts</text>

@@ -402,5 +402,5 @@
     headers_test.go:205: parse_header: expected 4 fields, got 3
 --- FAIL: TestParseHeaderRejectsLeadingSpace (0.00s)
 FAIL
-FAIL	example.com/headers	0.386s
+FAIL	example.com/headers	0.373s
 FAIL

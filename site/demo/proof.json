@@ -1,0 +1,25 @@
+{
+  "recorded_date": "2026-10-03",
+  "version": "jevto 0.1.1",
+  "executable_sha256": "0cd2d4e93f4b9f54e025b47ccf35806846c48dbe36ad62b0e8ff4332ba56b7b5",
+  "scenario": "Generated Rust fixture: 150 passing tests, one deliberately failing leading-space assertion",
+  "mode": "rules",
+  "provider_calls": 0,
+  "exit_code": 101,
+  "capture_id": "70b0d1e3-85b7-4cc4-ab7d-d71f655badbe",
+  "completeness": "complete",
+  "streams": {
+    "stdout": {
+      "bytes": 4780,
+      "sha256": "79f26b120cb661672481680555748cfb3e71c7f8431ae23350ab54fd6bf2304f",
+      "recall_exact": true
+    },
+    "stderr": {
+      "bytes": 198,
+      "sha256": "9df68553d6cfb7f16857d2bb55fb218cac75f0aec178f4471ff1a7c02cb14e6b",
+      "recall_exact": true
+    }
+  },
+  "footage": "Actual command execution recorded by VHS; synthetic fixture; typing and reading holds are presentation timing, not performance measurements.",
+  "verified_after_recording": true
+}

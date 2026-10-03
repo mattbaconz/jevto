@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#235bd0">
+  <title>Watch JevTO select a failing test result and recall it | JevTO</title>
+  <meta name="description" content="A recording of the actual JevTO v0.1.1 CLI on a generated Rust fixture: native output, a smaller rules-only view, preserved failure status, and exact recall.">
+  <link rel="canonical" href="https://jevto.xyz/demo/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JevTO">
+  <meta property="og:url" content="https://jevto.xyz/demo/">
+  <meta property="og:title" content="Watch JevTO select a failing test result and recall it">
+  <meta property="og:description" content="A recording of the actual JevTO v0.1.1 CLI on a generated Rust fixture: native output, a smaller rules-only view, preserved failure status, and exact recall.">
+  <meta property="og:image" content="https://jevto.xyz/assets/og.png">
+  <meta property="og:image:alt" content="JevTO — command-output selection with exact local recall">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
+  <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <script defer src="/site.js?v=4"></script>
+</head>
+<body class="docs-page">
+  <div class="wallpaper" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="docs-topbar"><a href="/" class="docs-brand"><img src="/assets/jevto-mark-64.png" alt="" width="32" height="32">JevTO</a><nav aria-label="Site"><a href="/docs/">Docs</a><a href="/demo/">Demo</a><a href="https://github.com/mattbaconz/jevto">GitHub</a></nav></header>
+  <div class="docs-layout">
+    <nav class="docs-sidebar" aria-label="Documentation"><a href="/docs/">Getting started</a><a href="/docs/integrations/">Integrations</a><a href="/docs/privacy/">Privacy & troubleshooting</a><a href="/docs/benchmarks/">Benchmarks</a><a href="/demo/" aria-current="page">Demo & first run</a><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1 ↗</a></nav>
+    <main id="main" class="xp-window docs-window">
+      <div class="window-titlebar"><img src="/assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO Help</span><span class="title-state">v0.1.1 · experimental</span></div>
+      <article class="doc-content"><p class="doc-eyebrow">JevTO / Demo</p><h1>Watch JevTO select a failing test result and recall it</h1><p class="doc-lead">One deliberately failing test among 150 passing tests. The same command, a smaller view, and the original bytes available on demand.</p>
+<video class="demo-video" controls playsinline preload="metadata" poster="/demo/poster.jpg" width="1280" height="760" aria-describedby="demo-description">
+<source src="/demo/jevto-demo.mp4" type="video/mp4">
+<track kind="captions" src="/demo/captions.vtt" srclang="en" label="English" default>
+<p><a href="/demo/jevto-demo.mp4">Download the demo video</a>.</p>
+</video>
+<p id="demo-description" class="doc-caption">Actual CLI execution on a generated fixture, recorded with VHS. Deliberate typing and reading holds are edited demonstration timing, not a speed benchmark. Rules-only mode; no provider call. Silent video with captions.</p>
+<p class="doc-actions"><a class="primary-action" href="/docs/">Try JevTO</a><a href="/demo/jevto-demo.mp4" download>Download video</a><a href="https://github.com/mattbaconz/jevto/tree/main/assets/demo">Recording source</a></p>
+<h2 id="transcript">What the recording shows</h2>
+<ol><li><code>cargo test</code> runs 151 generated tests. One test deliberately fails because the parser accepts a leading space.</li><li><code>jevto run --mode rules -- cargo test</code> keeps the failure and assertion visible, folds passing-test output, and preserves the nonzero exit.</li><li>Recall reads the stored stdout. The video shows its first four lines; the verification checks the complete stored stdout and stderr byte for byte. The recording uses a separate demo capture store.</li></ol>
+<p>The fixture is synthetic; the commands and their output are real. <a href="/demo/proof.json">Recording verification</a> includes the executable version/hash, capture identity, exit status, and recall checks. It is not a live coding-agent task or a savings benchmark.</p>
+<h2 id="feedback">Help test the next real workflow</h2>
+<p>Try the explicit wrapper on one verifier in a project you know. Then report your OS, host version, command, whether installation worked, whether you needed recall, and any missing evidence. Reports of “no useful reduction” are useful too.</p>
+<p><a href="https://github.com/mattbaconz/jevto/issues/new?template=first_run.md">Share a first-run report</a> · <a href="https://github.com/mattbaconz/jevto">View the repository</a></p></article>
+    </main>
+  </div>
+  <footer class="site-footer"><span>Apache-2.0 · independent of TypeSafe AI and RTK</span><nav aria-label="Footer"><a href="/">Home</a><a href="https://github.com/mattbaconz/jevto">GitHub</a><a href="https://ko-fi.com/mattbaconz">Support on Ko-fi</a></nav></footer>
+</body>
+</html>

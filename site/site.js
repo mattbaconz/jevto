@@ -25,11 +25,84 @@
 
   // Output inspector: real benchmark views (site/data, copied from benchmarks/results/views).
   const scenarios = {
-    "python-unittest-failure": { goal: "Fix the failing parser test", exit: 1, native: [3572, 3, 3], rtk: [3572, 3, 3, "not routed"], jevto: [200, 3, 3] },
-    "go-test-failure": { goal: "Fix the failing header parser test", exit: 1, native: [2651, 2, 2], rtk: [64, 2, 2], jevto: [78, 2, 2] },
-    "git-diff-lockfile": { goal: "Review the header parsing change", exit: 0, native: [11484, 2, 2], rtk: [766, 2, 2], jevto: [120, 2, 2] },
-    "git-log-history": { goal: "When did we change the reconnect backoff?", exit: 0, native: [12618, 1, 1], rtk: [222, 0, 1], jevto: [551, 1, 1] },
-  };
+  "python-unittest-failure": {
+    "goal": "Fix the failing parser test",
+    "exit": 1,
+    "native": [
+      3572,
+      3,
+      3
+    ],
+    "rtk": [
+      3572,
+      3,
+      3,
+      "not routed"
+    ],
+    "jevto": [
+      200,
+      3,
+      3
+    ]
+  },
+  "go-test-failure": {
+    "goal": "Fix the failing header parser test",
+    "exit": 1,
+    "native": [
+      2651,
+      2,
+      2
+    ],
+    "rtk": [
+      64,
+      2,
+      2
+    ],
+    "jevto": [
+      78,
+      2,
+      2
+    ]
+  },
+  "git-diff-lockfile": {
+    "goal": "Review the header parsing change",
+    "exit": 0,
+    "native": [
+      11484,
+      2,
+      2
+    ],
+    "rtk": [
+      766,
+      2,
+      2
+    ],
+    "jevto": [
+      120,
+      2,
+      2
+    ]
+  },
+  "git-log-history": {
+    "goal": "When did we change the reconnect backoff?",
+    "exit": 0,
+    "native": [
+      12618,
+      1,
+      1
+    ],
+    "rtk": [
+      222,
+      0,
+      1
+    ],
+    "jevto": [
+      551,
+      1,
+      1
+    ]
+  }
+};
   const output = document.getElementById("evidence-output");
   const score = document.getElementById("evidence-score");
   const goal = document.getElementById("evidence-goal");

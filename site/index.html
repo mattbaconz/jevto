@@ -4,14 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#235bd0">
-  <meta name="description" content="JevTO sits between a command and your coding agent: it keeps failures, warnings, and the lines your task is about, and hides the rest behind byte-exact recall. 94% less command output across 23 benchmark scenarios, 45 of 46 required facts kept.">
-  <meta property="og:title" content="JevTO: read less, keep every fact">
-  <meta property="og:description" content="Goal-aware output selection for coding agents, with byte-exact recall. Experimental, Apache-2.0.">
-  <meta property="og:image" content="./assets/og.png">
-  <title>JevTO: read less, keep every fact</title>
+  <meta name="description" content="Less tool output for Claude Code and other coding agents. JevTO selects real command output, preserves exit codes, and offers exact local recall. Open source.">
+  <link rel="canonical" href="https://jevto.xyz/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JevTO">
+  <meta property="og:url" content="https://jevto.xyz/">
+  <meta property="og:title" content="JevTO — less tool output, exact recall">
+  <meta property="og:description" content="Give coding agents a smaller view of command output. Recover the original bytes whenever you need them. Experimental, Apache-2.0.">
+  <meta property="og:image" content="https://jevto.xyz/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JevTO: 94% less command output and 45 of 46 facts visible in the historical rules-only payload benchmark. Not a bill-saving claim.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JevTO — less tool output, exact recall">
+  <meta name="twitter:description" content="Open-source command-output selection for coding agents, with exact local recall.">
+  <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
+  <title>JevTO — less tool output for coding agents, exact recall</title>
   <link rel="icon" href="./assets/jevto-mark-64.png" type="image/png">
-  <link rel="stylesheet" href="./style.css?v=3">
-  <script defer src="./site.js?v=3"></script>
+  <link rel="stylesheet" href="./style.css?v=4">
+  <script defer src="./site.js?v=4"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"JevTO","url":"https://jevto.xyz/","codeRepository":"https://github.com/mattbaconz/jevto","programmingLanguage":"Rust","license":"https://www.apache.org/licenses/LICENSE-2.0","description":"Command-output selection for coding agents with exact local recall.","version":"0.1.1"}</script>
 </head>
 <body>
   <div class="wallpaper" aria-hidden="true"><div class="wallpaper-light"></div><div class="wallpaper-hill"></div></div>
@@ -35,13 +47,15 @@
   <nav class="start-menu" id="start-menu" aria-label="Start menu" hidden>
     <div class="start-menu-head"><img src="./assets/jevto-mark-64.png" alt="" width="36" height="36"><strong>JevTO</strong><small>experimental · Apache-2.0</small></div>
     <a href="#top">Overview <span>Home</span></a>
-    <a href="#how">How it saves tokens <span>Method</span></a>
+    <a href="#how">How it works <span>Method</span></a>
     <a href="#benchmark">Benchmarks <span>Results</span></a>
     <a href="#verdict">Honest reading <span>Limits</span></a>
     <a href="#coverage">Supported agents <span>Coverage</span></a>
     <a href="#privacy">Local storage <span>Privacy</span></a>
-    <a href="#try">Try from source <span>Run</span></a>
-    <div class="start-menu-foot">No published release yet</div>
+    <a href="/docs/">Install and docs <span>Start here</span></a>
+    <a href="/demo/">Watch the demo <span>CLI</span></a>
+    <a href="https://github.com/mattbaconz/jevto">GitHub <span>Source</span></a>
+    <div class="start-menu-foot">v0.1.1 available · experimental</div>
   </nav>
 
   <main id="main">
@@ -56,22 +70,23 @@
       <div class="xp-window hero-window">
         <div class="window-titlebar"><img class="title-logo" src="./assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO: output selection for coding agents</span><span class="title-state"><span class="title-state-long">Experimental · v0.1.1</span><span class="title-state-short">Experimental</span></span></div>
         <nav class="window-menubar" aria-label="Main navigation">
-          <a href="#how">How it works</a><a href="#benchmark">Benchmarks</a><a href="#verdict">Honest reading</a><a href="#coverage">Agents</a><a href="#privacy">Privacy</a><a href="#try">Try from source</a>
+          <a href="/docs/">Install &amp; docs</a><a href="/demo/">Demo</a><a href="#benchmark">Benchmarks</a><a href="#coverage">Agents</a><a href="https://github.com/mattbaconz/jevto">GitHub</a>
         </nav>
         <div class="hero-content">
           <div class="hero-copy">
             <img class="hero-mark" src="./assets/jevto-mark-256.png" alt="JevTO logo" width="88" height="88">
-            <h1 id="hero-title">Read less.<br><span>Keep every fact.</span></h1>
-            <p>JevTO sits between a command and your coding agent. It keeps failures, warnings, and the lines your task is about, folds the rest into gap markers, and gives back any hidden byte on request. Exit codes are preserved. Nothing is paraphrased.</p>
+            <h1 id="hero-title">Less tool output.<br><span>Exact recall.</span></h1>
+            <p>Give Claude Code and other coding agents a smaller view of command output. JevTO selects real lines, preserves exit codes, and stores the original bytes locally for recall. Start with rules only; no API key needed.</p>
             <dl class="hero-stats">
-              <div><dt>Command output</dt><dd>−94%</dd><small>269,736 → 16,986 tokens, 23 scenarios</small></div>
+              <div><dt>Command output</dt><dd>−94%</dd><small>rules-only estimate, 23 scenarios</small></div>
               <div><dt>Required facts visible</dt><dd>45/46</dd><small>without a recall</small></div>
               <div><dt>Session input, Codex</dt><dd>−9%</dd><small>median, n = 3, equal outcomes</small></div>
             </dl>
             <div class="hero-actions">
-              <a class="primary-action" href="#benchmark">See the benchmarks <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></a>
-              <a class="text-action" href="#try">Build from source</a>
+              <a class="primary-action" href="/docs/">Install JevTO <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></a>
+              <a class="text-action" href="/demo/">Watch the demo</a>
             </div>
+            <p class="launch-note">Free · Apache-2.0 · experimental v0.1.1. Payload reduction is not measured bill savings. <a href="/docs/benchmarks/">Read the evidence.</a></p>
           </div>
 
           <div class="hero-illustration">
@@ -110,12 +125,12 @@
     </section>
 
     <section class="xp-window content-window method-window" id="how" aria-labelledby="how-title">
-      <div class="window-titlebar"><span class="title-icon method-icon" aria-hidden="true"></span><span class="title-text">How JevTO saves tokens</span><span class="title-state">Method</span></div>
+      <div class="window-titlebar"><span class="title-icon method-icon" aria-hidden="true"></span><span class="title-text">How JevTO selects output</span><span class="title-state">Method</span></div>
       <div class="window-body">
-        <div class="section-intro"><h2 id="how-title">It removes what the agent would skim, not what it needs.</h2><p>Most command output is ceremony: hundreds of <code>... ok</code> lines, progress redraws, regenerated lockfiles, log noise. An agent pays for every line it reads, and pays again each turn the output stays in context. JevTO decides line by line what to keep, and records why.</p></div>
+        <div class="section-intro"><h2 id="how-title">Keep a useful view. Recall the rest.</h2><p>Passing-test inventories, progress redraws, and regenerated lockfiles can fill an agent's context. JevTO selects output line by line and records why it defers a section. Selection can miss useful evidence, so every view includes a way to recover the captured bytes.</p></div>
         <ol class="method-flow">
           <li><span class="flow-number">1</span><div><h3>Capture exactly</h3><p>The command runs with your permissions. Stdout, stderr, and the exit code are stored separately and hashed in a local store.</p></div></li>
-          <li><span class="flow-number">2</span><div><h3>Protect the facts</h3><p>Failures, assertions, panics, warnings, and exit status are marked protected. No rule and no model can drop them.</p></div></li>
+          <li><span class="flow-number">2</span><div><h3>Protect recognized failures</h3><p>Recognized failures, assertions, panics, warnings, and exit status are protected by local rules. Jev ranking cannot override those protections.</p></div></li>
           <li><span class="flow-number">3</span><div><h3>Fold the ceremony</h3><p>Recognizers for Rust, Go, Python, Node, Jest/Vitest, and TAP test inventories, Cargo progress, lockfile and minified diffs, and long logs replace noise with a count and a gap marker.</p></div></li>
           <li><span class="flow-number">4</span><div><h3>Recall on demand</h3><p>Each gap names a section. <code>jevto recall ID --section …</code> returns those bytes exactly. If the view would not be smaller, the original is delivered unchanged.</p></div></li>
         </ol>
@@ -145,7 +160,7 @@ AssertionError: '7' is not None</span>
         </figure>
         <div class="jev-note">
           <strong>Optional: Jev, the decision layer.</strong>
-          <p>Keyword rules can't tell which of 14 changed files matters, or that "how many times do we retry" is answered by <code>fn default_retry_budget()</code>. For search results, multi-file diffs, and long logs, an opt-in adaptive mode sends one bounded request (≤ 64 KiB, 4 s timeout, secret-filtered) to <a href="https://docs.typesafe.ai/introduction/coding-agents">Jev</a>, which ranks sections by meaning. Protected facts stay local and can't be dropped. Off by default; it needs an explicit policy file and a remote opt-in. Its live benchmark run is still pending.</p>
+          <p>Jev can rank search results, diffs, and long-output sections by meaning. The default <code>auto</code> mode enables this when an OpenRouter key, a goal, and eligible output are present. Bounded snippets or line-shape digests and the goal may be sent to OpenRouter (≤ 64 KiB, 8 s timeout, secret filtering). Use <code>JEVTO_MODE=rules</code> for no network calls. The historical live payload run kept 46/46 benchmark facts visible; rules kept 45/46. <a href="/docs/privacy/">Understand what leaves your machine.</a></p>
         </div>
       </div>
       <div class="window-statusbar"><span>Capture → Protect → Fold → Recall</span><span>Every decision is written to a local receipt</span></div>
@@ -160,9 +175,9 @@ AssertionError: '7' is not None</span>
       </div>
       <div class="window-body">
         <div class="bench-panel" role="tabpanel" id="bpanel-command" aria-labelledby="btab-command">
-          <div class="section-intro"><h2 id="bench-title">Fewer tokens only count if the answer survives.</h2><p>23 scenarios in three suites (dev, a holdout written after the rules froze, and vocabulary-mismatch cases), each command routed through the tool's <strong>own</strong> Claude Code hook, so each tool handles exactly what it would in practice. Tokens are bytes ÷ 4 for one command's output. A <em>fact</em> is something the agent needs to finish the task (the failing test, the assertion, the relevant commit) visible without a recall.</p></div>
+          <div class="section-intro"><h2 id="bench-title">Fewer tokens only count if the answer survives.</h2><p>23 generated scenarios cover tuned dev cases, a holdout, and vocabulary-mismatch cases. Each tool uses its own hook where routed; explicit-wrapper cases are labeled in the raw report. Tokens are bytes ÷ 4 for one command's output. A <em>fact</em> is a required string visible without recall, such as the failing test or relevant commit. The final holdout results include fixes made after its first run.</p></div>
           <figure class="chart-figure">
-            <img src="./assets/charts/payload-totals.svg" alt="Dev set: native 99,737 tokens, RTK 71,322 (−28%, 18/20 facts), JevTO 4,998 (−95%, 20/20). Unseen scenarios: native 169,999, RTK 165,214 (−3%, 26/26), JevTO 11,988 (−93%, 25/26)." loading="lazy" width="880" height="300">
+            <img src="./assets/charts/payload-totals.svg" alt="Historical rules-only payload totals by suite. Native: 269,736 estimated tokens, 46/46 facts. RTK 0.48.0: 236,535, 44/46. JevTO rules: 16,979, 45/46." loading="lazy" width="880" height="300">
           </figure>
           <figure class="chart-figure">
             <img src="./assets/charts/payload-by-scenario.svg" alt="Per-scenario dot plot on a log scale. RTK is smallest on Rust and Go failures and the tiny passing run, but does not route Python, Node, or log output, and misses the needed fact on git log and the 14-file diff. JevTO misses the fact on the vocabulary-mismatch search question." loading="lazy" width="880" height="1000">
@@ -199,48 +214,41 @@ AssertionError: '7' is not None</span>
                   <tr><th scope="row">Both</th><td>107,819 <small>−11%</small></td><td>$0.051</td><td>24</td></tr>
                 </tbody>
               </table>
-              <p>All 12 passed visible tests and all failed the same strict holdout, so outcomes were equal. Cost is a list-price estimate, not a bill.</p>
+              <p>All 12 passed visible tests and failed the same strict holdout. These are failed task outcomes, not verified successful completions. Cost is a list-price estimate, not a bill.</p>
             </div>
           </div>
         </div>
         <div class="bench-panel" role="tabpanel" id="bpanel-table" aria-labelledby="btab-table" hidden>
           <div class="table-scroll">
-            <table class="data-table">
-              <caption>Estimated tokens for one command (bytes ÷ 4) · facts visible without recall</caption>
-              <thead><tr><th scope="col">Scenario</th><th scope="col">Native</th><th scope="col">RTK 0.48</th><th scope="col">JevTO</th></tr></thead>
-              <tbody>
-                <tr class="suite-row"><th scope="rowgroup" colspan="4">Dev set · rules tuned here</th></tr>
-                <tr><th scope="row">cargo test, 1 failure</th><td>1,245</td><td>126 · 3/3</td><td>162 · 3/3</td></tr>
-                <tr><th scope="row">go test -v, 1 failure</th><td>2,651</td><td>64 · 2/2</td><td>78 · 2/2</td></tr>
-                <tr><th scope="row">unittest -v, 1 failure</th><td>3,572</td><td class="na">not routed</td><td>200 · 3/3</td></tr>
-                <tr><th scope="row">unittest -v, 1 warning</th><td>3,397</td><td class="na">not routed</td><td>89 · 2/2</td></tr>
-                <tr><th scope="row">node --test, 1 failure</th><td>1,575</td><td class="na">not routed</td><td>197 · 2/2</td></tr>
-                <tr><th scope="row">cargo test, 3 passing</th><td>119</td><td>10 · 1/1</td><td>61 · 1/1</td></tr>
-                <tr><th scope="row">service log, 2,400 lines</th><td>52,163</td><td class="na">not routed</td><td>2,075 · 2/2</td></tr>
-                <tr><th scope="row">rg, 160 matches</th><td>3,688</td><td>3,688 · 1/1</td><td>356 · 1/1</td></tr>
-                <tr><th scope="row">git diff + lockfile</th><td>11,484</td><td>766 · 2/2</td><td>120 · 2/2</td></tr>
-                <tr><th scope="row">git diff, 14 files</th><td>7,225</td><td>5,738 · <span class="miss">0/1</span></td><td>1,109 · 1/1</td></tr>
-                <tr><th scope="row">git log, 260 commits</th><td>12,618</td><td>222 · <span class="miss">0/1</span></td><td>551 · 1/1</td></tr>
-                <tr class="suite-row"><th scope="rowgroup" colspan="4">Holdout · written after the rules froze</th></tr>
-                <tr><th scope="row">cargo test, 3 failures</th><td>4,311</td><td>205 · 6/6</td><td>280 · 6/6</td></tr>
-                <tr><th scope="row">tsc, 3 type errors</th><td>70</td><td>90 · 3/3</td><td>70 · 3/3</td></tr>
-                <tr><th scope="row">go test ./..., 12 pkgs</th><td>129</td><td>58 · 2/2</td><td>99 · 2/2</td></tr>
-                <tr><th scope="row">node --test, 300 passing</th><td>2,572</td><td class="na">not routed</td><td>48 · 2/2</td></tr>
-                <tr><th scope="row">unittest, stdlib traceback</th><td>1,261</td><td class="na">not routed</td><td>389 · 3/3</td></tr>
-                <tr><th scope="row">rg TODO, 160 matches</th><td>1,913</td><td>1,913 · 1/1</td><td>215 · 1/1</td></tr>
-                <tr><th scope="row">git diff, rename + fix</th><td>2,233</td><td>1,849 · 2/2</td><td>835 · 2/2</td></tr>
-                <tr><th scope="row">cargo build, 40 warnings</th><td>2,084</td><td>2,026 · 3/3</td><td>2,084 · 3/3</td></tr>
-                <tr><th scope="row">JSON log, 3,000 lines</th><td>108,527</td><td class="na">not routed</td><td>3,351 · 1/1</td></tr>
-                <tr class="suite-row"><th scope="rowgroup" colspan="4">Semantic · goal and answer share no words</th></tr>
-                <tr><th scope="row">log, sign-out cause</th><td>42,783</td><td class="na">not routed</td><td>1,411 · 1/1</td></tr>
-                <tr><th scope="row">rg, vendor deadline</th><td>1,132</td><td>1,132 · 1/1</td><td>222 · <span class="miss">0/1</span></td></tr>
-                <tr><th scope="row">git diff, rounding</th><td>2,984</td><td>2,797 · 1/1</td><td>2,984 · 1/1</td></tr>
-              </tbody>
-              <tfoot><tr><th scope="row">Total, 23 scenarios</th><td>269,736 · 46/46</td><td>236,536 (−12%) · 44/46</td><td><strong>16,986 (−94%)</strong> · 45/46</td></tr></tfoot>
-            </table>
+            <table class="data-table"><caption>Historical rules-only payload comparison · estimated tokens = bytes ÷ 4 · facts visible without recall</caption><thead><tr><th scope="col">Scenario</th><th scope="col">Native</th><th scope="col">RTK 0.48.0</th><th scope="col">JevTO rules</th></tr></thead><tbody><tr class="suite-row"><th scope="rowgroup" colspan="4">Dev set · rules tuned here</th></tr>
+<tr><th scope="row">rust-test-failure</th><td>1,245 · 3/3</td><td>126 · 3/3</td><td>155 · 3/3</td></tr>
+<tr><th scope="row">go-test-failure</th><td>2,651 · 2/2</td><td>64 · 2/2</td><td>78 · 2/2</td></tr>
+<tr><th scope="row">python-unittest-failure</th><td>3,572 · 3/3</td><td>3,572 · 3/3</td><td>200 · 3/3</td></tr>
+<tr><th scope="row">python-quiet-warning</th><td>3,397 · 2/2</td><td>3,397 · 2/2</td><td>89 · 2/2</td></tr>
+<tr><th scope="row">node-test-failure</th><td>1,576 · 2/2</td><td>1,574 · 2/2</td><td>197 · 2/2</td></tr>
+<tr><th scope="row">rust-test-lean</th><td>119 · 1/1</td><td>10 · 1/1</td><td>61 · 1/1</td></tr>
+<tr><th scope="row">service-log-triage</th><td>52,163 · 2/2</td><td>52,163 · 2/2</td><td>2,075 · 2/2</td></tr>
+<tr><th scope="row">search-many-hits</th><td>3,688 · 1/1</td><td>3,688 · 1/1</td><td>356 · 1/1</td></tr>
+<tr><th scope="row">git-diff-lockfile</th><td>11,484 · 2/2</td><td>766 · 2/2</td><td>120 · 2/2</td></tr>
+<tr><th scope="row">git-diff-multi-file</th><td>7,225 · 1/1</td><td>5,738 · <span class="miss">0/1</span></td><td>1,109 · 1/1</td></tr>
+<tr><th scope="row">git-log-history</th><td>12,618 · 1/1</td><td>222 · <span class="miss">0/1</span></td><td>551 · 1/1</td></tr>
+<tr class="suite-row"><th scope="rowgroup" colspan="4">Holdout · written after the initial freeze</th></tr>
+<tr><th scope="row">cargo-multi-failure</th><td>4,311 · 6/6</td><td>205 · 6/6</td><td>280 · 6/6</td></tr>
+<tr><th scope="row">tsc-type-errors</th><td>70 · 3/3</td><td>90 · 3/3</td><td>70 · 3/3</td></tr>
+<tr><th scope="row">go-package-failure</th><td>129 · 2/2</td><td>58 · 2/2</td><td>99 · 2/2</td></tr>
+<tr><th scope="row">node-all-pass</th><td>2,571 · 2/2</td><td>2,574 · 2/2</td><td>48 · 2/2</td></tr>
+<tr><th scope="row">python-stdlib-traceback</th><td>1,261 · 3/3</td><td>1,261 · 3/3</td><td>389 · 3/3</td></tr>
+<tr><th scope="row">rg-todo-sweep</th><td>1,913 · 1/1</td><td>1,913 · 1/1</td><td>215 · 1/1</td></tr>
+<tr><th scope="row">git-diff-rename-plus-fix</th><td>2,233 · 2/2</td><td>1,849 · 2/2</td><td>835 · 2/2</td></tr>
+<tr><th scope="row">cargo-build-warnings</th><td>2,084 · 3/3</td><td>2,026 · 3/3</td><td>2,084 · 3/3</td></tr>
+<tr><th scope="row">json-log-triage</th><td>108,527 · 1/1</td><td>108,527 · 1/1</td><td>3,351 · 1/1</td></tr>
+<tr class="suite-row"><th scope="rowgroup" colspan="4">Semantic · vocabulary-mismatch cases</th></tr>
+<tr><th scope="row">semantic-log-signout</th><td>42,783 · 1/1</td><td>42,783 · 1/1</td><td>1,411 · 1/1</td></tr>
+<tr><th scope="row">semantic-search-deadline</th><td>1,132 · 1/1</td><td>1,132 · 1/1</td><td>222 · <span class="miss">0/1</span></td></tr>
+<tr><th scope="row">semantic-diff-rounding</th><td>2,984 · 1/1</td><td>2,797 · 1/1</td><td>2,984 · 1/1</td></tr></tbody><tfoot><tr><th scope="row">Total, 23 scenarios</th><td>269,736 · 46/46</td><td>236,535 · 44/46</td><td>16,979 · 45/46</td></tr></tfoot></table>
           </div>
         </div>
-        <p class="bench-foot">Reproduce: <code>cargo build --release -p jevto &amp;&amp; python benchmarks/token_bench.py</code>, then <code>python benchmarks/render_charts.py</code>. Scenario workspaces are generated from scratch; raw views and JSON live in <code>benchmarks/results/</code>. Generated 2026-09-29 on Windows with jevto 0.1.0 and RTK 0.48.0.</p>
+        <p class="bench-foot">Historical results: 2026-09-30 on Windows, JevTO 0.1.0 and RTK 0.48.0. These are not a new v0.1.1 benchmark or current-competitor claims. <a href="/docs/benchmarks/">Method, limitations, and reproduction</a> · <a href="https://github.com/mattbaconz/jevto/tree/main/benchmarks/results">Raw views and JSON</a>.</p>
       </div>
     </section>
 
@@ -255,15 +263,15 @@ AssertionError: '7' is not None</span>
               <li>Test runners RTK doesn't route (Python, Node) and long logs: −69% to −98% with every fact kept, on scenarios written after the rules froze too.</li>
               <li>Lockfile-heavy diffs: 11,484 → 120 tokens; a 14-file mechanical refactor shows the edit once and the real fix in full.</li>
               <li>Keeps facts that truncation drops: the <code>git log</code> commit and the multi-file fix line.</li>
-              <li>In whole sessions it was the cheapest arm on both agents, with equal outcomes.</li>
+              <li>The small Codex pilot used fewer median input tokens with 12/12 hidden-holdout passes across its four arms.</li>
             </ul>
           </div>
           <div class="verdict bad">
             <h3>Where it doesn't</h3>
             <ul>
               <li>RTK is tighter on Rust and Go failures and tiny passing runs.</li>
-              <li>Deterministic mode misses a search answer that shares no words with the goal, and won't shrink a diff where every file is a distinct real change. The live Jev arm for those has not run yet.</li>
-              <li>Session savings are 3–31% depending on the metric, not 94%. Output is a small slice of a session.</li>
+              <li>Rules missed one vocabulary-mismatch search answer. The historical live Jev arm recovered it, but that does not establish universal answer preservation.</li>
+              <li>The Claude pilot failed every hidden holdout. Smaller payloads and list-price estimates do not establish lower bills or successful tasks.</li>
               <li>n = 3 on one small task per agent. A Cursor pair had unequal outcomes. Indicative, not significant.</li>
             </ul>
           </div>
@@ -289,21 +297,21 @@ AssertionError: '7' is not None</span>
               </tbody>
             </table>
           </div>
-          <p class="coverage-foot"><code>jevto doctor --json</code> lists which host versions and paths have actually been exercised.</p>
+          <p class="coverage-foot"><a href="/docs/integrations/">Setup, tested versions, and removal instructions</a>. <code>jevto doctor --json</code> reports coverage and mode without making a network call.</p>
         </div>
       </section>
 
       <section class="xp-window content-window privacy-window" id="privacy" aria-labelledby="privacy-title">
         <div class="window-titlebar"><span class="title-icon privacy-icon" aria-hidden="true"></span><span class="title-text">Local storage</span><span class="title-state">Privacy</span></div>
         <div class="window-body">
-          <div class="privacy-banner"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 40 10v11c0 11-7 18-16 23C15 39 8 32 8 21V10z" fill="#3faa58" stroke="#1c662d" stroke-width="2"/><path d="m16 23 6 6 11-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><h2 id="privacy-title">Output stays on your machine.</h2></div>
+          <div class="privacy-banner"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 40 10v11c0 11-7 18-16 23C15 39 8 32 8 21V10z" fill="#3faa58" stroke="#1c662d" stroke-width="2"/><path d="m16 23 6 6 11-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><h2 id="privacy-title">Local capture. Optional remote ranking.</h2></div>
           <ul class="privacy-list">
             <li>Deterministic mode makes no network requests and sends no telemetry.</li>
             <li>Captures expire after 24 hours; the store is capped at 1 GiB.</li>
             <li>Command arguments and environment variables aren't stored.</li>
-            <li>Jev sees only what an explicit policy allows, bounded and secret-filtered.</li>
+            <li>In default <code>auto</code> mode, an OpenRouter key enables eligible remote ranking from the current workspace. Set <code>JEVTO_MODE=rules</code> to stay local.</li>
           </ul>
-          <p class="privacy-limit">The store isn't encrypted at rest, and captured output can contain secrets. Review what you wrap.</p>
+          <p class="privacy-limit">The store isn't encrypted at rest, and captured output can contain secrets. <a href="/docs/privacy/">Read storage, network, and removal details.</a></p>
         </div>
       </section>
     </div>
@@ -312,13 +320,13 @@ AssertionError: '7' is not None</span>
       <div class="window-titlebar"><span class="title-icon run-icon" aria-hidden="true"></span><span class="title-text">Command Prompt</span><span class="title-state">Rust stable</span></div>
       <div class="window-body try-layout">
         <div>
-          <h2 id="try-title">Try it from source.</h2>
-          <p>One binary, no account. The Claude Code installer shows what it would change and does nothing until you add <code>--apply</code>. <code>jevto gain</code> reports what was saved, from local receipts.</p>
-          <p class="try-links">Agent-level harnesses for Claude Code, Codex, and Cursor live in <code>benchmarks/</code>.</p>
+          <h2 id="try-title">One binary. Start with one command.</h2>
+          <p><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1</a> for Windows x86_64, Linux x86_64, or macOS Intel/Apple silicon. Every archive has a checksum. No JevTO account is needed.</p>
+          <p class="try-links">Prefer source? Use current stable Rust and the pinned command alongside. <a href="/docs/">Installation and first run</a> · <a href="/docs/integrations/">Claude Code setup</a>.</p>
         </div>
         <div class="command-sheet">
           <div class="sheet-bar"><span>C:\src\jevto&gt;</span><button class="copy-button" type="button" data-copy="install-cmds">Copy</button></div>
-<pre id="install-cmds"><code>cargo install --path crates/jevto-cli
+<pre id="install-cmds"><code>cargo install --git https://github.com/mattbaconz/jevto --tag v0.1.1 --locked jevto
 jevto doctor
 
 # Claude Code: preview, then apply
@@ -326,14 +334,14 @@ jevto init-claude-auto --workspace .
 jevto init-claude-auto --workspace . --apply
 
 # Any agent or shell
-jevto run -- cargo test --workspace
-jevto recall &lt;capture-id&gt;
+jevto run --mode rules -- cargo test --workspace
+jevto recall last
 jevto gain</code></pre>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><span>Apache-2.0 · independent project, not affiliated with TypeSafe AI or RTK · no published release</span><a href="#top">Back to top</a></footer>
+  <footer class="site-footer"><span>Apache-2.0 · experimental v0.1.1 · independent of TypeSafe AI and RTK</span><nav aria-label="Footer"><a href="/docs/">Docs</a><a href="https://github.com/mattbaconz/jevto">GitHub</a><a href="https://ko-fi.com/mattbaconz">Support on Ko-fi</a></nav></footer>
 </body>
 </html>

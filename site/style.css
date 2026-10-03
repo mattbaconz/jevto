@@ -344,3 +344,50 @@ code { font: 600 .94em/1.4 Consolas, "Cascadia Code", monospace; }
 }
 
 .data-table tr.suite-row th { text-align: left; font-size: .78em; letter-spacing: .06em; text-transform: uppercase; opacity: .75; padding-top: 1em; }
+
+/* Launch navigation and documentation share the existing desktop palette. */
+.hero-copy .launch-note { margin-top: 18px; color: #405471; font-size: .76rem; line-height: 1.6; }
+.site-footer nav, .docs-topbar nav { display: flex; flex-wrap: wrap; gap: 14px; }
+.docs-topbar { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(1180px, calc(100% - 40px)); margin: 28px auto; color: white; }
+.docs-brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; text-decoration: none; }
+.docs-topbar nav a { padding-block: 8px; font-size: .85rem; }
+.docs-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px; width: min(1180px, calc(100% - 40px)); margin: 0 auto 36px; align-items: start; }
+.docs-sidebar { position: sticky; top: 24px; display: flex; flex-direction: column; padding: 8px; border: 1px solid #8aaada; border-radius: 6px; background: #e7f0ff; box-shadow: 0 6px 20px #123d7440; }
+.docs-sidebar a { padding: 12px 10px; font-size: .82rem; line-height: 1.4; text-decoration: none; border-radius: 3px; }
+.docs-sidebar a:hover { background: #d0e3ff; }
+.docs-sidebar a[aria-current] { color: #fff; background: #1553ba; font-weight: 700; }
+.docs-page .wallpaper::before { animation: none; }
+.docs-page main { padding-bottom: 0; }
+.docs-page .site-footer { margin-bottom: 28px; }
+.doc-content { padding: clamp(22px, 4vw, 48px); background: var(--paper); overflow-wrap: anywhere; }
+.doc-content h1 { max-width: 25ch; margin: 0 0 20px; font-size: clamp(1.8rem, 3.5vw, 2.65rem); line-height: 1.15; letter-spacing: -.035em; }
+.doc-content h2 { margin: 38px 0 14px; padding-top: 8px; color: #174990; font-size: 1.4rem; line-height: 1.3; }
+.doc-content h3 { margin: 24px 0 12px; font-size: 1.04rem; }
+.doc-content p, .doc-content li { font-size: .92rem; line-height: 1.8; }
+.doc-content li { margin-block: 8px; }
+.doc-content .doc-lead { font-size: 1.05rem; line-height: 1.7; color: #405471; }
+.doc-content .doc-eyebrow { margin: 0 0 14px; color: #405471; font-size: .75rem; font-weight: 700; }
+.doc-content .doc-caption { color: #405471; font-size: .8rem; }
+.doc-content a { color: #164c9c; }
+.doc-content a.primary-action { color: white; }
+.doc-content .command-sheet { margin-block: 18px; overflow: hidden; }
+.doc-content .command-sheet pre { font-size: .82rem; white-space: pre; overflow-wrap: normal; }
+.doc-content .data-table { font-size: .8rem; }
+.doc-content .data-table th, .doc-content .data-table td { white-space: normal; }
+.doc-callout { margin-block: 22px; padding: 16px 18px; border: 1px solid #acc0dd; border-left: 4px solid #2a64be; background: #eaf2ff; font-size: .85rem; line-height: 1.7; }
+.doc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.demo-video { display: block; width: 100%; height: auto; margin-top: 24px; background: #111214; border: 1px solid #7594bf; }
+@media (max-width: 800px) {
+  .docs-layout { grid-template-columns: 1fr; gap: 16px; }
+  .docs-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+  .docs-sidebar a { padding: 9px; font-size: .76rem; }
+}
+@media (max-width: 520px) {
+  .docs-topbar, .docs-layout { width: calc(100% - 20px); }
+  .docs-topbar { margin-block: 16px; gap: 12px; }
+  .docs-topbar nav { gap: 10px; }
+  .docs-topbar nav a { font-size: .76rem; }
+  .doc-content { padding: 20px 17px; }
+  .doc-content .command-sheet pre { font-size: .76rem; }
+  .doc-content .data-table { min-width: 520px; }
+}

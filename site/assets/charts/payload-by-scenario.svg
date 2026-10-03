@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 962" role="img" aria-labelledby="scenarios-title scenarios-desc">
 <title id="scenarios-title">Tokens per command, by scenario</title>
-<desc id="scenarios-desc">Estimated tokens per command on a log scale for 23 scenarios in 3 suites. Native totals 269,736 tokens and 46/46 facts; RTK totals 236,536 tokens and 44/46 facts; JevTO totals 16,986 tokens and 45/46 facts. Hollow dots with a red cross missed a required fact; double rings were not routed by RTK.</desc>
+<desc id="scenarios-desc">Estimated tokens per command on a log scale for 23 scenarios in 3 suites. Native totals 269,736 tokens and 46/46 facts; RTK totals 236,535 tokens and 44/46 facts; JevTO totals 16,979 tokens and 45/46 facts. Hollow dots with a red cross missed a required fact; double rings were not routed by RTK.</desc>
 <style>
 svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
       font-size: 12px; font-variant-numeric: tabular-nums; }
@@ -68,15 +68,15 @@ svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Ari
 <text x="24.0" y="100.0" class="suite">Dev set · rules tuned here</text>
 <text x="230.0" y="126.0" class="text" text-anchor="end">cargo test, 1 failure</text>
 <line x1="497.2" y1="114.0" x2="379.8" y2="122.0" class="connector"/>
-<line x1="497.2" y1="114.0" x2="392.7" y2="130.0" class="connector"/>
+<line x1="497.2" y1="114.0" x2="390.5" y2="130.0" class="connector"/>
 <g><title>cargo test, 1 failure: Native, 1,245 estimated tokens, 3/3 facts. Command: cargo test</title>
 <circle cx="497.2" cy="114.0" r="4.5" class="native-fill"/>
 </g>
 <g><title>cargo test, 1 failure: RTK, 126 estimated tokens, 3/3 facts. Command: cargo test</title>
 <circle cx="379.8" cy="122.0" r="4.5" class="rtk-fill"/>
 </g>
-<g><title>cargo test, 1 failure: JevTO, 162 estimated tokens, 3/3 facts. Command: cargo test</title>
-<circle cx="392.7" cy="130.0" r="4.5" class="jevto-fill"/>
+<g><title>cargo test, 1 failure: JevTO, 155 estimated tokens, 3/3 facts. Command: cargo test</title>
+<circle cx="390.5" cy="130.0" r="4.5" class="jevto-fill"/>
 </g>
 <text x="230.0" y="156.0" class="text" text-anchor="end">go test -v, 1 failure</text>
 <line x1="536.0" y1="144.0" x2="345.1" y2="152.0" class="connector"/>
@@ -119,10 +119,10 @@ svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Ari
 <text x="230.0" y="246.0" class="text" text-anchor="end">node --test, 1 failure</text>
 <line x1="509.3" y1="234.0" x2="509.3" y2="242.0" class="connector"/>
 <line x1="509.3" y1="234.0" x2="402.7" y2="250.0" class="connector"/>
-<g><title>node --test, 1 failure: Native, 1,575 estimated tokens, 2/2 facts. Command: node --test</title>
+<g><title>node --test, 1 failure: Native, 1,576 estimated tokens, 2/2 facts. Command: node --test</title>
 <circle cx="509.3" cy="234.0" r="4.5" class="native-fill"/>
 </g>
-<g><title>node --test, 1 failure: RTK, 1,576 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
+<g><title>node --test, 1 failure: RTK, 1,574 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
 <circle cx="509.3" cy="242.0" r="5.0" class="unrouted-outer"/>
 <circle cx="509.3" cy="242.0" r="3.0" class="unrouted-inner"/>
 </g>
@@ -246,10 +246,10 @@ svg { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Helvetica, Ari
 <text x="230.0" y="590.0" class="text" text-anchor="end">node --test, 300 passing</text>
 <line x1="534.4" y1="578.0" x2="534.4" y2="586.0" class="connector"/>
 <line x1="534.4" y1="578.0" x2="330.4" y2="594.0" class="connector"/>
-<g><title>node --test, 300 passing: Native, 2,572 estimated tokens, 2/2 facts. Command: node --test</title>
+<g><title>node --test, 300 passing: Native, 2,571 estimated tokens, 2/2 facts. Command: node --test</title>
 <circle cx="534.4" cy="578.0" r="4.5" class="native-fill"/>
 </g>
-<g><title>node --test, 300 passing: RTK, 2,573 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
+<g><title>node --test, 300 passing: RTK, 2,574 estimated tokens, 2/2 facts; not routed, plotted at native value. Command: node --test</title>
 <circle cx="534.4" cy="586.0" r="5.0" class="unrouted-outer"/>
 <circle cx="534.4" cy="586.0" r="3.0" class="unrouted-inner"/>
 </g>

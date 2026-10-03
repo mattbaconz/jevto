@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#235bd0">
+  <title>JevTO benchmarks: payloads, whole sessions, and limits | JevTO</title>
+  <meta name="description" content="Read JevTO's historical payload and coding-agent results, including missed facts and failed holdouts. Reproduce the benchmark without confusing output reduction with bill savings.">
+  <link rel="canonical" href="https://jevto.xyz/docs/benchmarks/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JevTO">
+  <meta property="og:url" content="https://jevto.xyz/docs/benchmarks/">
+  <meta property="og:title" content="JevTO benchmarks: payloads, whole sessions, and limits">
+  <meta property="og:description" content="Read JevTO's historical payload and coding-agent results, including missed facts and failed holdouts. Reproduce the benchmark without confusing output reduction with bill savings.">
+  <meta property="og:image" content="https://jevto.xyz/assets/og.png">
+  <meta property="og:image:alt" content="JevTO — command-output selection with exact local recall">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
+  <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <script defer src="/site.js?v=4"></script>
+</head>
+<body class="docs-page">
+  <div class="wallpaper" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="docs-topbar"><a href="/" class="docs-brand"><img src="/assets/jevto-mark-64.png" alt="" width="32" height="32">JevTO</a><nav aria-label="Site"><a href="/docs/">Docs</a><a href="/demo/">Demo</a><a href="https://github.com/mattbaconz/jevto">GitHub</a></nav></header>
+  <div class="docs-layout">
+    <nav class="docs-sidebar" aria-label="Documentation"><a href="/docs/">Getting started</a><a href="/docs/integrations/">Integrations</a><a href="/docs/privacy/">Privacy & troubleshooting</a><a href="/docs/benchmarks/" aria-current="page">Benchmarks</a><a href="/demo/">Demo & first run</a><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1 ↗</a></nav>
+    <main id="main" class="xp-window docs-window">
+      <div class="window-titlebar"><img src="/assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO Help</span><span class="title-state">v0.1.1 · experimental</span></div>
+      <article class="doc-content"><p class="doc-eyebrow">JevTO / Documentation</p><h1>JevTO benchmarks: payloads, whole sessions, and limits</h1><p class="doc-lead">A smaller tool response is useful only if the agent can still finish the task. The payload and whole-session measurements answer different questions.</p>
+<div class="doc-callout"><strong>Historical evidence, not a fresh v0.1.1 campaign.</strong> The payload record is dated 2026-09-30 and identifies JevTO 0.1.0 and RTK 0.48.0 on Windows. Competitor results apply to that version and setup.</div>
+<h2 id="payload">23 generated command scenarios</h2>
+<p>Each scenario runs a real command in a generated workspace. Tools use their own Claude hook where routed; explicit wrapper cases are labeled in the <a href="https://github.com/mattbaconz/jevto/blob/main/benchmarks/results/token-bench.md">full report</a>. The dev set was used to tune rules. Holdout and semantic scenarios were written after the initial freeze; the first holdout run exposed bugs that were fixed, so final results are not a pristine unseen evaluation.</p>
+<div class="table-scroll"><table class="data-table"><caption>Historical totals · estimated tokens = bytes ÷ 4</caption><thead><tr><th scope="col">Arm</th><th scope="col">Output estimate</th><th scope="col">Facts visible</th></tr></thead><tbody id="payload-summary">
+<tr><th scope="row">Native</th><td>269,736</td><td>46/46</td></tr>
+<tr><th scope="row">RTK 0.48.0</th><td>236,535</td><td>44/46</td></tr>
+<tr><th scope="row">JevTO rules</th><td>16,979</td><td>45/46</td></tr>
+<tr><th scope="row">JevTO + Jev</th><td>13,628</td><td>46/46</td></tr>
+</tbody></table></div>
+<p>A “fact” is a required string visible in the selected output without recall. This checks selected evidence, not arbitrary semantic correctness. The report also charges the full native payload when a fact is missed; that is a benchmark accounting rule, not observed agent behavior or a provider bill.</p>
+<p>RTK is tighter on some Rust/Go failure outputs and tiny passing runs. Rules miss the vocabulary-mismatch search answer. The Jev arm recovers that answer in this small set. The source includes negative results and raw views.</p>
+<h2 id="sessions">Whole-agent pilots</h2>
+<p><strong>Codex CLI 0.158.0-alpha.2.1, gpt-6-sol:</strong> one parser task, four arms, three runs each. All 12 sessions passed the hidden holdout. Median input tokens were 198,520 native and 180,533 with JevTO (about 9% lower). This small result does not establish broad savings.</p>
+<p><strong>Claude Code 2.1.283, Haiku 4.5:</strong> all 12 sessions passed visible tests and failed the same hidden holdout. These are not verified successful task completions. Reported list-price estimates are not bills.</p>
+<p>A separate Cursor pair had unequal holdout outcomes and cannot support a successful-task savings comparison. See the <a href="https://github.com/mattbaconz/jevto#whole-agent-sessions">public README's session evidence</a> and <a href="https://github.com/mattbaconz/jevto/tree/main/benchmarks/results">raw records</a>.</p>
+<h2 id="reproduce">Reproduce or challenge the results</h2>
+<p>From a checkout of the public repository with the relevant scenario toolchains installed:</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="benchmark-commands">Copy</button></div><pre id="benchmark-commands"><code>cargo build --release --locked -p jevto
+python benchmarks/token_bench.py
+python benchmarks/render_charts.py</code></pre></div>
+<p>For the generated holdout suite, use <code>python benchmarks/token_bench.py --suite holdout</code>. Review the harness and its prerequisites before running it. Live adaptive requests are a separate opt-in using <code>--live-jev</code> and your runtime OpenRouter key; those requests can incur provider charges. No paid campaign runs merely from browsing this site.</p>
+<p>Cached Jev decisions are committed for inspection and replay. Historical cost fields predate the newer request-accounting corrections; they are not complete bills. The <a href="https://github.com/mattbaconz/jevto/blob/main/benchmarks/fresh-tasks.md">fresh-task note</a> distinguishes offline evaluator controls from real coding-agent results.</p>
+<h2 id="claims">What you can conclude</h2>
+<p>JevTO can substantially reduce selected command outputs and preserve exact local recall on tested captures. The current evidence does not prove universal fact preservation, lower bills across projects, or unchanged task quality. Try it on your own verifier and report both successful and failed runs.</p></article>
+    </main>
+  </div>
+  <footer class="site-footer"><span>Apache-2.0 · independent of TypeSafe AI and RTK</span><nav aria-label="Footer"><a href="/">Home</a><a href="https://github.com/mattbaconz/jevto">GitHub</a><a href="https://ko-fi.com/mattbaconz">Support on Ko-fi</a></nav></footer>
+</body>
+</html>

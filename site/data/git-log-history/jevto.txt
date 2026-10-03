@@ -80,4 +80,4 @@ Date:   Thu Jan 1 00:00:00 2026 +0000
     Refine alpha module step 0
     
     Body line for change 0.
-recall: `jevto recall 0ed44d1e` [--section ID]
+recall: `'<jevto>' recall bc09bafc` [--section ID]

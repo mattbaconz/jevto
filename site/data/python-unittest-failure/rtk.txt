@@ -224,12 +224,12 @@ test_rejects_leading_space (test_parser.ParserTest.test_rejects_leading_space) .
 FAIL: test_rejects_leading_space (test_parser.ParserTest.test_rejects_leading_space)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "<tmp>\jevto-bench-python-unittest-failure-3s2bpsur\work\test_parser.py", line 671, in test_rejects_leading_space
+  File "<tmp>\jevto-bench-python-unittest-failure-m7enllzl\work\test_parser.py", line 671, in test_rejects_leading_space
     self.assertIsNone(parse(' value=7'), 'leading-space lines are not headers')
     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AssertionError: '7' is not None : leading-space lines are not headers
 
 ----------------------------------------------------------------------
-Ran 221 tests in 0.014s
+Ran 221 tests in 0.013s
 
 FAILED (failures=1)

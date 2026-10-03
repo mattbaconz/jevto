@@ -18,6 +18,8 @@ Agent run `cargo test`. Terminal throw 173 line at agent. 150 line say `ok`. Age
 
 > **Status:** experimental (v0.1.1). Apache-2.0. Not made by TypeSafe AI or RTK.
 
+[Website](https://jevto.xyz/) · [Install and docs](https://jevto.xyz/docs/) · [Recorded demo](https://jevto.xyz/demo/) · [Releases](https://github.com/mattbaconz/jevto/releases) · [Support on Ko-fi](https://ko-fi.com/mattbaconz)
+
 ## 🪨 Before, after
 
 **Before.** Native `cargo test`: 173 lines, ~1,245 tokens.
@@ -77,11 +79,11 @@ Same exit code. Same failure. Same assertion. Real lines, not summary (thread na
 | Suite | Native | [RTK](https://github.com/rtk-ai/rtk) 0.48 | JevTO (rules) | JevTO + Jev |
 | --- | ---: | ---: | ---: | ---: |
 | **Dev** · 11 scenarios, rules tuned here | 99,738 · 20/20 facts | 71,320 (−28%) · 18/20 | 4,991 (−95%) · 20/20 | **4,361 (−96%) · 20/20** |
-| **Holdout** · 9 scenarios, written after rules froze | 123,100 · 23/23 | 118,498 (−4%) · 23/23 | **7,371 (−94%) · 23/23** | **7,371 (−94%) · 23/23** |
+| **Holdout** · 9 scenarios, written after rules froze | 123,099 · 23/23 | 118,503 (−4%) · 23/23 | **7,371 (−94%) · 23/23** | **7,371 (−94%) · 23/23** |
 | **Semantic** · 3 scenarios, goal and answer share no word | 46,899 · 3/3 | 46,712 (−0%) · 3/3 | 4,617 (−90%) · 2/3 | **1,896 (−96%) · 3/3** |
-| **All 23** | 269,737 · 46/46 | 236,530 (−12%) · 44/46 | 16,979 (−94%) · 45/46 | **13,628 (−95%) · 46/46** |
+| **All 23** | 269,736 · 46/46 | 236,535 (−12%) · 44/46 | 16,979 (−94%) · 45/46 | **13,628 (−95%) · 46/46** |
 
-Tokens = bytes ÷ 4, one command's output. Miss a fact? Agent must go read everything, so the benchmark charges the full native payload for every miss. With that charge: native 269,737 → RTK 256,373 → JevTO 18,111 → JevTO + Jev 13,628.
+Tokens = bytes ÷ 4, one command's output, summed from the [saved JSON](benchmarks/results/token-bench.json). For a missed fact, the benchmark charges the full native payload as a recall penalty; this is an accounting rule, not an observed agent action. With that charge: native 269,736 → RTK 256,378 → JevTO 18,111 → JevTO + Jev 13,628.
 
 ### Small number not enough. Answer must survive.
 

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#235bd0">
+  <title>Install JevTO and make your first run | JevTO</title>
+  <meta name="description" content="Install JevTO on Windows, macOS, or Linux. Run a command with rules-only output selection and recall the original stdout and stderr.">
+  <link rel="canonical" href="https://jevto.xyz/docs/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="JevTO">
+  <meta property="og:url" content="https://jevto.xyz/docs/">
+  <meta property="og:title" content="Install JevTO and make your first run">
+  <meta property="og:description" content="Install JevTO on Windows, macOS, or Linux. Run a command with rules-only output selection and recall the original stdout and stderr.">
+  <meta property="og:image" content="https://jevto.xyz/assets/og.png">
+  <meta property="og:image:alt" content="JevTO — command-output selection with exact local recall">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
+  <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
+  <link rel="stylesheet" href="/style.css?v=4">
+  <script defer src="/site.js?v=4"></script>
+</head>
+<body class="docs-page">
+  <div class="wallpaper" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="docs-topbar"><a href="/" class="docs-brand"><img src="/assets/jevto-mark-64.png" alt="" width="32" height="32">JevTO</a><nav aria-label="Site"><a href="/docs/">Docs</a><a href="/demo/">Demo</a><a href="https://github.com/mattbaconz/jevto">GitHub</a></nav></header>
+  <div class="docs-layout">
+    <nav class="docs-sidebar" aria-label="Documentation"><a href="/docs/" aria-current="page">Getting started</a><a href="/docs/integrations/">Integrations</a><a href="/docs/privacy/">Privacy & troubleshooting</a><a href="/docs/benchmarks/">Benchmarks</a><a href="/demo/">Demo & first run</a><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1 ↗</a></nav>
+    <main id="main" class="xp-window docs-window">
+      <div class="window-titlebar"><img src="/assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO Help</span><span class="title-state">v0.1.1 · experimental</span></div>
+      <article class="doc-content"><p class="doc-eyebrow">JevTO / Documentation</p><h1>Install JevTO and make your first run</h1><p class="doc-lead">Start with the explicit command wrapper. You can try it without changing your agent configuration or adding an API key.</p>
+<div class="doc-callout"><strong>Experimental v0.1.1.</strong> Linux x86_64, Windows x86_64, and macOS Intel/Apple silicon binaries are available. Host integrations have different coverage; see <a href="/docs/integrations/">tested integrations</a>.</div>
+<h2 id="install">1. Install a release</h2>
+<p><a class="primary-action" href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download JevTO v0.1.1</a></p>
+<p>Choose the archive for your OS and CPU, download its matching <code>.sha256</code> file, and compare the archive's SHA-256 with that file before extracting it.</p>
+<div class="table-scroll"><table class="data-table"><caption>Release files and checksum tools</caption><thead><tr><th scope="col">System</th><th scope="col">Archive suffix</th><th scope="col">Checksum command</th></tr></thead><tbody>
+<tr><th scope="row">Windows x86_64</th><td><code>x86_64-pc-windows-msvc.zip</code></td><td><code>Get-FileHash .\jevto-*.zip -Algorithm SHA256</code></td></tr>
+<tr><th scope="row">macOS Apple silicon</th><td><code>aarch64-apple-darwin.tar.gz</code></td><td><code>shasum -a 256 jevto-*.tar.gz</code></td></tr>
+<tr><th scope="row">macOS Intel</th><td><code>x86_64-apple-darwin.tar.gz</code></td><td><code>shasum -a 256 jevto-*.tar.gz</code></td></tr>
+<tr><th scope="row">Linux x86_64</th><td><code>x86_64-unknown-linux-gnu.tar.gz</code></td><td><code>sha256sum jevto-*.tar.gz</code></td></tr>
+</tbody></table></div>
+<p>Put the extracted executable in a folder on your <code>PATH</code>, then open a new terminal. On Windows, you can also run <code>.\jevto.exe</code> directly from its extracted folder; on macOS/Linux, use <code>./jevto</code>. Keep the executable in a stable location before installing a hook.</p>
+<h3>Or build from the tagged source</h3>
+<p>With current stable Rust installed:</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="install-source">Copy</button></div><pre id="install-source"><code>cargo install --git https://github.com/mattbaconz/jevto --tag v0.1.1 --locked jevto
+jevto --version
+jevto doctor</code></pre></div>
+<p>The version should read <code>jevto 0.1.1</code>. <code>doctor</code> inspects configuration; it makes no provider request and does not print your key.</p>
+<h2 id="first-run">2. Wrap one command</h2>
+<p>In a Rust project, try the following. The explicit <code>--mode rules</code> keeps this run offline even if an OpenRouter key is already in your environment.</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="first-command">Copy</button></div><pre id="first-command"><code>jevto run --mode rules -- cargo test --workspace</code></pre></div>
+<p>For another project, replace the program and its arguments after <code>--</code> with your actual verifier, for example <code>python -m unittest -v</code>. JevTO executes that command with your existing permissions; it does not make the command safe or change its side effects.</p>
+<p>Look for the failing test, assertion, exit status, and a <code>recall:</code> line. Already-short or unrecognized output may pass through with little or no reduction. A nonzero test exit remains nonzero.</p>
+<h2 id="recall">3. Recall the captured bytes</h2>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="recall-commands">Copy</button></div><pre id="recall-commands"><code>jevto recall last
+jevto recall last --stream stderr --lines 1:10
+jevto gain</code></pre></div>
+<p>Full recall restores <strong>both stdout and stderr to their original streams</strong>. For a line range, the default stream is stdout; add <code>--stream stderr</code> for stderr lines. <code>last</code> selects the newest capture. For parallel sessions, use the specific capture ID printed by your command instead.</p>
+<p>To retrieve one omitted section, use <code>jevto recall CAPTURE_ID --section SECTION_ID</code> with the identifiers from the view. Recall returns stored bytes without rerunning the command. It is bounded by what was captured and how long the store retains it.</p>
+<p><code>gain</code> summarizes local receipts. Its output estimates are not proof of lower provider bills.</p>
+<h2 id="next">Next: your coding agent</h2>
+<p><a href="/docs/integrations/#claude-code">Set up Claude Code</a> with a preview-first, reversible project hook. For a recording of the real CLI on a deliberately failing fixture, <a href="/demo/">watch the demo</a>.</p>
+<h2 id="troubleshooting">If your first run does not work</h2>
+<ul><li><strong>Command not found:</strong> check that JevTO and the wrapped tool are both on your PATH; reopen the terminal after changing PATH.</li><li><strong>Empty recall:</strong> check both output streams and use the explicit capture ID. For a line range, select <code>--stream stderr</code> when appropriate. A capture may also have expired.</li><li><strong>Unexpected networking:</strong> the built-in mode is <code>auto</code>. Use <code>--mode rules</code> per run or <code>JEVTO_MODE=rules</code> for your session.</li><li><strong>No reduction:</strong> short outputs may correctly bypass selection. Report an unsupported format with a sanitized example.</li></ul>
+<p><a href="https://github.com/mattbaconz/jevto/issues/new?template=bug_report.md">Report a bug</a>. Include JevTO version, OS, the command, expected behavior, and a redacted sample. Never attach API keys or raw private captures.</p></article>
+    </main>
+  </div>
+  <footer class="site-footer"><span>Apache-2.0 · independent of TypeSafe AI and RTK</span><nav aria-label="Footer"><a href="/">Home</a><a href="https://github.com/mattbaconz/jevto">GitHub</a><a href="https://ko-fi.com/mattbaconz">Support on Ko-fi</a></nav></footer>
+</body>
+</html>
