@@ -357,6 +357,14 @@ code { font: 600 .94em/1.4 Consolas, "Cascadia Code", monospace; }
 .docs-sidebar a:hover { background: #d0e3ff; }
 .docs-sidebar a[aria-current] { color: #fff; background: #1553ba; font-weight: 700; }
 .docs-page .wallpaper::before { animation: none; }
+.install-tabs { display: flex; gap: 4px; margin-bottom: -1px; position: relative; }
+.install-tabs button { padding: 11px 17px; border: 1px solid #a5b5ca; border-radius: 5px 5px 0 0; background: #e3eaf2; color: #25466e; font: inherit; font-size: .84rem; cursor: pointer; }
+.install-tabs button[aria-selected="true"] { background: #fffefa; border-bottom-color: #fffefa; font-weight: 700; box-shadow: inset 0 3px #e8ae44; }
+.install-picker .command-sheet { margin-top: 0; }
+.install-picker [hidden] { display: none; }
+.install-picker pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.install-note { font-size: .8rem; line-height: 1.7; color: #405471; }
+.install-picker [role="tabpanel"]:focus-visible { outline: 2px solid #164c9c; outline-offset: 4px; }
 .docs-page main { padding-bottom: 0; }
 .docs-page .site-footer { margin-bottom: 28px; }
 .doc-content { padding: clamp(22px, 4vw, 48px); background: var(--paper); overflow-wrap: anywhere; }
@@ -372,6 +380,8 @@ code { font: 600 .94em/1.4 Consolas, "Cascadia Code", monospace; }
 .doc-content a.primary-action { color: white; }
 .doc-content .command-sheet { margin-block: 18px; overflow: hidden; }
 .doc-content .command-sheet pre { font-size: .82rem; white-space: pre; overflow-wrap: normal; }
+.doc-content .install-picker .command-sheet { margin-top: 0; }
+.doc-content .install-picker pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .doc-content .data-table { font-size: .8rem; }
 .doc-content .data-table th, .doc-content .data-table td { white-space: normal; }
 .doc-callout { margin-block: 22px; padding: 16px 18px; border: 1px solid #acc0dd; border-left: 4px solid #2a64be; background: #eaf2ff; font-size: .85rem; line-height: 1.7; }

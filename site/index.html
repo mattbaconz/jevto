@@ -21,8 +21,8 @@
   <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
   <title>JevTO — less tool output for coding agents, exact recall</title>
   <link rel="icon" href="./assets/jevto-mark-64.png" type="image/png">
-  <link rel="stylesheet" href="./style.css?v=4">
-  <script defer src="./site.js?v=4"></script>
+  <link rel="stylesheet" href="./style.css?v=5">
+  <script defer src="./site.js?v=5"></script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"JevTO","url":"https://jevto.xyz/","codeRepository":"https://github.com/mattbaconz/jevto","programmingLanguage":"Rust","license":"https://www.apache.org/licenses/LICENSE-2.0","description":"Command-output selection for coding agents with exact local recall.","version":"0.1.1"}</script>
 </head>
 <body>
@@ -284,7 +284,7 @@ AssertionError: '7' is not None</span>
       <section class="xp-window content-window coverage-window" id="coverage" aria-labelledby="coverage-title">
         <div class="window-titlebar"><span class="title-icon coverage-icon" aria-hidden="true"></span><span class="title-text">Supported agents</span><span class="title-state">Properties</span></div>
         <div class="window-body">
-          <div class="section-intro"><h2 id="coverage-title">The route is explicit.</h2><p>Every installer previews first, applies only with <code>--apply</code>, backs up what it changes, and removes only its own entry. A failed hook leaves the command native. The Claude hook never sets a permission decision.</p></div>
+          <div class="section-intro"><h2 id="coverage-title">The route is explicit.</h2><p>Agent setup commands preview first, apply only with <code>--apply</code>, back up what they change, and remove only their own entry. A failed hook leaves the command native. The Claude hook never sets a permission decision.</p></div>
           <div class="table-scroll">
             <table class="data-table coverage-table">
               <thead><tr><th scope="col">Host</th><th scope="col">Route</th><th scope="col">Status</th></tr></thead>
@@ -317,27 +317,27 @@ AssertionError: '7' is not None</span>
     </div>
 
     <section class="xp-window content-window try-section" id="try" aria-labelledby="try-title">
-      <div class="window-titlebar"><span class="title-icon run-icon" aria-hidden="true"></span><span class="title-text">Command Prompt</span><span class="title-state">Rust stable</span></div>
+      <div class="window-titlebar"><span class="title-icon run-icon" aria-hidden="true"></span><span class="title-text">Install JevTO</span><span class="title-state">No build tools</span></div>
       <div class="window-body try-layout">
         <div>
-          <h2 id="try-title">One binary. Start with one command.</h2>
-          <p><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1</a> for Windows x86_64, Linux x86_64, or macOS Intel/Apple silicon. Every archive has a checksum. No JevTO account is needed.</p>
-          <p class="try-links">Prefer source? Use current stable Rust and the pinned command alongside. <a href="/docs/">Installation and first run</a> · <a href="/docs/integrations/">Claude Code setup</a>.</p>
+          <h2 id="try-title">One command to install.</h2>
+          <p>The installer picks your v0.1.1 binary, verifies its checksum, and sets up PATH. No Rust toolchain, administrator access, or JevTO account needed.</p>
+          <p class="try-links">Windows x64 · macOS Apple silicon / Intel · Linux x64. <a href="/docs/">Install and connect Claude Code</a> · <a href="/docs/#manual-install">Manual download or source</a>.</p>
         </div>
-        <div class="command-sheet">
-          <div class="sheet-bar"><span>C:\src\jevto&gt;</span><button class="copy-button" type="button" data-copy="install-cmds">Copy</button></div>
-<pre id="install-cmds"><code>cargo install --git https://github.com/mattbaconz/jevto --tag v0.1.1 --locked jevto
-jevto doctor
-
-# Claude Code: preview, then apply
-jevto init-claude-auto --workspace .
-jevto init-claude-auto --workspace . --apply
-
-# Any agent or shell
-jevto run --mode rules -- cargo test --workspace
-jevto recall last
-jevto gain</code></pre>
-        </div>
+<div class="install-picker" data-install-picker>
+  <div class="install-tabs" role="tablist" aria-label="Installation platform">
+    <button id="install-tab-windows" type="button" role="tab" aria-selected="true" aria-controls="install-windows" data-platform="windows">Windows</button>
+    <button id="install-tab-unix" type="button" role="tab" aria-selected="false" aria-controls="install-unix" tabindex="-1" data-platform="unix">macOS / Linux</button>
+  </div>
+  <div id="install-windows" role="tabpanel" aria-labelledby="install-tab-windows" tabindex="0">
+    <div class="command-sheet"><div class="sheet-bar"><span>PowerShell</span><button class="copy-button" type="button" data-copy="install-cmds">Copy</button></div><pre id="install-cmds"><code>irm https://jevto.xyz/install.ps1 | iex</code></pre></div>
+    <p class="install-note">Ready in the same PowerShell window. <a href="/install.ps1">Read the installer</a>.</p>
+  </div>
+  <div id="install-unix" role="tabpanel" aria-labelledby="install-tab-unix" tabindex="0">
+    <div class="command-sheet"><div class="sheet-bar"><span>Terminal · Bash / Zsh</span><button class="copy-button" type="button" data-copy="install-unix-cmd">Copy</button></div><pre id="install-unix-cmd"><code>curl -fsSL https://jevto.xyz/install.sh | sh</code></pre></div>
+    <p class="install-note">Open a new terminal after installation. <a href="/install.sh">Read the installer</a>.</p>
+  </div>
+</div>
       </div>
     </section>
   </main>

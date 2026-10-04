@@ -122,12 +122,23 @@ JevTO alone had the lowest estimated cost on Claude and lowest uncached input on
 
 ## 🔥 Install
 
-Grab a prebuilt binary (Linux x86_64, macOS arm64/x86_64, Windows x86_64, each with a `.sha256`) from [Releases](https://github.com/mattbaconz/jevto/releases) and put `jevto` on your `PATH`. Or build it (Rust 1.82+):
+One command downloads the right **v0.1.1** binary, verifies its SHA-256, and sets up PATH. No Rust toolchain or administrator access needed.
+
+**Windows x64 — PowerShell:**
+
+```powershell
+irm https://jevto.xyz/install.ps1 | iex
+```
+
+**macOS Apple silicon / Intel and Linux x64 — Bash or Zsh:**
 
 ```sh
-cargo install --git https://github.com/mattbaconz/jevto jevto
-jevto doctor
+curl -fsSL https://jevto.xyz/install.sh | sh
 ```
+
+Open a new terminal after the macOS/Linux install; Windows is ready in the current PowerShell window. Run `jevto doctor` to check configuration. [Installers, manual download, source build, and removal](https://jevto.xyz/docs/) · [PowerShell source](site/install.ps1) · [Shell source](site/install.sh).
+
+Rerun the installer to update to its pinned version. Set `JEVTO_INSTALL_DIR` for a custom destination or `JEVTO_NO_PATH=1` to skip PATH changes. The installer does not change agent hooks or enable a provider.
 
 **Claude Code (automatic).** Look first, then apply. Hook route tests, builds, lints, searches, `git diff/log/show` through JevTO, and save each prompt locally as session goal:
 

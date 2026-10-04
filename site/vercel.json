@@ -6,6 +6,13 @@
   "trailingSlash": true,
   "headers": [
     {
+      "source": "/install.:extension(ps1|sh)",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },

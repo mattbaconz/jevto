@@ -8,6 +8,25 @@ permissions:
   contents: read
 
 jobs:
+  installers:
+    name: installers (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest, macos-15-intel]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installer fixtures and published binary
+        if: runner.os != 'Windows'
+        run: python tests/installers_smoke.py --live
+      - name: Installer fixtures, published binary, and user PATH
+        if: runner.os == 'Windows'
+        run: python tests/installers_smoke.py --live --test-user-path
+
   test:
     name: test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}

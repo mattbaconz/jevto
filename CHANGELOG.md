@@ -2,6 +2,15 @@
 
 All notable changes to this project are recorded here. JevTO is experimental; benchmark results are exploratory and failures are published alongside them.
 
+## Unreleased
+
+### Added
+- One-command PowerShell and shell installers at jevto.xyz, with platform selection, pinned release checksums, executable verification, and user PATH setup. No Rust toolchain or administrator access is required.
+- Installer checks for clean installs, replacement, repeat installs, profile preservation, and rejected downloads; CI also installs the published binary on Windows, Linux, and both macOS architectures.
+
+### Changed
+- The website and README lead with the one-command install; the docs put Claude Code setup next and retain manual downloads, source builds, and removal instructions. The installers currently distribute the existing v0.1.1 release.
+
 ## 0.1.1 - 2026-10-01
 
 ### Added

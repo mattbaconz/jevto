@@ -21,7 +21,20 @@
         select(tabs[(i + step + tabs.length) % tabs.length], true);
       });
     });
+    return select;
   }
+
+  // Installation: detect locally, while keeping both platforms selectable.
+  document.querySelectorAll("[data-install-picker]").forEach((picker) => {
+    const tabs = [...picker.querySelectorAll('[role="tab"]')];
+    const panels = [...picker.querySelectorAll('[role="tabpanel"]')];
+    const select = tablist(tabs, (tab) => {
+      panels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute("aria-controls"); });
+    });
+    const platform = navigator.userAgentData?.platform || navigator.platform || "";
+    const preferred = /Mac|Linux/i.test(platform) ? "unix" : "windows";
+    select(tabs.find((tab) => tab.dataset.platform === preferred) || tabs[0], false);
+  });
 
   // Output inspector: real benchmark views (site/data, copied from benchmarks/results/views).
   const scenarios = {

@@ -17,8 +17,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
   <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
-  <link rel="stylesheet" href="/style.css?v=4">
-  <script defer src="/site.js?v=4"></script>
+  <link rel="stylesheet" href="/style.css?v=5">
+  <script defer src="/site.js?v=5"></script>
 </head>
 <body class="docs-page">
   <div class="wallpaper" aria-hidden="true"></div>
@@ -28,9 +28,44 @@
     <nav class="docs-sidebar" aria-label="Documentation"><a href="/docs/" aria-current="page">Getting started</a><a href="/docs/integrations/">Integrations</a><a href="/docs/privacy/">Privacy & troubleshooting</a><a href="/docs/benchmarks/">Benchmarks</a><a href="/demo/">Demo & first run</a><a href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download v0.1.1 ↗</a></nav>
     <main id="main" class="xp-window docs-window">
       <div class="window-titlebar"><img src="/assets/jevto-mark-64.png" alt="" width="18" height="18"><span class="title-text">JevTO Help</span><span class="title-state">v0.1.1 · experimental</span></div>
-      <article class="doc-content"><p class="doc-eyebrow">JevTO / Documentation</p><h1>Install JevTO and make your first run</h1><p class="doc-lead">Start with the explicit command wrapper. You can try it without changing your agent configuration or adding an API key.</p>
+      <article class="doc-content"><p class="doc-eyebrow">JevTO / Documentation</p><h1>Install JevTO in one command</h1><p class="doc-lead">Paste the command for your platform. The installer downloads the right binary, verifies it, and sets up PATH. No Rust, administrator access, or JevTO account needed.</p>
 <div class="doc-callout"><strong>Experimental v0.1.1.</strong> Linux x86_64, Windows x86_64, and macOS Intel/Apple silicon binaries are available. Host integrations have different coverage; see <a href="/docs/integrations/">tested integrations</a>.</div>
-<h2 id="install">1. Install a release</h2>
+<h2 id="install">1. Install JevTO</h2>
+<div class="install-picker" data-install-picker>
+  <div class="install-tabs" role="tablist" aria-label="Installation platform">
+    <button id="install-tab-windows" type="button" role="tab" aria-selected="true" aria-controls="install-windows" data-platform="windows">Windows</button>
+    <button id="install-tab-unix" type="button" role="tab" aria-selected="false" aria-controls="install-unix" tabindex="-1" data-platform="unix">macOS / Linux</button>
+  </div>
+  <div id="install-windows" role="tabpanel" aria-labelledby="install-tab-windows" tabindex="0">
+    <div class="command-sheet"><div class="sheet-bar"><span>PowerShell</span><button class="copy-button" type="button" data-copy="install-cmds">Copy</button></div><pre id="install-cmds"><code>irm https://jevto.xyz/install.ps1 | iex</code></pre></div>
+    <p class="install-note">Ready in the same PowerShell window. <a href="/install.ps1">Read the installer</a>.</p>
+  </div>
+  <div id="install-unix" role="tabpanel" aria-labelledby="install-tab-unix" tabindex="0">
+    <div class="command-sheet"><div class="sheet-bar"><span>Terminal · Bash / Zsh</span><button class="copy-button" type="button" data-copy="install-unix-cmd">Copy</button></div><pre id="install-unix-cmd"><code>curl -fsSL https://jevto.xyz/install.sh | sh</code></pre></div>
+    <p class="install-note">Open a new terminal after installation. <a href="/install.sh">Read the installer</a>.</p>
+  </div>
+</div>
+<p>Windows installs to <code>%LOCALAPPDATA%\JevTO\bin</code>; macOS/Linux installs to <code>~/.local/bin</code>. The installer uses the published <strong>v0.1.1</strong> release and a pinned SHA-256 check, and checks the downloaded binary's version before replacing an existing installation. It does not install agent hooks.</p>
+<p>Then run <code>jevto doctor</code>. It checks configuration without calling a provider or printing your key.</p>
+<h2 id="claude-code">2. Connect Claude Code</h2>
+<p>In the project where you want automatic output selection, run:</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Your project directory</span><button class="copy-button" type="button" data-copy="claude-quickstart">Copy</button></div><pre id="claude-quickstart"><code>jevto init-claude-auto --workspace . --apply</code></pre></div>
+<p>Start a new Claude Code session in that project. Supported simple test, build, lint, search, and Git commands now route through JevTO. To inspect the changes before applying them, run the same command without <code>--apply</code>. The hook records the current prompt locally as its goal; <a href="/docs/integrations/#claude-code">coverage, RTK conflicts, and removal instructions</a> are in the integration guide.</p>
+<p>No API key is needed for rules-only selection. If an OpenRouter key is already configured, default <code>auto</code> mode can enable remote ranking. <a href="/docs/integrations/#rules-only">Use a rules-only session</a> to keep selection local.</p>
+<h2 id="first-run">3. Or try one command directly</h2>
+<p>In a Rust project, try the following. The explicit <code>--mode rules</code> keeps this run offline even if an OpenRouter key is already in your environment.</p>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="first-command">Copy</button></div><pre id="first-command"><code>jevto run --mode rules -- cargo test --workspace</code></pre></div>
+<p>For another project, replace the program and its arguments after <code>--</code> with your actual verifier, for example <code>python -m unittest -v</code>. JevTO executes that command with your existing permissions; it does not make the command safe or change its side effects.</p>
+<p>Look for the failing test, assertion, exit status, and a <code>recall:</code> line. Already-short or unrecognized output may pass through with little or no reduction. A nonzero test exit remains nonzero.</p>
+<h2 id="recall">Recall the captured bytes</h2>
+<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="recall-commands">Copy</button></div><pre id="recall-commands"><code>jevto recall last
+jevto recall last --stream stderr --lines 1:10
+jevto gain</code></pre></div>
+<p>Full recall restores <strong>both stdout and stderr to their original streams</strong>. For a line range, the default stream is stdout; add <code>--stream stderr</code> for stderr lines. <code>last</code> selects the newest capture. For parallel sessions, use the specific capture ID printed by your command instead.</p>
+<p>To retrieve one omitted section, use <code>jevto recall CAPTURE_ID --section SECTION_ID</code> with the identifiers from the view. Recall returns stored bytes without rerunning the command. It is bounded by what was captured and how long the store retains it.</p>
+<p><code>gain</code> summarizes local receipts. Its output estimates are not proof of lower provider bills.</p>
+<h2 id="manual-install">Manual download or source installation</h2>
+<details><summary>Choose an archive yourself or build from source</summary>
 <p><a class="primary-action" href="https://github.com/mattbaconz/jevto/releases/tag/v0.1.1">Download JevTO v0.1.1</a></p>
 <p>Choose the archive for your OS and CPU, download its matching <code>.sha256</code> file, and compare the archive's SHA-256 with that file before extracting it.</p>
 <div class="table-scroll"><table class="data-table"><caption>Release files and checksum tools</caption><thead><tr><th scope="col">System</th><th scope="col">Archive suffix</th><th scope="col">Checksum command</th></tr></thead><tbody>
@@ -46,22 +81,14 @@
 jevto --version
 jevto doctor</code></pre></div>
 <p>The version should read <code>jevto 0.1.1</code>. <code>doctor</code> inspects configuration; it makes no provider request and does not print your key.</p>
-<h2 id="first-run">2. Wrap one command</h2>
-<p>In a Rust project, try the following. The explicit <code>--mode rules</code> keeps this run offline even if an OpenRouter key is already in your environment.</p>
-<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="first-command">Copy</button></div><pre id="first-command"><code>jevto run --mode rules -- cargo test --workspace</code></pre></div>
-<p>For another project, replace the program and its arguments after <code>--</code> with your actual verifier, for example <code>python -m unittest -v</code>. JevTO executes that command with your existing permissions; it does not make the command safe or change its side effects.</p>
-<p>Look for the failing test, assertion, exit status, and a <code>recall:</code> line. Already-short or unrecognized output may pass through with little or no reduction. A nonzero test exit remains nonzero.</p>
-<h2 id="recall">3. Recall the captured bytes</h2>
-<div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="recall-commands">Copy</button></div><pre id="recall-commands"><code>jevto recall last
-jevto recall last --stream stderr --lines 1:10
-jevto gain</code></pre></div>
-<p>Full recall restores <strong>both stdout and stderr to their original streams</strong>. For a line range, the default stream is stdout; add <code>--stream stderr</code> for stderr lines. <code>last</code> selects the newest capture. For parallel sessions, use the specific capture ID printed by your command instead.</p>
-<p>To retrieve one omitted section, use <code>jevto recall CAPTURE_ID --section SECTION_ID</code> with the identifiers from the view. Recall returns stored bytes without rerunning the command. It is bounded by what was captured and how long the store retains it.</p>
-<p><code>gain</code> summarizes local receipts. Its output estimates are not proof of lower provider bills.</p>
+</details>
+<h2 id="update-remove">Update, custom location, or removal</h2>
+<p>Run the install command again to get the version pinned by the current installer. It verifies the replacement before switching binaries. Set <code>JEVTO_INSTALL_DIR</code> for a custom location; set <code>JEVTO_NO_PATH=1</code> to leave PATH and shell profiles unchanged. Linux prebuilt releases require x64 and a compatible glibc; Linux ARM and musl/Alpine users should use source installation.</p>
+<p>To uninstall, first <a href="/docs/integrations/#claude-code">remove any agent hooks you enabled</a>, then delete the installed <code>jevto</code> / <code>jevto.exe</code>. On macOS/Linux, remove the line ending <code># JevTO</code> from the shell profile the installer named; a <code>.jevto.bak</code> file preserves its contents before first modification. On Windows, remove the JevTO directory from your user PATH. Local captures are separate; see <a href="/docs/privacy/">storage and deletion</a>.</p>
 <h2 id="next">Next: your coding agent</h2>
 <p><a href="/docs/integrations/#claude-code">Set up Claude Code</a> with a preview-first, reversible project hook. For a recording of the real CLI on a deliberately failing fixture, <a href="/demo/">watch the demo</a>.</p>
 <h2 id="troubleshooting">If your first run does not work</h2>
-<ul><li><strong>Command not found:</strong> check that JevTO and the wrapped tool are both on your PATH; reopen the terminal after changing PATH.</li><li><strong>Empty recall:</strong> check both output streams and use the explicit capture ID. For a line range, select <code>--stream stderr</code> when appropriate. A capture may also have expired.</li><li><strong>Unexpected networking:</strong> the built-in mode is <code>auto</code>. Use <code>--mode rules</code> per run or <code>JEVTO_MODE=rules</code> for your session.</li><li><strong>No reduction:</strong> short outputs may correctly bypass selection. Report an unsupported format with a sanitized example.</li></ul>
+<ul><li><strong>Command not found:</strong> open a new terminal. If another JevTO installation shadows this one, use the full path printed by the installer or remove the older PATH entry. The wrapped tool must also be on PATH.</li><li><strong>Empty recall:</strong> check both output streams and use the explicit capture ID. For a line range, select <code>--stream stderr</code> when appropriate. A capture may also have expired.</li><li><strong>Unexpected networking:</strong> the built-in mode is <code>auto</code>. Use <code>--mode rules</code> per run or <code>JEVTO_MODE=rules</code> for your session.</li><li><strong>No reduction:</strong> short outputs may correctly bypass selection. Report an unsupported format with a sanitized example.</li></ul>
 <p><a href="https://github.com/mattbaconz/jevto/issues/new?template=bug_report.md">Report a bug</a>. Include JevTO version, OS, the command, expected behavior, and a redacted sample. Never attach API keys or raw private captures.</p></article>
     </main>
   </div>

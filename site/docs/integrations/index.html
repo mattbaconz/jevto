@@ -17,8 +17,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://jevto.xyz/assets/og.png">
   <link rel="icon" href="/assets/jevto-mark-64.png" type="image/png">
-  <link rel="stylesheet" href="/style.css?v=4">
-  <script defer src="/site.js?v=4"></script>
+  <link rel="stylesheet" href="/style.css?v=5">
+  <script defer src="/site.js?v=5"></script>
 </head>
 <body class="docs-page">
   <div class="wallpaper" aria-hidden="true"></div>
@@ -36,7 +36,7 @@ jevto init-claude-auto --workspace . --apply</code></pre></div>
 <p>The project <code>PreToolUse</code> hook rewrites supported simple Bash/PowerShell commands through <code>jevto run</code>. A <code>UserPromptSubmit</code> hook records your prompt locally as the session goal. Tests, builds, lints, searches, and supported <code>git diff/log/show</code> commands can be routed. Pipes, redirects, substitutions, and unsupported shell shapes stay native.</p>
 <p>Recorded live evidence used <strong>Claude Code 2.1.283</strong>, including passing and failing verifier routes. This is a tested version, not a guarantee about every future client. The hook does not set a permission decision. A configured OpenRouter key can enable goal-aware remote ranking in auto mode; <a href="/docs/privacy/">read the outbound-data behavior</a> first.</p>
 <div class="doc-callout"><strong>Already using RTK?</strong> Choose one command-rewriting hook per project. Claude rewrites do not chain. The installer warns about an RTK hook; review the preview rather than assuming both filters will compose.</div>
-<h3>Keep a session rules-only</h3>
+<h3 id="rules-only">Keep a session rules-only</h3>
 <p>Set the environment variable before starting Claude Code. Use the command for your shell:</p>
 <div class="command-sheet"><div class="sheet-bar"><span>Terminal</span><button class="copy-button" type="button" data-copy="rules-powershell">Copy</button></div><pre id="rules-powershell"><code># PowerShell
 $env:JEVTO_MODE = "rules"
