@@ -238,8 +238,10 @@ def live_install(shell, root, test_user_path=False):
                 discovered = run(command, env).stdout.strip().splitlines()[-1]
                 assert Path(discovered).resolve() == executable.resolve()
                 added, kind = winreg.QueryValueEx(key, "Path")
-                expected_path = original.rstrip(";") + ";" + str(install) if original else str(install)
-                assert expected_path == added
+                # .NET Framework expands Windows 8.3 paths before adding the directory.
+                canonical_install = str(install.resolve())
+                expected_path = original.rstrip(";") + ";" + canonical_install if original else canonical_install
+                assert expected_path == added, "Preserve existing PATH entries and append the canonical directory"
                 assert kind == original_kind
                 run(command, env)
                 assert winreg.QueryValueEx(key, "Path") == (added, kind)
