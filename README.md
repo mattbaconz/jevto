@@ -4,9 +4,9 @@
 
 <p align="center">
   <img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-111214?style=flat-square">
-  <img alt="Rust 1.82+" src="https://img.shields.io/badge/rust-1.82%2B-111214?style=flat-square">
+  <img alt="Built with Rust" src="https://img.shields.io/badge/built%20with-Rust-111214?style=flat-square">
   <img alt="Works with Claude Code, Codex, Cursor" src="https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20Codex%20%C2%B7%20Cursor-111214?style=flat-square">
-  <img alt="Output cut: 95%" src="https://img.shields.io/badge/output-%E2%88%9295%25-E5231B?style=flat-square">
+  <img alt="One-command install" src="https://img.shields.io/badge/install-one%20command-E5231B?style=flat-square">
   <img alt="Status: experimental" src="https://img.shields.io/badge/status-experimental-8B8F97?style=flat-square">
 </p>
 
@@ -250,7 +250,7 @@ python benchmarks/render_charts.py                  # charts from saved JSON
 | Any MCP host | Read-only `jevto_recall`, `jevto_review`, `jevto_status` | `jevto init codex\|claude\|cursor` |
 | Any shell | `jevto run -- PROGRAM ARGS…` | none |
 
-Every installer preview first, apply only with `--apply`, keep ownership record and backup, remove only its own entry. `jevto doctor --json` list which host versions and paths were actually tested.
+Agent setup commands preview first, apply only with `--apply`, keep ownership records and backups, and remove only their own entries. The binary installer above installs directly; it does not configure agent hooks. `jevto doctor --json` lists which host versions and paths were actually tested.
 
 **`jevto review`** read working tree against base and ask questions, never judge: new files, new dependencies, **weakened or deleted test assertions**, **newly skipped tests**. With Jev scope check, also ask per file: this change needed for goal?
 
