@@ -1,5 +1,7 @@
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const lowPower = navigator.connection?.saveData || (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+  if (lowPower) document.documentElement.classList.add("wallpaper-still");
 
   // Tablist helper: click + Arrow/Home/End keys, roving tabindex.
   function tablist(tabs, onSelect) {
@@ -145,7 +147,7 @@
     if (!cache.has(key)) {
       output.textContent = "Loading capture…";
       try {
-        const res = await fetch(`./data/${key}.txt`);
+        const res = await fetch(`./data/${key}.txt`, { signal: AbortSignal.timeout(10000) });
         if (!res.ok) throw new Error(res.status);
         cache.set(key, (await res.text()).replace(/'<jevto>'/g, "jevto"));
       } catch {

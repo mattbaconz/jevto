@@ -32,13 +32,18 @@ a:hover { text-decoration-color: #205bb9; }
 .skip-link:focus { top: 12px; }
 
 .wallpaper { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; background: linear-gradient(180deg, #2576d2 0%, #58a4ea 34%, #a6d9f9 68%, #d0eef1 77%, #7dbb70 78%, #3e955a 100%); }
-.wallpaper::before { content: ""; position: absolute; inset: -18%; background: radial-gradient(ellipse 44% 28% at 23% 28%, rgba(255,255,255,.68), transparent 72%), radial-gradient(ellipse 36% 24% at 81% 42%, rgba(224,242,255,.68), transparent 75%), radial-gradient(ellipse 33% 42% at 64% 78%, rgba(138,232,236,.62), transparent 77%); animation: sky-drift 24s ease-in-out infinite alternate; }
-.wallpaper-light { position: absolute; inset: -14%; background: radial-gradient(ellipse 24% 45% at 49% 22%, rgba(255,255,238,.66), transparent 77%), radial-gradient(ellipse 34% 28% at 38% 66%, rgba(65,207,190,.38), transparent 77%), radial-gradient(ellipse 24% 25% at 92% 16%, rgba(176,197,255,.48), transparent 80%); animation: light-drift 31s ease-in-out infinite alternate; }
+/* Sky and hill are still. One light layer drifts, on desktops with motion allowed and enough
+   cores and memory (site.js sets .wallpaper-still otherwise); everyone else sees it at rest. */
+.wallpaper::before { content: ""; position: absolute; inset: -18%; background: radial-gradient(ellipse 44% 28% at 23% 28%, rgba(255,255,255,.68), transparent 72%), radial-gradient(ellipse 36% 24% at 81% 42%, rgba(224,242,255,.68), transparent 75%), radial-gradient(ellipse 33% 42% at 64% 78%, rgba(138,232,236,.62), transparent 77%), radial-gradient(ellipse 32% 26% at 39% 65%, rgba(65,207,190,.38), transparent 77%), radial-gradient(ellipse 23% 24% at 90% 18%, rgba(176,197,255,.48), transparent 80%); }
+.wallpaper-light { position: absolute; left: 18vw; top: -43vh; width: 61vw; height: 115vh; background: radial-gradient(closest-side, rgba(255,255,238,.66), transparent 77%); }
+@media (prefers-reduced-motion: no-preference) and (pointer: fine) {
+  :root:not(.wallpaper-still) .wallpaper-light { animation: light-drift 31s ease-in-out infinite alternate; }
+}
+.wallpaper-still .motion-toggle { display: none; }
 .wallpaper-hill { position: absolute; width: 130vw; height: 66vh; left: -28vw; bottom: -48vh; border-radius: 50%; transform: rotate(-8deg); background: radial-gradient(ellipse at 54% 14%, #b1d77b 0%, #64b45d 49%, #35884b 90%); box-shadow: 0 -10px 60px rgba(137,218,143,.4); }
 .wallpaper-hill::after { content: ""; position: absolute; width: 88vw; height: 40vh; right: -28vw; top: -3vh; border-radius: 50%; transform: rotate(7deg); background: linear-gradient(180deg, #a8d87e, #438f5c); }
-@keyframes sky-drift { from { transform: translate3d(-2%, 0, 0) scale(1); } to { transform: translate3d(4%, -3%, 0) scale(1.08); } }
 @keyframes light-drift { from { transform: translate3d(3%, -2%, 0) scale(1.02); } to { transform: translate3d(-5%, 3%, 0) scale(1.1); } }
-.motion-paused .wallpaper::before, .motion-paused .wallpaper-light, .page-hidden .wallpaper::before, .page-hidden .wallpaper-light { animation-play-state: paused; }
+.motion-paused .wallpaper-light, .page-hidden .wallpaper-light { animation-play-state: paused; }
 
 main, .site-footer { position: relative; z-index: 1; }
 main { padding-bottom: 58px; }
@@ -46,18 +51,22 @@ main { padding-bottom: 58px; }
 .taskbar :focus-visible, .start-menu :focus-visible { outline-color: #fff; }
 .start-button { display: inline-flex; align-items: center; gap: 7px; height: 47px; min-width: 114px; padding: 0 22px 0 15px; border: 1px solid #236518; border-radius: 0 17px 17px 0; color: #fff; font-size: 1.1rem; font-weight: 700; font-style: italic; text-shadow: 0 1px 2px #174813; background: linear-gradient(180deg, #9ae56b 0%, #4dad3c 18%, #278921 60%, #207520 100%); box-shadow: inset 0 1px rgba(255,255,255,.65), 1px 1px 3px rgba(0,31,41,.32); cursor: pointer; }
 .start-button:hover, .start-button[aria-expanded="true"] { background: linear-gradient(180deg, #b1ef79, #4fb43c 20%, #278e24 80%); }
-.start-button svg { width: 25px; height: 25px; filter: drop-shadow(0 1px 1px #25601e); }
+.start-button img { width: 25px; height: 25px; border-radius: 6px; box-shadow: 0 1px 2px rgba(23,72,19,.55); }
+.start-button:active { background: linear-gradient(180deg, #278921, #2f9a2a 60%, #4dad3c); box-shadow: inset 0 2px 4px rgba(15,60,12,.6); }
 .taskbar-window { display: inline-flex; align-items: center; gap: 8px; max-width: min(330px, 37vw); height: 36px; min-width: 0; padding: 0 14px; border: 1px solid #1645a3; border-radius: 4px; background: linear-gradient(180deg, #3e85ef, #2261cc); box-shadow: inset 0 1px rgba(255,255,255,.35); text-decoration: none; font-size: .78rem; font-weight: 700; white-space: nowrap; }
 .taskbar-window span:last-child { overflow: hidden; text-overflow: ellipsis; }
 .taskbar-window:hover { background: linear-gradient(180deg, #5b9cf4, #2f70d3); }
+.taskbar-window:active { background: linear-gradient(180deg, #1b4fb5, #2a63c9); box-shadow: inset 0 2px 3px rgba(8,30,90,.55); }
 .taskbar-window-icon, .title-icon { display: inline-block; flex: none; width: 17px; height: 17px; border: 1px solid #17417f; border-radius: 3px; background: linear-gradient(180deg, #e9f7ff 0 25%, #5ca9ed 26% 100%); box-shadow: inset 0 1px rgba(255,255,255,.8); }
 .taskbar-window-icon::after, .title-icon::after { content: ""; display: block; width: 7px; height: 5px; margin: 7px auto 0; border: 1px solid #2369ab; background: #fff; }
 .motion-toggle { display: inline-flex; align-items: center; gap: 5px; height: 30px; margin-left: auto; padding: 0 9px; color: #fff; border: 1px solid #73a5e6; border-radius: 4px; background: rgba(8,51,139,.33); cursor: pointer; font-size: .71rem; }
 .motion-toggle:hover { background: rgba(255,255,255,.15); }
+.motion-toggle:active { background: rgba(8,51,139,.6); box-shadow: inset 0 1px 3px rgba(4,22,70,.6); }
 .motion-toggle svg { width: 14px; height: 14px; }
 .motion-toggle .icon-play { display: none; }
 .motion-toggle[aria-pressed="true"] .icon-play { display: block; }
 .motion-toggle[aria-pressed="true"] .icon-pause { display: none; }
+@media (pointer: coarse) { .motion-toggle { display: none; } }
 .taskbar-local { font-size: .66rem; font-weight: 700; white-space: nowrap; letter-spacing: .04em; }
 
 .start-menu { position: fixed; z-index: 49; left: 4px; bottom: 51px; width: min(365px, calc(100vw - 8px)); overflow: hidden; border: 2px solid #0c44ad; border-radius: 9px 9px 0 0; background: #fff; box-shadow: 8px -12px 32px rgba(10,35,81,.38); }
@@ -293,7 +302,7 @@ code { font: 600 .94em/1.4 Consolas, "Cascadia Code", monospace; }
 @media (max-width: 520px) {
   .taskbar { gap: 4px; height: 50px; padding-right: 7px; }
   .start-button { min-width: 88px; height: 45px; padding-inline: 8px 13px; font-size: .9rem; }
-  .start-button svg { width: 21px; height: 21px; }
+  .start-button img { width: 21px; height: 21px; }
   .taskbar-window { max-width: none; flex: 1; height: 34px; padding: 0 7px; font-size: .68rem; }
   .motion-toggle { margin-left: 0; padding: 0 7px; }
   .motion-toggle span, .taskbar-local { display: none; }
@@ -338,7 +347,6 @@ code { font: 600 .94em/1.4 Consolas, "Cascadia Code", monospace; }
 
 @media (prefers-reduced-motion: reduce) {
   :root { scroll-behavior: auto; }
-  .wallpaper::before, .wallpaper-light { animation: none; transform: none; }
   .motion-toggle { display: none; }
   *, *::before, *::after { transition-duration: .01ms !important; }
 }
